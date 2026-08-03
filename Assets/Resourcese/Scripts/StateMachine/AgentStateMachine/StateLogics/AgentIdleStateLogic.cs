@@ -1,8 +1,6 @@
 ﻿public class AgentIdleStateLogic : StateLogic<AgentContext>
 {
-    private AgentContext _context;
-
-    public AgentIdleStateLogic(AgentContext context) { _context = context; }
+    public AgentIdleStateLogic(AgentContext context) : base(context) { }
 
     public override void UpdateStateLogic(float deltaTime)
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public abstract class State<TStateType, TContext> where TStateType : Enum where TContext : StateContext 
+public abstract class State<TStateType, TContext> where TStateType : Enum where TContext : StateContext
 {
     protected StateMachine<TStateType, TContext> _machine;
     protected List<StateTransition<TStateType, TContext>> _transitions;
@@ -18,19 +18,24 @@ public abstract class State<TStateType, TContext> where TStateType : Enum where 
     /// <param name="deltaTime"></param>
     public virtual void Update(float deltaTime)
     {
-        if (_logics == null) return; // 수행할 로직들이 비어있으면 리턴
-
-        foreach (var logic in _logics)
-            { logic.UpdateStateLogic(deltaTime); }
-
-        // 조건들 리스트가 비어있으면 리턴
-        if (_transitions == null) return;
-
-        foreach (var transit in _transitions)
+        if (_logics != null)
         {
-            // 검사 조건에서 변이 조건 만족시
-            if(transit.CheckStateTransit(deltaTime))
-                { _machine.ChangeState(transit.ChangeNextState()); } // 상태머신에게 상태 변경요청
+            foreach (var logic in _logics)
+            {
+                logic.UpdateStateLogic(deltaTime);
+            }
+        }
+
+        if (_transitions != null) // 조건들 리스트가 비어있으면 리턴
+        {
+            foreach (var transit in _transitions)
+            {
+                if (transit.CheckStateTransit(deltaTime)) // 검사 조건에서 변이 조건 만족시
+                {
+                    _machine.ChangeState(transit.ChangeNextState()); // 상태머신에게 상태 변경요청
+                    break;
+                }
+            }
         }
     }
 

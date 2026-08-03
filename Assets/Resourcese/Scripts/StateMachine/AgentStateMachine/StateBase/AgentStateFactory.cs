@@ -26,6 +26,9 @@ public static class AgentStateFactory
                 break;
 
             case AgentStateType.Move:
+                transitions.Add(new AgentMoveToIdle(machine.Context));
+                logics.Add(new AgentMoveStateLogic(machine.Context));
+                state = new AgentMoveState(machine, transitions, logics);
                 break;
         }
 

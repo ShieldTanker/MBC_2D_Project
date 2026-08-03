@@ -1,5 +1,11 @@
 ﻿public abstract class StateLogic<TContext>
 {
+    protected TContext _context;
+    public StateLogic(TContext context)
+    {
+        _context = context;
+    }
+
     /// <summary>
     /// 매프레임 해당 상태의 로직을 실행하는함수
     /// </summary>
