@@ -1,29 +1,35 @@
 ﻿using UnityEngine;
 public class Movement2D : MonoBehaviour
 {
-    private Vector2 _moveInput = Vector2.zero;
     private Rigidbody2D _rb;
-    [SerializeField] private float currentSpeed;
-    public float speed = 20f;      // 움직이는 속력
-    public float accelation = 5f;  // 가속력
-    public float _break = 10f;
+    private Vector2 _moveInput = Vector2.zero;
+    [SerializeField] private float currentSpeed; // 속도 표시용
 
-    private bool _canMove = true;
-    private bool _isMoving = false;
+    [SerializeField] private float _speed = 20f;          // 움직이는 속력
+    [SerializeField] private float _acceleration = 5f;    // 가속력
+    [SerializeField] private float _deceleration = 10f;
+
     [SerializeField] private bool _isGrounded = false;
-    [SerializeField] private LayerMask grdLayer;
+    [SerializeField] private float _grdLength = 0.2f;    // 지면 감지 거리
+    [SerializeField] private bool _canMove = true;       // 이동 가능 여부
+    private Vector2 _grdNomal = Vector2.up;
+    
+    public LayerMask _grdLayer;
 
+    #region 속성
     public bool CanMove { get { return _canMove; } }
-    public float MoveSpeed { get { return speed; } set { speed = value; } }
-    public float Acceleration { get { return accelation; } set { accelation = value; } }
-    public float Gravity { get; set; } = 9.8f;
+    public bool IsGround { get { return _isGrounded; } }
+    public float MoveSpeed { get { return _speed; } set { _speed = value; } }
+    public float Acceleration { get { return _acceleration; } set { _acceleration = value; } }
+    public float Deceleration { get { return _deceleration; } set { _deceleration = value; } }
+    #endregion
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         GroundDetect();
         Move();
@@ -34,23 +40,33 @@ public class Movement2D : MonoBehaviour
     {
         if (_rb == null) return;
 
-        Vector2 dest = _isMoving ? _moveInput * speed : Vector2.zero;
+        Vector2 dest;
+        if (_isGrounded)
+            dest = Vector3.ProjectOnPlane(_moveInput, _grdNomal).normalized * _speed;
+        else
+            dest = new (_moveInput.x * _speed, _rb.linearVelocity.y);
 
-        dest.y -= _isGrounded ? 0.2f : Gravity;
-        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, dest, accelation * Time.deltaTime);
+        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, dest, _acceleration * Time.deltaTime);
     }
 
     public void MoveInput(Vector2 input)
     {
         if (_canMove)
-        {
             _moveInput.x = input.x;
-            _isMoving = _moveInput.x != 0;
-        }
     }
 
     void GroundDetect()
     {
-        _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, grdLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _grdLength, _grdLayer);
+        if(hit.collider != null)
+        {
+            _isGrounded = true;
+            _grdNomal = hit.normal;
+        }
+        else
+        {
+            _isGrounded = false;
+            _grdNomal = Vector2.up;
+        }
     }
 }
