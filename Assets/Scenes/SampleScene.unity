@@ -635,6 +635,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5511746374313039516, guid: 082d63702a9c6cf4496abbb252e84d8a, type: 3}
   m_PrefabInstance: {fileID: 895033862}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &895033869 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8399202915344305994, guid: 082d63702a9c6cf4496abbb252e84d8a, type: 3}
+  m_PrefabInstance: {fileID: 895033862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &895033871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,9 +649,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 895033867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e300121e4350ef41aaee6f39f046ae4, type: 3}
+  m_Script: {fileID: 11500000, guid: df66ceac2abd08d468eb690268fc8b38, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ModelController
+  Anim: {fileID: 895033869}
 --- !u!1 &1161799596
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +902,7 @@ GameObject:
   - component: {fileID: 1738648712}
   - component: {fileID: 1738648715}
   - component: {fileID: 1738648714}
+  - component: {fileID: 1738648716}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1136,6 +1143,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 4.5}
   m_Size: {x: 1.88, y: 9}
   m_Direction: 0
+--- !u!114 &1738648716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738648707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e300121e4350ef41aaee6f39f046ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationLeasoner
+  model: {fileID: 895033871}
 --- !u!1 &1848714923
 GameObject:
   m_ObjectHideFlags: 0

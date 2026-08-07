@@ -1,4 +1,4 @@
-﻿using TMPro.EditorUtilities;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class AgentMoveStateLogic : StateLogic<AgentContext>
@@ -7,6 +7,10 @@ public class AgentMoveStateLogic : StateLogic<AgentContext>
 
     public override void UpdateStateLogic(float deltaTime)
     {
-        _context.Move.MoveInput(_context.MoveInput.MoveInput);
+        Vector2 input = _context.MoveInput.MoveInput;
+
+        _context.Move.MoveInput(input);
+        _context.AnimCon.SetFlaot("MoveX", input.x);
+
     }
 }
