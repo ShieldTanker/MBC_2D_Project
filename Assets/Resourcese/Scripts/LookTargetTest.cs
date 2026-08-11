@@ -25,18 +25,15 @@ public class LookTargetTest : MonoBehaviour
         if (target == null || action == null)
             return;
 
-        // 이번 프레임의 마우스 이동량 (화면 위치가 아님)
         Vector2 input = action.ReadValue<Vector2>();
 
-        // 입력값만큼 현재 위치에서 이동
         Vector3 move = new Vector3(input.x, input.y, 0f) * sensitivity;
-        Vector3 nextPosition = transform.position + move;
+        Vector3 desire = transform.position + move;
 
-        // target을 중심으로 length 반경 안에만 위치하도록 제한
-        Vector3 offset = nextPosition - target.position;
-        offset = Vector3.ClampMagnitude(offset, length);
+        Vector3 dest = desire - target.position;
+        dest = Vector3.ClampMagnitude(dest, length);
 
-        transform.position = target.position + offset;
+        transform.position = target.position + dest;
     }
 
     private void OnDrawGizmosSelected()

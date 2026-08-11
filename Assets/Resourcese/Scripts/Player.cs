@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -8,7 +8,11 @@ public class Player : MonoBehaviour
     private Movement2D _move;
     private InputController _input;
     private AnimController _animCon;
-    public AgentStateType currentState;
+    public AgentStateType CurrentState { get; private set; }
+
+    private WeaponAimController _weaponAimCon;
+    private ModelController _model;
+    private LoadOut _loadOut;
 
     private void Awake()
     {
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _agent?.Update(Time.deltaTime);
-        currentState= _agent.CurrentStateType;
+        CurrentState = _agent.CurrentStateType;
     }
 
     void Init()
@@ -34,6 +38,18 @@ public class Player : MonoBehaviour
         _input = GetComponent<InputController>();
         _move = GetComponent<Movement2D>();
         _animCon = GetComponent<AnimController>();
+        _model = GetComponentInChildren<ModelController>();
+        _weaponAimCon = GetComponentInChildren<WeaponAimController>();
+
+        // Todo : 나중에 분리할것
+        _weaponAimCon.SetAnchorPosition(_model.F_Shoudler, WeaponAimType.F_Hand);
+        _weaponAimCon.SetAnchorPosition(_model.B_Shoudler, WeaponAimType.B_Hand);
+        _weaponAimCon.SetAnchorPosition(_model.BackWeaponPos, WeaponAimType.F_Shoulder);
+        _weaponAimCon.SetAnchorPosition(_model.BackWeaponPos, WeaponAimType.B_Shoulder);
+
+        // Todo : IKTarget 설정
+        _weaponAimCon.SetEffectTarget(_model.F_HandIKTarget, WeaponAimType.F_Hand);
+        _weaponAimCon.SetEffectTarget(_model.B_HandIKTarget, WeaponAimType.B_Hand);
     }
 
     void SetContext()
