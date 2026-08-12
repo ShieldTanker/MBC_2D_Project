@@ -1,4 +1,4 @@
-public interface IJumpInput
-{
-    public bool JumpInput {  get; }
-}
+﻿//public interface IJumpInput
+//{
+//    public bool JumpInput {  get; }
+//}

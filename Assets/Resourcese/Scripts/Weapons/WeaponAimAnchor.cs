@@ -2,10 +2,9 @@
 
 public class WeaponAimAnchor : MonoBehaviour
 {
-    public Transform EffectTarget;
     public Transform AimTarget;
 
-    public bool UseAim =true;
+    public bool UseAim = true;
     public Vector3 BaseRot = new Vector3(0, 0, 0);
 
     private void Start()
@@ -15,9 +14,8 @@ public class WeaponAimAnchor : MonoBehaviour
 
     void Update()
     {
-        if (!UseAim || AimTarget == null || EffectTarget == null) return;
-        
-        EffectTarget.position = AimTarget.position;
-        EffectTarget.rotation = AimTarget.rotation;
+        if (!UseAim || AimTarget == null) return;
+
+        AimTarget.rotation = transform.rotation;
     }
 }

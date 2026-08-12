@@ -21,7 +21,7 @@ public static class GameStateFactory
                 break;
 
             case GameStateType.Pause:
-                transitions.Add(new GamePauseToPlay(machine.Context as GameContext));
+                transitions.Add(new GamePauseToPlay(machine.Context, GameStateType.Play));
                 break;
         }
 

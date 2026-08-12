@@ -49,6 +49,11 @@ public class Movement2D : MonoBehaviour
         _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, dest, accel * Time.deltaTime);
     }
 
+    public void Jump(float force)
+    {
+        _rb.AddForce(Vector3.up * force, ForceMode2D.Impulse);
+    }
+
     public void MoveInput(Vector2 input)
     {
         if (_canMove)

@@ -20,15 +20,49 @@ public static class AgentStateFactory
         switch (stateType)
         {
             case AgentStateType.Idle:
-                transitions.Add(new AgentIdleToMove(machine.Context));
+                transitions.Add(new AgentStateToMove(machine.Context, AgentStateType.Move));
+                transitions.Add(new AgentStateToJump(machine.Context, AgentStateType.Jump));
+                // Todo: IdleToJump 추가할것
+                // Todo: IdleToOnAir 추가할것
+                // Todo: IdleToDied 추가할것
+                // 닷지는 입력방향이 있어야함으로 Idle에서는 못함
+
                 logics.Add(new AgentIdleStateLogic(machine.Context));
                 state = new AgentIdleState(machine, transitions, logics);
                 break;
 
             case AgentStateType.Move:
-                transitions.Add(new AgentMoveToIdle(machine.Context));
+                transitions.Add(new AgentStateToIdle(machine.Context, AgentStateType.Idle));
+                transitions.Add(new AgentStateToJump(machine.Context, AgentStateType.Jump));
+                // Todo: MoveToJump 추가할것
+                // Todo: MoveToOnAir 추가할것
+                // Todo: MoveToDodge 추가할것
+                // Todo: MoveToDied 추가할것
+
                 logics.Add(new AgentMoveStateLogic(machine.Context));
                 state = new AgentMoveState(machine, transitions, logics);
+                break;
+
+            case AgentStateType.Jump:
+                transitions.Add(new AgentStateToIdle(machine.Context, AgentStateType.Idle));
+                transitions.Add(new AgentStateToMove(machine.Context, AgentStateType.Move));
+                transitions.Add(new AgentStateToOnAir(machine.Context, AgentStateType.OnAir));
+                transitions.Add(new AgentStateToLanding(machine.Context, AgentStateType.Landing));
+                // Todo: JumpToDied 추가할것
+                // Todo: jumpToDodge 추가할것
+
+                // 점프중에는 이동은 막지만 회피는 가능
+                logics.Add(new AgentJumpStateLogic(machine.Context));
+                state = new AgentJumpState(machine, transitions, logics);
+                break;
+
+            case AgentStateType.OnAir:
+                transitions.Add(new AgentStateToIdle(machine.Context, AgentStateType.Idle));
+                transitions.Add(new AgentStateToMove(machine.Context, AgentStateType.Move));
+                transitions.Add(new AgentStateToLanding(machine.Context, AgentStateType.Landing));
+                
+
+                state = new AgentOnAirState(machine, transitions, logics);
                 break;
         }
 

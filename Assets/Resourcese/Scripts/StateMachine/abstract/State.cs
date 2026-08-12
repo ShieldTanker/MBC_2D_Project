@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public abstract class State<TStateType, TContext> where TStateType : Enum where TContext : StateContext
+public abstract class State<TStateType, TContext>
+    where TStateType : Enum
+    where TContext : StateContext
 {
     protected StateMachine<TStateType, TContext> _machine;
     protected List<StateTransition<TStateType, TContext>> _transitions;
@@ -10,7 +13,7 @@ public abstract class State<TStateType, TContext> where TStateType : Enum where 
     /// <summary>
     /// 각 상태에서 상태진입시 실행될 함수
     /// </summary>
-    public virtual void StateEnter() { }
+    public virtual void StateEnter() { Debug.Log($"{this.GetType()} 진입"); }
 
     /// <summary>
     /// 각 상태에서 매프레임 실행될 함수

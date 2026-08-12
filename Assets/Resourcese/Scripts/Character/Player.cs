@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
         _input = GetComponent<InputController>();
         _move = GetComponent<Movement2D>();
         _animCon = GetComponent<AnimController>();
-        _model = GetComponentInChildren<ModelController>();
-        _weaponAimCon = GetComponentInChildren<WeaponAimController>();
+        // _model = GetComponentInChildren<ModelController>();
+        // _weaponAimCon = GetComponentInChildren<WeaponAimController>();
     }
 
     void SetContext()

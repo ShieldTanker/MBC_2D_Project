@@ -5,5 +5,7 @@
     Move,
     Jump,
     OnAir,
+    Landing,
+    Dodge,
     Died
 }
