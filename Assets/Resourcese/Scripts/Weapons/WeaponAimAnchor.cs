@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class WeaponAimAnchor : MonoBehaviour
 {
-    public Transform AimTarget;
+    public WeaponHolder AimTarget;
+    public Transform EffectTarget;
 
     public bool UseAim = true;
     public Vector3 BaseRot = new Vector3(0, 0, 0);
@@ -16,6 +17,7 @@ public class WeaponAimAnchor : MonoBehaviour
     {
         if (!UseAim || AimTarget == null) return;
 
-        AimTarget.rotation = transform.rotation;
+        EffectTarget.position = AimTarget.transform.position;
+        EffectTarget.rotation = AimTarget.transform.rotation;
     }
 }

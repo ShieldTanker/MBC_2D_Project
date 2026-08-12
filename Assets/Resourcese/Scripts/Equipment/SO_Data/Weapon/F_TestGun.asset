@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
-  m_Name: TestGun
+  m_Name: F_TestGun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Offset: {x: 3, y: -0.3, z: 0}
   Damage: 10
