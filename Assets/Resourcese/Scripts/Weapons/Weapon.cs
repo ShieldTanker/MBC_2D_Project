@@ -1,18 +1,15 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Transform Target {  get; set; }
-    public Vector3 WeaponOffset;
+    public Transform _target;
+    private Transform _firePos;
+    public WeaponData _weaponData;
+    public WeaponData _baseData;
 
-    public WeaponData _data;
-
-    void Update()
+    public WeaponData WeaponData
     {
-        if (Target == null) return;
-
-        Target.transform.position = transform.position;
-        Target.transform.rotation = transform.rotation;
+        get { return _weaponData; } 
+        set { _weaponData = value; }
     }
 }

@@ -39,14 +39,14 @@ public class Movement2D : MonoBehaviour
     private void Move()
     {
         if (_rb == null) return;
-
+        float accel = _moveInput == Vector2.zero ? _deceleration : _acceleration;
         Vector2 dest;
         if (_isGrounded)
             dest = Vector3.ProjectOnPlane(_moveInput, _grdNomal).normalized * _speed;
         else
             dest = new (_moveInput.x * _speed, _rb.linearVelocity.y);
 
-        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, dest, _acceleration * Time.deltaTime);
+        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, dest, accel * Time.deltaTime);
     }
 
     public void MoveInput(Vector2 input)
