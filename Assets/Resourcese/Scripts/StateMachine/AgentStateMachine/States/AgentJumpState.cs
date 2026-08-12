@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-public class AgentJumpState : State<AgentStateType,AgentContext>
+public class AgentJumpState : State<AgentStateType, AgentContext>
 {
     public AgentJumpState
         (StateMachine<AgentStateType, AgentContext> stateMachine,
