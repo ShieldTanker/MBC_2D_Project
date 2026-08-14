@@ -2,18 +2,22 @@
 
 public class Player : MonoBehaviour
 {
+    // 상태 및 수치 관련
     private AgentStateMachine _agent;
     private AgentContext _context;
-
     private AgentStat _stat;
+
+    // 움직임 관련
     private Movement2D _move;
     private InputController _input;
     private AnimController _animCon;
-    public AgentStateType CurrentState { get; private set; }
 
     private WeaponAimController _weaponAimCon;
     private ModelController _model;
+
     private LoadOut _loadOut;
+
+    public AgentStateType CurrentState { get; private set; }
 
     private void Awake()
     {

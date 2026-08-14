@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
-  m_Name: F_TestGun
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  Offset: {x: 3, y: -0.3, z: 0}
-  Damage: 10
+  m_Script: {fileID: 11500000, guid: fea7f6e9c3d9e384faa9309884d26f39, type: 3}
+  m_Name: TestGunRecoilData
+  m_EditorClassIdentifier: Assembly-CSharp::RecoilData
+  KickBack: 0.6
+  KickPitchAngle: 45
+  KickSpeed: 0.2
+  RecoverySspeed: 0.5

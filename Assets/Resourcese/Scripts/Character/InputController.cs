@@ -1,42 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using System;
+using UnityEngine;
 
-public class InputController : MonoBehaviour, IMoveInput2D, IJumpInput
+public class InputController : MonoBehaviour, IMoveInput2D, IJumpInput, IWeaponInput
 {
-    public Vector2 MoveInput {  get; private set; }
+    // 움직임 입력
+    public Vector2 MoveInput {  get; protected set; }
 
-    public bool JumpInput {  get; private set; }
+    // 점프 입력
+    public bool JumpInput {  get; protected set; }
 
-    private PlayerInput _pInput;
-
-    private void Awake()
-    {
-        _pInput = GetComponent<PlayerInput>();
-    }
-
-    private void OnEnable()
-    {
-        _pInput.actions["Move"].performed += OnMoveInput;
-        _pInput.actions["Move"].canceled += OnMoveInput;
-        _pInput.actions["Jump"].performed += OnJumpInput;
-        _pInput.actions["Jump"].canceled += OnJumpInput;
-    }
-
-    private void OnDisable()
-    {
-        _pInput.actions["Move"].performed -= OnMoveInput;
-        _pInput.actions["Move"].canceled -= OnMoveInput;
-        _pInput.actions["Jump"].performed -= OnJumpInput;
-        _pInput.actions["Jump"].canceled -= OnJumpInput;
-    }
-
-    void OnMoveInput(InputAction.CallbackContext context)
-    {
-        MoveInput = context.ReadValue<Vector2>();
-    }
-
-    void OnJumpInput(InputAction.CallbackContext context)
-    {
-        JumpInput = context.ReadValueAsButton();
-    }
+    // 공격 입력
+    public Action F_HandFire { get; set; }
+    public Action B_HandFire { get; set; }
+    public Action F_ShoulderFire { get; set; }
+    public Action B_ShoulderFire { get; set; }   
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public interface IMoveInput2D
 {
@@ -8,6 +9,14 @@ public interface IMoveInput2D
 public interface IJumpInput
 {
     public bool JumpInput { get; }
+}
+
+public interface IWeaponInput
+{
+    public Action B_HandFire { get; set; }
+    public Action F_HandFire { get; set; }
+    public Action B_ShoulderFire { get; set; }
+    public Action F_ShoulderFire { get; set; }
 }
 
 public interface IBoostInput

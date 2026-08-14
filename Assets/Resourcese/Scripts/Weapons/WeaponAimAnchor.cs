@@ -1,12 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponAimAnchor : MonoBehaviour
 {
-    public WeaponHolder AimTarget;
+    public Transform AimTarget;
     public Transform EffectTarget;
 
     public bool UseAim = true;
     public Vector3 BaseRot = new Vector3(0, 0, 0);
+    public Vector3 currRot;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class WeaponAimAnchor : MonoBehaviour
 
     void Update()
     {
+        currRot = transform.rotation.eulerAngles;
         if (!UseAim || AimTarget == null) return;
 
         EffectTarget.position = AimTarget.transform.position;
