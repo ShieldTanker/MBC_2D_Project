@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AgentStateToIdle : StateTransition<AgentStateType, AgentContext>
 {
@@ -13,6 +13,8 @@ public class AgentStateToIdle : StateTransition<AgentStateType, AgentContext>
 
         return false;
     }
+
+    public override void Clear() { }
 }
 
 public class AgentStateToMove : StateTransition<AgentStateType, AgentContext>
@@ -28,6 +30,8 @@ public class AgentStateToMove : StateTransition<AgentStateType, AgentContext>
 
         return false;
     }
+
+    public override void Clear() { }
 }
 
 public class AgentStateToJump : StateTransition<AgentStateType, AgentContext>
@@ -54,12 +58,12 @@ public class AgentStateToJump : StateTransition<AgentStateType, AgentContext>
             }
         }
         else
-        {
-            time = 0f;
-        }
+        { time = 0f; }
 
         return false;
     }
+
+    public override void Clear() { }
 }
 
 public class AgentStateToOnAir : StateTransition<AgentStateType, AgentContext>
@@ -76,6 +80,8 @@ public class AgentStateToOnAir : StateTransition<AgentStateType, AgentContext>
 
         return false;
     }
+
+    public override void Clear() { }
 }
 
 public class AgentStateToLanding : StateTransition<AgentStateType, AgentContext>
@@ -93,6 +99,8 @@ public class AgentStateToLanding : StateTransition<AgentStateType, AgentContext>
 
         return false;
     }
+
+    public override void Clear() { }
 }
 
 public class AgentStateToDodge : StateTransition<AgentStateType, AgentContext>
@@ -109,4 +117,6 @@ public class AgentStateToDodge : StateTransition<AgentStateType, AgentContext>
 
         return false;
     }
+
+    public override void Clear() { }
 }

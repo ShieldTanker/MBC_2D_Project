@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 // 다른 상태머신에서 자기가 쓰는 enum이 각자 달라 제네릭으로 구현
 public abstract class StateTransition<TStateType, TContext> 
@@ -7,7 +7,11 @@ public abstract class StateTransition<TStateType, TContext>
     protected TStateType _nextState;
     public StateTransition(TContext context, TStateType stateType) { _context = context; _nextState = stateType; }
 
-    // 매프레임 해당 상태의 전이조건 검사
+    /// <summary>
+    /// 매프레임 해당 상태의 전이조건 검사
+    /// </summary>
+    /// <param name="deltaTime"></param>
+    /// <returns></returns>
     public abstract bool CheckStateTransit(float deltaTime);
 
     /// <summary>
@@ -18,4 +22,9 @@ public abstract class StateTransition<TStateType, TContext>
     {
         return _nextState;
     }
+
+    /// <summary>
+    /// 트랜지션 탐색 조건 초기화
+    /// </summary>
+    public abstract void Clear();
 }

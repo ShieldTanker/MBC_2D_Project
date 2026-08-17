@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Model: {fileID: 3710105912973781297, guid: 7f25eb4c8f4457e4a9771180ede82624, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}
+  WeaponType: 0
+  FireMode: 0
   Damage: 10
+  FireRate: 100
+  Range: 150
+  MaxAimTime: 1
+  MaxReloadDuration: 3
+  BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
+  BulletSpeed: 120
+  MaxCapacity: 3
+  MaxAmmo: 220
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

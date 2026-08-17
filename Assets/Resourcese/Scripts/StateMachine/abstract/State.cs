@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,11 @@ public abstract class State<TStateType, TContext>
     /// <summary>
     /// 각 상태에서 상태진입시 실행될 함수
     /// </summary>
-    public virtual void StateEnter() { Debug.Log($"{this.GetType()} 진입"); }
+    public virtual void StateEnter()
+    {
+        Debug.Log($"{this.GetType()} 진입");
+        ClearLogicTransition();
+    }
 
     /// <summary>
     /// 각 상태에서 매프레임 실행될 함수
@@ -24,9 +28,7 @@ public abstract class State<TStateType, TContext>
         if (_logics != null)
         {
             foreach (var logic in _logics)
-            {
-                logic.UpdateStateLogic(deltaTime);
-            }
+                { logic.UpdateStateLogic(deltaTime); }
         }
 
         if (_transitions != null) // 조건들 리스트가 비어있으면 리턴
@@ -45,5 +47,14 @@ public abstract class State<TStateType, TContext>
     /// <summary>
     /// 각 상태에서 상태 나갈시 실행될 함수
     /// </summary>
-    public virtual void StateExit() { }
+    public virtual void StateExit()
+    {
+        ClearLogicTransition();
+    }
+
+    void ClearLogicTransition()
+    {
+        foreach (StateLogic<TContext> logic in _logics) { logic.Clear(); }
+        foreach (StateTransition<TStateType, TContext> transition in _transitions) { transition.Clear(); }
+    }
 }

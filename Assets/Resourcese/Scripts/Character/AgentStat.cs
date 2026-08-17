@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AgentStat : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class AgentStat : MonoBehaviour
     public float JumpForce = 40f;       // 점프 힘
     public float JumpDuration = 0.8f;   // 점프상태 유지 시간
     public float JumpDelay = 0.2f;      // 점프할때까지의 딜레이
+    public float JumpDuraition = 0.5f;  // 점프 유지 시간
     public bool IsJumping = false;      // 현재 점프중인지 확인
 
     // 전투 관련 스탯

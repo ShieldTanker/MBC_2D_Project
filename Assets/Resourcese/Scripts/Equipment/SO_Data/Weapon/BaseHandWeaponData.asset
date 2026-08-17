@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
   m_Name: BaseHandWeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  Model: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
-  Damage: 0
+  WeaponType: 0
+  FireMode: 0
+  Damage: 10
+  FireRate: 750
+  Range: 100
+  MaxAimTime: 1
+  MaxReloadDuration: 3
+  BulletSpeed: 0
+  MaxCapacity: 8
+  MaxAmmo: 220
   RecoilData: {fileID: 0}

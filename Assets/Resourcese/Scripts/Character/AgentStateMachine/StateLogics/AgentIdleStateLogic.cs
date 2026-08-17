@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AgentIdleStateLogic : StateLogic<AgentContext>
 {
@@ -9,6 +9,8 @@ public class AgentIdleStateLogic : StateLogic<AgentContext>
 
         // TODO : _context를 이용해 로직 구현
     }
+
+    public override void Clear() { }
 }
 
 public class AgentMoveStateLogic : StateLogic<AgentContext>
@@ -23,6 +25,8 @@ public class AgentMoveStateLogic : StateLogic<AgentContext>
         _context.AnimCon.SetFlaot("MoveX", input.x);
 
     }
+
+    public override void Clear() { }
 }
 
 public class AgentJumpStateLogic : StateLogic<AgentContext>
@@ -38,5 +42,7 @@ public class AgentJumpStateLogic : StateLogic<AgentContext>
             _context.AgentStat.IsJumping = false;
         }
     }
+
+    public override void Clear() { }
 }
 

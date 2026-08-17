@@ -15,4 +15,5 @@ MonoBehaviour:
   KickBack: 0.6
   KickPitchAngle: 45
   KickSpeed: 0.2
-  RecoverySspeed: 0.5
+  RecoverySpeed: 1
+  RecoilDuration: 1
