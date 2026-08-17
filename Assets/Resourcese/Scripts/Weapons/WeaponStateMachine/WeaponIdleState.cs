@@ -22,7 +22,6 @@ public class WeaponIdleState : State<WeaponStateType, WeaponContext>
     public override void StateExit()
     {
         base.StateExit();
-        _machine.Context.WeaponInput.AttackPressed = false;
     }
 }
 

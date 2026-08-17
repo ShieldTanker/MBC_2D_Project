@@ -72,13 +72,15 @@ public class WeaponAimToFire : StateTransition<WeaponStateType, WeaponContext>
         }
 
         // 연사
-        if (_context.WeaponData.FireMode == WeaponFireMode.FullAuto && _context.WeaponInput.AttackHeld)
+        if (_context.WeaponData.FireMode == WeaponFireMode.FullAuto 
+            && _context.WeaponInput.AttackHold)
         {
             return true;
         }
 
         // 단발 재입력
-        if (_context.WeaponData.FireMode == WeaponFireMode.SemiAuto && _context.WeaponInput.AttackPressed)
+        if (_context.WeaponData.FireMode == WeaponFireMode.SemiAuto 
+            && _context.WeaponInput.AttackPressed)
         {
             return true;
         }

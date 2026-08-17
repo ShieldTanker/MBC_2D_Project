@@ -79,11 +79,16 @@ public class Weapon : MonoBehaviour
         DebugContext();
     }
 
-    public void TryFire()
+    public void PerformedFire()
     {
         if (_weaponData == null) { return; }
-        Debug.Log($"{this.gameObject.name} : 사격 시도");
         _input.AttackPressed = true;
+    }
+
+    public void CanceledFire()
+    {
+        if (_weaponData == null) { return; }
+        _input.AttackPressed = false;
     }
 
     void SetWeapon()
@@ -139,7 +144,7 @@ public class Weapon : MonoBehaviour
     void DebugContext()
     {
         AttackPressed = _context.WeaponInput.AttackPressed;      // 공격 입력
-        AttackHeld = _context.WeaponInput.AttackHeld;         // 
+        AttackHeld = _context.WeaponInput.AttackHold;         // 
         AttackReleased = _context.WeaponInput.AttackReleased;     // 
 
         ReloadPressed = _context.WeaponInput.ReloadPressed;      // 재장전 눌림

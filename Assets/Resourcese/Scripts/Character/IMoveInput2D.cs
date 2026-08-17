@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 
 public interface IMoveInput2D
@@ -13,10 +13,15 @@ public interface IJumpInput
 
 public interface IWeaponInput
 {
-    public Action B_HandFire { get; set; }
-    public Action F_HandFire { get; set; }
-    public Action B_ShoulderFire { get; set; }
-    public Action F_ShoulderFire { get; set; }
+    public Action B_HandPerformedFire { get; set; }
+    public Action F_HandPerformedFire { get; set; }
+    public Action B_ShoulderPerformedFire { get; set; }
+    public Action F_ShoulderPerformedFire { get; set; }
+
+    public Action B_HandCanceledFire { get; set; }
+    public Action F_HandCanceledFire { get; set; }
+    public Action B_ShoulderCanceledFire { get; set; }
+    public Action F_ShoulderCanceledFire { get; set; }
 }
 
 public interface IBoostInput

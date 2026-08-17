@@ -57,7 +57,7 @@ public class WeaponInput
 {
     // 무장 입력
     public bool AttackPressed { get; set; } // 공격 입력
-    public bool AttackHeld { get; set; }
+    public bool AttackHold { get; set; }
     public bool AttackReleased { get; set; }
 
     public bool ReloadPressed { get; set; } // 재장전 눌림
@@ -68,7 +68,7 @@ public class WeaponInput
     public void ClearAll()
     {
         AttackPressed = false;
-        AttackHeld = false;
+        AttackHold = false;
         AttackReleased = false;
 
         ReloadPressed = false;

@@ -30,7 +30,7 @@ public class WeaponAimStateLogic : StateLogic<WeaponContext>
         }
 
         if (_context.WeaponInput.AttackPressed ||
-            _context.WeaponInput.AttackHeld ||
+            _context.WeaponInput.AttackHold ||
             _context.WeaponInput.ReloadPressed)
         {
             _context.AimIdleTimer = 0f;
