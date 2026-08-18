@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponFireState : State<WeaponStateType, WeaponContext>
 {
     private WeaponContext _context;
-
-    private float _rateTime;
 
     public WeaponFireState(WeaponStateMachine machine, List<StateTransition<WeaponStateType, WeaponContext>> transitions)
     {
@@ -19,7 +17,8 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
     {
         base.StateEnter();
 
-        _rateTime = 0f;
+        _context.WeaponFlag.CanFire = _context.WeaponData.BulletModel != null
+            && _context.CurrentCapacity > 0;
     }
 
     public override void StateUpdate(float deltaTime)
@@ -31,11 +30,6 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
             return;
         }
 
-        _context.WeaponFlag.CanFire = _context.WeaponData.BulletModel != null
-            && _context.CurrentCapacity > 0;
-
-        _rateTime += deltaTime;
-
         TryFire();
 
         base.StateUpdate(deltaTime);
@@ -44,7 +38,6 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
     public override void StateExit()
     {
         base.StateExit();
-        _rateTime = 0f;
     }
 
     private void TryFire()
@@ -61,11 +54,11 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
         // 단발 / 연발 모두 첫 발은 AttackSequenceStarted를 기준으로 발사합니다.
         if (_context.WeaponFlag.AttackSequenceStarted)
         {
-            if (_rateTime < fireRate)
-                return;
-            _context.WeaponFlag.AttackSequenceStarted = false;
-            Fire();
+            if (_context.FireRate < fireRate) return;
 
+            _context.WeaponFlag.AttackSequenceStarted = false;
+
+            Fire();
             return;
         }
 
@@ -76,7 +69,7 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
 
         if (_context.WeaponData.FireMode == WeaponFireMode.FullAuto)
         {
-            if (_rateTime >= fireRate)
+            if (_context.FireRate >= fireRate)
             {
                 Fire();
             }
@@ -88,10 +81,10 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
         if (_context.WeaponData == null)
             return float.MaxValue;
 
-        if (_context.WeaponData.FireRate <= 0f)
+        if (_context.WeaponData.FireRateSecond <= 0f)
             return float.MaxValue;
 
-        return 60f / _context.WeaponData.FireRate;
+        return 1f / _context.WeaponData.FireRateSecond;
     }
 
     private void Fire()
@@ -100,15 +93,17 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
         if (_context.WeaponData.BulletModel == null) return;
         if (_context.FirePosition == null) return;
 
-        GameObject.Instantiate(
+        GameObject go = GameObject.Instantiate(
             _context.WeaponData.BulletModel, _context.FirePosition.position, _context.FirePosition.rotation);
+
+        go.GetComponent<BulletTest>().SetTarget(_context.AimTarget);
 
         _context.CurrentCapacity--;
 
         // 실제 발사했으므로 타이머 초기화
-        _context.TimeSinceLastFire = 0f;
+        _context.LastFireTime = 0f;
 
-        _rateTime = 0f;
+        _context.FireRate = 0f;
 
         _context.WeaponFlag.CanFire = _context.CurrentCapacity > 0;
 

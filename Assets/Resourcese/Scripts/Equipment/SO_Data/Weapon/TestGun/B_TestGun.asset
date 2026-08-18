@@ -17,7 +17,7 @@ MonoBehaviour:
   WeaponType: 0
   FireMode: 0
   Damage: 10
-  FireRate: 750
+  FireRateSecond: 2
   Range: 150
   MaxAimTime: 1
   MaxReloadDuration: 3

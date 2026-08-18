@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 // 재장전 상태
 public class WeaponReloadState : State<WeaponStateType, WeaponContext>
@@ -19,11 +19,17 @@ public class WeaponReloadState : State<WeaponStateType, WeaponContext>
     public override void StateEnter()
     {
         base.StateEnter();
+        
+        // 재장전 확인용 회전
         if (_context.WeaponAnchorPos != null)
-        {
             _context.WeaponAnchorPos.rotation = Quaternion.Euler(0f, 0f, 60f);
-        }
-        _machine.Context.WeaponFlag.IsReloadComplete = false;
+        
+        // 조준 관련 초기화
+        _context.WeaponFlag.IsAimCanceled = true;
+        _context.WeaponFlag.IsAiming = false;
+        _context.WeaponFlag.IsAimComplete = false;
+
+        _context.WeaponFlag.IsReloadComplete = false;
         _currentReloadTime = 0f;
     }
 

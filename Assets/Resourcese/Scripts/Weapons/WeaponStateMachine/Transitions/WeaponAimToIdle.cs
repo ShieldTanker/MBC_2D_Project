@@ -1,4 +1,4 @@
-﻿public class WeaponAimToIdle : StateTransition<WeaponStateType, WeaponContext>
+public class WeaponAimToIdle : StateTransition<WeaponStateType, WeaponContext>
 {
     public WeaponAimToIdle(WeaponContext context, WeaponStateType stateType)
         : base(context, stateType) { }
@@ -8,7 +8,8 @@
         if (_context.IsInterrupted 
             || _context.WeaponData == null) return true;
 
-        return _context.TimeSinceLastFire >= 2f;
+        // if (check) { _context.WeaponFlag.IsAimComplete = false; }
+        return _context.WeaponFlag.IsAimCanceled;
     }
 
     public override void Clear() { }

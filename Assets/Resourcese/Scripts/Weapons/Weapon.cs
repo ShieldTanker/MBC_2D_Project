@@ -1,11 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     private WeaponStateMachine _machine;
-    private WeaponContext _context;
 
+    // Context관련
+    private WeaponContext _context;
     private WeaponInput _input = new WeaponInput();
     private WeaponFlag _flag = new WeaponFlag();
 
@@ -16,11 +17,17 @@ public class Weapon : MonoBehaviour
     public Transform FirePosition;
     public Transform WeaponAnchor;
 
+    // 조준 관련
+    public Transform AimTarget;
+    public float AimSpeed = 10f;
+    float angle = 0f;
+
     private Vector3 _baseLocalPos;
     private Quaternion _baseLocalRot;
 
     private Vector3 _recoilVelocity = Vector3.zero;
 
+    // 무기 데이터
     private WeaponData _weaponData;
 
     public WeaponData WeaponData
@@ -44,22 +51,26 @@ public class Weapon : MonoBehaviour
     public bool AttackHeld;
     public bool AttackReleased;
     public bool InteractionPressed;
-
+    [Space]
     [Tooltip("플래그")]
     public bool CanFire = true;
     public bool CanReload;
     public bool IsAimComplete;
+    public bool IsAiming;
     public bool IsFireComplete;
     public bool IsRecoilComplete;
     public bool IsReloadComplete;
-
+    [Space]
     [Tooltip("탄약")]
     public int CurrentCapacity;
     public int AmmoRemaining;
+    public float FireRate = 0f;
 
+    [Space]
     [Tooltip("공격 입력 이벤트")]
     public bool AttackSequenceStarted;
 
+    [Space]
     [Tooltip("강제행동")]
     public bool IsInterrupted;
 
@@ -89,12 +100,20 @@ public class Weapon : MonoBehaviour
     {
         _machine.Update(Time.deltaTime);
 
+        // 연사력 제한
+        if (_context.FireRate <= 1f / _context.WeaponData.FireRateSecond)
+        {
+            _context.FireRate += Time.deltaTime;
+        }
+
+        WeaponAim();
         RecoilExample();
         DebugContext();
     }
 
+    #region 무기 입력
     /// <summary>
-    /// 공격 버튼을 눌렀을 때 호출됩니다.
+    /// 공격 버튼을 눌렀을 때 호출
     /// </summary>
     public void PerformedFire()
     {
@@ -112,7 +131,7 @@ public class Weapon : MonoBehaviour
     }
 
     /// <summary>
-    /// 공격 버튼을 뗐을 때 호출됩니다.
+    /// 공격 버튼을 뗐을 때 호출
     /// </summary>
     public void CanceledFire()
     {
@@ -123,6 +142,22 @@ public class Weapon : MonoBehaviour
         _input.AttackPressed = false;
         _input.AttackHold = false;
     }
+    #endregion
+
+    #region 무기 조작
+    // 무기의 방향을 목표로 회전
+    private void WeaponAim()
+    {
+        if (_context.WeaponFlag.IsAiming)
+        {
+            Vector3 dir = AimTarget.position - WeaponAnchor.position;
+
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            angle = Mathf.LerpAngle(WeaponAnchor.eulerAngles.z, angle, AimSpeed * Time.deltaTime);
+
+            WeaponAnchor.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
 
     private void RecoilExample()
     {
@@ -132,7 +167,9 @@ public class Weapon : MonoBehaviour
             ref _context.recoilVelocity,
             0.5f);
     }
+    #endregion
 
+    #region 초기화
     private void SetWeapon()
     {
         if (_weaponData == null)
@@ -162,8 +199,9 @@ public class Weapon : MonoBehaviour
 
         _context.WeaponBaseLocalPos = _baseLocalPos;
         _context.WeaponBaseLocalRot = _baseLocalRot;
-
         _context.WeaponPos = transform;
+        _context.AimTarget = AimTarget;
+
         _context.recoilVelocity = _recoilVelocity;
 
         _context.WeaponInput = _input;
@@ -194,6 +232,9 @@ public class Weapon : MonoBehaviour
             _context.WeaponData.MaxAmmo;
     }
 
+    #endregion
+
+    // 디버깅
     private void DebugContext()
     {
         // 입력
@@ -207,6 +248,7 @@ public class Weapon : MonoBehaviour
         CanReload = _context.WeaponFlag.CanReload;
 
         IsInterrupted = _context.IsInterrupted;
+        IsAiming = _context.WeaponFlag.IsAiming;
         IsAimComplete = _context.WeaponFlag.IsAimComplete;
         IsRecoilComplete = _context.WeaponFlag.IsRecoilComplete;
         IsReloadComplete = _context.WeaponFlag.IsReloadComplete;
@@ -214,6 +256,6 @@ public class Weapon : MonoBehaviour
         // 탄약
         CurrentCapacity = _context.CurrentCapacity;
         AmmoRemaining = _context.AmmoRemaining;
-
+        FireRate = _context.FireRate;
     }
 }

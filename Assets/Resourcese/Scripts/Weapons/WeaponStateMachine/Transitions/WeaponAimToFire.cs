@@ -1,4 +1,4 @@
-﻿public class WeaponAimToFire : StateTransition<WeaponStateType, WeaponContext>
+public class WeaponAimToFire : StateTransition<WeaponStateType, WeaponContext>
 {
     public WeaponAimToFire(WeaponContext context, WeaponStateType stateType)
         : base(context, stateType) { }

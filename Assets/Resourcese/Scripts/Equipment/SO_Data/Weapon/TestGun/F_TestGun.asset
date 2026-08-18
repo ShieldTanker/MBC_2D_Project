@@ -17,12 +17,12 @@ MonoBehaviour:
   WeaponType: 0
   FireMode: 1
   Damage: 10
-  FireRate: 750
+  FireRateSecond: 10
   Range: 150
   MaxAimTime: 1
   MaxReloadDuration: 3
   BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
   BulletSpeed: 120
-  MaxCapacity: 12
+  MaxCapacity: 30
   MaxAmmo: 220
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

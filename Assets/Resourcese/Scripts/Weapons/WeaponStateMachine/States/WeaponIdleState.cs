@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 // 아이들 상태
@@ -13,8 +13,15 @@ public class WeaponIdleState : State<WeaponStateType, WeaponContext>
 
     public override void StateEnter()
     {
-        _machine.Context.WeaponAnchorPos.rotation = Quaternion.Euler(new Vector3(0, 0, 300f));
+        // 사격 관련
+        _machine.Context.LastFireTime = 0f;
         _machine.Context.WeaponFlag.AttackSequenceStarted = false;
+
+        // 조준 관련        
+        _machine.Context.WeaponAnchorPos.rotation = Quaternion.Euler(new Vector3(0, 0, 300f));
+        _machine.Context.WeaponFlag.IsAiming = false;
+        _machine.Context.WeaponFlag.IsAimComplete = false;
+
         base.StateEnter();
     }
 
