@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
@@ -9,20 +9,20 @@ public class WeaponData : ScriptableObject
 
     [Header("스탯 관련")]
     public WeaponType WeaponType;
-    public WeaponFireMode FireMode; // 단, 연발 사격모드
+    public WeaponFireMode FireMode;
 
-    public int Damage;              // 탄약 데미지
-    public float FireRate;          // 연사력
-    public float Range;             // 사거리
+    public int Damage;
+    public float FireRate;
+    public float Range;
 
-    public float MaxAimTime = 1f;   // 조준 완료까지 시간
-    public float MaxReloadDuration; // 최대 재장전 시간
+    public float MaxAimTime = 1f;
+    public float MaxReloadDuration;
 
     [Header("탄약 정보")]
     public GameObject BulletModel;
-    public float BulletSpeed;            // 탄속
-    public int MaxCapacity;             // 최대 장탄수
-    public int MaxAmmo;                 // 최대 탄약수
+    public float BulletSpeed;
+    public int MaxCapacity;
+    public int MaxAmmo;
 
     [Header("반동 데이터")]
     public RecoilData RecoilData;
@@ -30,73 +30,78 @@ public class WeaponData : ScriptableObject
 
 public class WeaponContext : StateContext
 {
-    // 무기 정보
     public WeaponData WeaponData;
 
-    public Transform FirePosition { get; set; }         // 사격 위치
-    public Transform WeaponPos { get; set; }            // 무기의 위치
-    public Transform WeaponAnchorPos { get; set; }      // 무기 앵커 트랜스폼
+    public Transform FirePosition { get; set; }
+    public Transform WeaponPos { get; set; }
+    public Transform WeaponAnchorPos { get; set; }
 
-    public Vector3 WeaponBaseLocalPos { get; set; }     // 무기의 시작 로컬위치
-    public Quaternion WeaponBaseLocalRot { get; set; }  // 무기의 시작 로컬회전
+    public Vector3 WeaponBaseLocalPos { get; set; }
+    public Quaternion WeaponBaseLocalRot { get; set; }
+
+    public Vector3 recoilVelocity = Vector3.zero;
 
     public WeaponInput WeaponInput { get; set; }
     public WeaponFlag WeaponFlag { get; set; }
 
-    // 탄약
-    public int CurrentCapacity { get; set; }            // 현재 장탄수
-    public int AmmoRemaining { get; set; }              // 남은 탄약수
+    public int CurrentCapacity { get; set; }
+    public int AmmoRemaining { get; set; }
 
-    public bool AttackSequenceStarted { get; set; }     // 공격 시작
-    public bool IsInterrupted { get; set; } = false;    // 강제행동 여부
+    public bool IsInterrupted { get; set; } = false;
 
-    public float AimIdleTimer { get; set; }
+    // 마지막 발사 이후 경과 시간
+    public float TimeSinceLastFire { get; set; }
 }
 
 public class WeaponInput
 {
-    // 무장 입력
-    public bool AttackPressed { get; set; } // 공격 입력
-    public bool AttackHold { get; set; }
-    public bool AttackReleased { get; set; }
-
-    public bool ReloadPressed { get; set; } // 재장전 눌림
+    /// <summary>
+    /// 현재 공격 버튼을 누르고 있는지 여부.
+    /// 버튼을 누르고 있는 동안 true.
+    /// </summary>
+    public bool AttackPressed { get; set; }
 
     /// <summary>
-    /// 플래그 전부 초기화
+    /// 공격 버튼을 누르고 있는 동안의 Hold 상태.
     /// </summary>
+    public bool AttackHold { get; set; }
+
+    /// <summary>
+    /// 재장전 입력.
+    /// </summary>
+    public bool InteractionPressed { get; set; }
+
     public void ClearAll()
     {
         AttackPressed = false;
         AttackHold = false;
-        AttackReleased = false;
-
-        ReloadPressed = false;
+        InteractionPressed = false;
     }
 }
 
 public class WeaponFlag
 {
-    // 행동 가능 여부
-    public bool CanFire { get; set; } = true;   // 사격 가능 여부
-    public bool CanReload { get; set; }         // 재장전 가능
+    public bool CanFire { get; set; } = true;
+    public bool CanReload { get; set; }
 
-    // 완료 플래그
-    public bool IsAimComplete { get; set; }     // 조준 완료 플래그
-    public bool IsFireComplete { get; set; }    // 발사 완료 플래그
-    public bool IsRecoilComplete { get; set; }  // 반동 완료 플래그
-    public bool IsReloadComplete { get; set; }  // 재장전 완료 플래그 
+    public bool IsAimComplete { get; set; }
+    public bool IsAimCanceled { get; set; }
 
     /// <summary>
-    /// 플래그 전부 초기화
+    /// 공격 버튼을 새롭게 눌렀을 때 발생하는 1회성 이벤트.
+    /// FireState에서 소비합니다.
     /// </summary>
+    public bool AttackSequenceStarted { get; set; }
+    public bool IsRecoilComplete { get; set; }
+    public bool IsReloadComplete { get; set; }
+
     public void ClearAll()
     {
         CanFire = false;
         CanReload = false;
-
+        AttackSequenceStarted = false;
         IsAimComplete = false;
-        IsFireComplete = false;
+        IsAimCanceled = false;
         IsRecoilComplete = false;
         IsReloadComplete = false;
     }

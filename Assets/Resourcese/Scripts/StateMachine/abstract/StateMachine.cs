@@ -14,7 +14,9 @@ public abstract class StateMachine<TState, TContext>
     public TContext Context;
 
     public virtual void Update(float deltaTime)
-    { _currentState?.Update(deltaTime); }
+    {
+        _currentState?.StateUpdate(deltaTime);
+    }
 
     /// <summary>
     /// 각 상태머신의 맞는 enum으로 상태 변환

@@ -12,7 +12,6 @@ public static class GameStateFactory
     {
         State<GameStateType,GameContext> state = null;
         List<StateTransition<GameStateType, GameContext>> transitions = new();
-        List<StateLogic<GameContext>> states = new();
 
         // TODO : 각 상태에서 필요한 것들 초기화
         switch (stateType)

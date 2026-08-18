@@ -1,12 +1,12 @@
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public enum WeaponStateType
 {
     Idle,
     Aim,
     Fire,
-    Recoil,
+    Empty,
+    // Recoil,
     Reload,
     Holding,
 }
@@ -58,46 +58,46 @@ public static class WeaponStateFactory
         State<WeaponStateType, WeaponContext> state = null;
 
         List<StateTransition<WeaponStateType, WeaponContext>> transitions = new();
-        List<StateLogic<WeaponContext>> logics = new();
 
         switch (stateType)
         {
+            // 기본 상태
             case WeaponStateType.Idle:
                 transitions.Add(new WeaponIdleToAim(machine.Context, WeaponStateType.Aim));
                 transitions.Add(new WeaponIdleToReload(machine.Context, WeaponStateType.Reload));
-                logics.Add(new WeaponIdleStateLogic(machine.Context));
 
-                state = new WeaponIdleState(machine, transitions, logics);
+                state = new WeaponIdleState(machine, transitions);
                 break;
 
+            // 조준
             case WeaponStateType.Aim:
                 transitions.Add(new WeaponAimToFire(machine.Context, WeaponStateType.Fire));
                 transitions.Add(new WeaponAimToReload(machine.Context, WeaponStateType.Reload));
                 transitions.Add(new WeaponAimToIdle(machine.Context, WeaponStateType.Idle));
-                logics.Add(new WeaponAimStateLogic(machine.Context));
 
-                state = new WeaponAimState(machine, transitions, logics);
+                state = new WeaponAimState(machine, transitions);
                 break;
 
+            // 발사
             case WeaponStateType.Fire:
-                transitions.Add(new WeaponFireToRecoil(machine.Context, WeaponStateType.Recoil));
-                logics.Add(new WeaponFireStateLogic(machine.Context));
+                transitions.Add(new WeaponFireToEmpty(machine.Context, WeaponStateType.Empty));
+                transitions.Add(new WeaponFireToAim(machine.Context, WeaponStateType.Aim));
 
-                state = new WeaponFireState(machine, transitions, logics);
+                state = new WeaponFireState(machine, transitions);
                 break;
 
-            case WeaponStateType.Recoil:
-                transitions.Add(new WeaponRecoilToAim(machine.Context, WeaponStateType.Aim));
-                logics.Add(new WeaponRecoilStateLogic(machine.Context));
+            // 탄약 없음
+            case WeaponStateType.Empty:
+                transitions.Add(new WeaponEmptyToReload(machine.Context, WeaponStateType.Reload));
 
-                state = new WeaponRecoilState(machine, transitions, logics);
+                state = new WeaponEmptyState(machine, transitions);
                 break;
 
+            // 재장전
             case WeaponStateType.Reload:
                 transitions.Add(new WeaponReloadToIdle(machine.Context, WeaponStateType.Idle));
-                logics.Add(new WeaponReloadStateLogic(machine.Context));
 
-                state = new WeaponReloadState(machine, transitions, logics);
+                state = new WeaponReloadState(machine, transitions);
                 break;
         }
 

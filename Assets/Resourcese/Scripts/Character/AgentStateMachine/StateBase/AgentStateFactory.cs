@@ -13,7 +13,6 @@ public static class AgentStateFactory
     {
         State<AgentStateType, AgentContext> state = null;
         List<StateTransition<AgentStateType, AgentContext>> transitions = new();
-        List<StateLogic<AgentContext>> logics = new();
 
         // TODO : 각 상태에서 필요한 것들 초기화
         // AgentStateMachine 에서 Context를 받음으로 AgentContext형식
@@ -27,8 +26,7 @@ public static class AgentStateFactory
                 // Todo: IdleToDied 추가할것
                 // 닷지는 입력방향이 있어야함으로 Idle에서는 못함
 
-                logics.Add(new AgentIdleStateLogic(machine.Context));
-                state = new AgentIdleState(machine, transitions, logics);
+                state = new AgentIdleState(machine, transitions);
                 break;
 
             case AgentStateType.Move:
@@ -39,8 +37,7 @@ public static class AgentStateFactory
                 // Todo: MoveToDodge 추가할것
                 // Todo: MoveToDied 추가할것
 
-                logics.Add(new AgentMoveStateLogic(machine.Context));
-                state = new AgentMoveState(machine, transitions, logics);
+                state = new AgentMoveState(machine, transitions);
                 break;
 
             case AgentStateType.Jump:
@@ -52,8 +49,7 @@ public static class AgentStateFactory
                 // Todo: jumpToDodge 추가할것
 
                 // 점프중에는 이동은 막지만 회피는 가능
-                logics.Add(new AgentJumpStateLogic(machine.Context));
-                state = new AgentJumpState(machine, transitions, logics);
+                state = new AgentJumpState(machine, transitions);
                 break;
 
             case AgentStateType.OnAir:
@@ -62,7 +58,7 @@ public static class AgentStateFactory
                 transitions.Add(new AgentStateToLanding(machine.Context, AgentStateType.Landing));
                 
 
-                state = new AgentOnAirState(machine, transitions, logics);
+                state = new AgentOnAirState(machine, transitions);
                 break;
         }
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletTest : MonoBehaviour
 {
@@ -6,6 +6,6 @@ public class BulletTest : MonoBehaviour
 
     void Update()
     {
-        transform.position += dir * 10f * Time.deltaTime;
+        transform.position += dir * 60f * Time.deltaTime;
     }
 }
