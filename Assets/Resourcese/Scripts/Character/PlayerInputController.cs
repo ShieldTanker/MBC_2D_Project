@@ -19,15 +19,20 @@ public class PlayerInputController : InputController
 
         _pInput.actions["Look"].performed += OnLookInputPerformed;
 
-        _pInput.actions["Fire1"].performed += OnFHandPerformedFire;
-        _pInput.actions["Fire2"].performed += OnBHandPerformedFire;
-        _pInput.actions["Fire3"].performed += OnFShoulderPerformedFire;
-        _pInput.actions["Fire4"].performed += OnBShoulderPerformedFire;
+        _pInput.actions["Fire1"].performed += OnBHandPerformedFire;
+        _pInput.actions["Fire2"].performed += OnFHandPerformedFire;
+        _pInput.actions["Fire3"].performed += OnBShoulderPerformedFire;
+        _pInput.actions["Fire4"].performed += OnFShoulderPerformedFire;
 
-        _pInput.actions["Fire1"].canceled += OnFHandCanceledFire;
-        _pInput.actions["Fire2"].canceled += OnBHandCanceledFire;
-        _pInput.actions["Fire3"].canceled += OnFShoulderCanceledFire;
-        _pInput.actions["Fire4"].canceled += OnBShoulderCanceledFire;
+        _pInput.actions["Fire1"].canceled += OnBHandCanceledFire;
+        _pInput.actions["Fire2"].canceled += OnFHandCanceledFire;
+        _pInput.actions["Fire3"].canceled += OnBShoulderCanceledFire;
+        _pInput.actions["Fire4"].canceled += OnFShoulderCanceledFire;
+
+        // 락온 입력 - Input Actions 에셋에 "LockOnToggle" / "LockOnNext" / "LockOnPrev" 액션을 추가해야 함
+        _pInput.actions["LockOnToggle"].performed += OnLockOnManualTogglePerformed;
+        _pInput.actions["LockOnNext"].performed += OnLockOnNextTargetPerformed;
+        _pInput.actions["LockOnPrev"].performed += OnLockOnPrevTargetPerformed;
     }
 
     private void OnDisable()
@@ -37,22 +42,34 @@ public class PlayerInputController : InputController
         _pInput.actions["Jump"].performed -= OnJumpInputPerformed;
         _pInput.actions["Jump"].canceled -= OnJumpInputPerformed;
 
-        _pInput.actions["Fire1"].performed -= OnFHandPerformedFire;
-        _pInput.actions["Fire2"].performed -= OnBHandPerformedFire;
-        _pInput.actions["Fire3"].performed -= OnFShoulderPerformedFire;
-        _pInput.actions["Fire4"].performed -= OnBShoulderPerformedFire;
+        _pInput.actions["Fire1"].performed -= OnBHandPerformedFire;
+        _pInput.actions["Fire2"].performed -= OnFHandPerformedFire;
+        _pInput.actions["Fire3"].performed -= OnBShoulderPerformedFire;
+        _pInput.actions["Fire4"].performed -= OnFShoulderPerformedFire;
 
-        _pInput.actions["Fire1"].canceled -= OnFHandCanceledFire;
-        _pInput.actions["Fire2"].canceled -= OnBHandCanceledFire;
-        _pInput.actions["Fire3"].canceled -= OnFShoulderCanceledFire;
-        _pInput.actions["Fire4"].canceled -= OnBShoulderCanceledFire;
+        _pInput.actions["Fire1"].canceled -= OnBHandCanceledFire;
+        _pInput.actions["Fire2"].canceled -= OnFHandCanceledFire;
+        _pInput.actions["Fire3"].canceled -= OnBShoulderCanceledFire;
+        _pInput.actions["Fire4"].canceled -= OnFShoulderCanceledFire;
+
+        _pInput.actions["LockOnToggle"].performed -= OnLockOnManualTogglePerformed;
+        _pInput.actions["LockOnNext"].performed -= OnLockOnNextTargetPerformed;
+        _pInput.actions["LockOnPrev"].performed -= OnLockOnPrevTargetPerformed;
     }
 
     // 이동 입력
-    void OnMoveInputPerformed(InputAction.CallbackContext context) => MoveInput = context.ReadValue<Vector2>();
+    void OnMoveInputPerformed(InputAction.CallbackContext context)
+    {
+        Horizontal = context.ReadValue<float>();
+        MoveInput = new Vector2(Horizontal, 0);
+    }
 
-    void OnJumpInputPerformed(InputAction.CallbackContext context) => JumpInput = context.ReadValueAsButton();
-    
+    void OnJumpInputPerformed(InputAction.CallbackContext context)
+    {
+        JumpInput = context.ReadValueAsButton();
+        JumpPressed = true;
+    }    
+    // 시점 입력
     void OnLookInputPerformed(InputAction.CallbackContext context)
     {
         LookInput = context.ReadValue<Vector2>();
@@ -77,4 +94,11 @@ public class PlayerInputController : InputController
     void OnFShoulderCanceledFire(InputAction.CallbackContext context) => F_ShoulderCanceledFire?.Invoke();
 
     void OnBShoulderCanceledFire(InputAction.CallbackContext context) => B_ShoulderCanceledFire?.Invoke();
+
+    // 락온 입력
+    void OnLockOnManualTogglePerformed(InputAction.CallbackContext context) => LockOnManualToggleAction?.Invoke();
+
+    void OnLockOnNextTargetPerformed(InputAction.CallbackContext context) => LockOnNextTargetAction?.Invoke();
+
+    void OnLockOnPrevTargetPerformed(InputAction.CallbackContext context) => LockOnPrevTargetAction?.Invoke();
 }

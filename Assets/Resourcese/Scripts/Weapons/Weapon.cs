@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -161,11 +161,9 @@ public class Weapon : MonoBehaviour
 
     private void RecoilExample()
     {
-        transform.localPosition = Vector3.SmoothDamp(
-            transform.localPosition,
-            _context.WeaponBaseLocalPos,
-            ref _context.recoilVelocity,
-            0.5f);
+        transform.localPosition =
+            Vector3.SmoothDamp(transform.localPosition, _context.WeaponBaseLocalPos,
+            ref _context.recoilVelocity, 0.5f);
     }
     #endregion
 

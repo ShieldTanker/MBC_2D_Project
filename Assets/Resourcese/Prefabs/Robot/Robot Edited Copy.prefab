@@ -138,7 +138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476328431271582082}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.60540843, w: 0.79591495}
+  m_LocalRotation: {x: -0, y: -0, z: 0.60540575, w: 0.7959171}
   m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
@@ -794,19 +794,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   FirePosition: {fileID: 0}
   WeaponAnchor: {fileID: 5895219012733324539}
+  AimTarget: {fileID: 0}
+  AimSpeed: 10
   _baseData: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
   AttackPressed: 0
   AttackHeld: 0
   AttackReleased: 0
-  ReloadPressed: 0
+  InteractionPressed: 0
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0
+  IsAiming: 0
   IsFireComplete: 0
   IsRecoilComplete: 0
   IsReloadComplete: 0
   CurrentCapacity: 0
   AmmoRemaining: 0
+  FireRate: 0
   AttackSequenceStarted: 0
   IsInterrupted: 0
   AimIdleTimer: 0
@@ -1115,19 +1119,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   FirePosition: {fileID: 0}
   WeaponAnchor: {fileID: 8657112412119094229}
+  AimTarget: {fileID: 0}
+  AimSpeed: 10
   _baseData: {fileID: 11400000, guid: 9f6cccff554097f449339b5df10863c4, type: 2}
   AttackPressed: 0
   AttackHeld: 0
   AttackReleased: 0
-  ReloadPressed: 0
+  InteractionPressed: 0
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0
+  IsAiming: 0
   IsFireComplete: 0
   IsRecoilComplete: 0
   IsReloadComplete: 0
   CurrentCapacity: 0
   AmmoRemaining: 0
+  FireRate: 0
   AttackSequenceStarted: 0
   IsInterrupted: 0
   AimIdleTimer: 0
@@ -1234,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4206559914698085664}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.99615556, w: 0.08760231}
+  m_LocalRotation: {x: 0, y: 0, z: -0.996156, w: 0.087597616}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3474,7 +3482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9196494046399482717}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.0101194, w: 0.9999488}
+  m_LocalRotation: {x: 0, y: 0, z: -0.0101112975, w: 0.9999489}
   m_LocalPosition: {x: 1.8, y: 0, z: 0}
   m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
   m_ConstrainProportionsScale: 0

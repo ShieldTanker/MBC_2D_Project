@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     private AgentStateMachine _agent;
     private AgentContext _context;
     private AgentStat _stat;
+    private AgentFlag _flag = new AgentFlag();
 
     // 움직임 관련
     private Movement2D _move;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _agent?.Update(Time.deltaTime);
+        UpdateFlag();
         CurrentState = _agent.CurrentStateType;
     }
 
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
     void SetContext()
     {
         _context = new AgentContext();
+        _context.AgentFlag = _flag;
 
         _context.AgentStat = _stat;
         _context.InputCon = _input;
@@ -58,5 +61,10 @@ public class Player : MonoBehaviour
         _context.MoveInput = _input;
         _context.JumpInput = _input;
         _context.AnimCon = _animCon;
+    }
+
+    void UpdateFlag()
+    {
+        _flag.OnGround = _move.IsGround;
     }
 }

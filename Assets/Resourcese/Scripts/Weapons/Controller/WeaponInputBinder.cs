@@ -1,21 +1,26 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponInputBinder : MonoBehaviour
 {
     private IWeaponInput _input;
-    private WeaponController _weapons;
+    private WeaponInputController _weapons;
 
     private void Awake()
     {
         _input = GetComponent<IWeaponInput>();
-        _weapons = GetComponent<WeaponController>();
+        _weapons = GetComponent<WeaponInputController>();
     }
 
     private void OnEnable()
     {
-        if (_input == null || _weapons == null)
+        if ( _weapons == null)
         {
-            Debug.Log($"IWeaponInput 혹은 WeaponController가 비어있습니다");
+            Debug.Log($"WeaponInputController가 비어있습니다");
+            return;
+        }
+        if (_input == null)
+        {
+            Debug.Log($"IWeaponInput 가 비어있습니다");
             return;
         }
         _input.F_HandPerformedFire += _weapons.FHandPerformedFire;

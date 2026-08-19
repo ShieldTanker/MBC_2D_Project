@@ -44,7 +44,6 @@ public static class AgentStateFactory
                 transitions.Add(new AgentStateToIdle(machine.Context, AgentStateType.Idle));
                 transitions.Add(new AgentStateToMove(machine.Context, AgentStateType.Move));
                 transitions.Add(new AgentStateToOnAir(machine.Context, AgentStateType.OnAir));
-                transitions.Add(new AgentStateToLanding(machine.Context, AgentStateType.Landing));
                 // Todo: JumpToDied 추가할것
                 // Todo: jumpToDodge 추가할것
 

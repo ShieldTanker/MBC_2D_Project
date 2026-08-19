@@ -4,11 +4,13 @@ using System;
 public interface IMoveInput2D
 {
     public Vector2 MoveInput { get; }
+    public float Horizontal {  get; }
 }
 
 public interface IJumpInput
 {
     public bool JumpInput { get; }
+    public bool JumpPressed { get; }
 }
 
 public interface IWeaponInput
