@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using UnityEngine;
 
-public class InputController : MonoBehaviour, IMoveInput2D, IJumpInput, IWeaponInput
+public class InputController : MonoBehaviour,
+    IMoveInput2D, IJumpInput, IWeaponInput, ILookInput
 {
     // 움직임 입력
     public Vector2 MoveInput {  get; protected set; }
@@ -20,4 +21,8 @@ public class InputController : MonoBehaviour, IMoveInput2D, IJumpInput, IWeaponI
     public Action B_HandCanceledFire { get; set; }
     public Action B_ShoulderCanceledFire { get; set; }
     public Action F_ShoulderCanceledFire { get; set; }
+
+    // 마우스, 패드로 카메라 등 입력
+    public Vector2 LookInput { get; set; }
+    public Action<Vector2> LookAction { get; set; }
 }

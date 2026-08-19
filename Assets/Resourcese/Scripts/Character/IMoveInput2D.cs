@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public interface IMoveInput2D
@@ -22,6 +22,12 @@ public interface IWeaponInput
     public Action F_HandCanceledFire { get; set; }
     public Action B_ShoulderCanceledFire { get; set; }
     public Action F_ShoulderCanceledFire { get; set; }
+}
+
+public interface ILookInput
+{
+    public Vector2 LookInput { get; set; }
+    public Action<Vector2> LookAction { get; set; }
 }
 
 public interface IBoostInput

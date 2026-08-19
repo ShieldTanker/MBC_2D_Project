@@ -7,25 +7,9 @@ public class LookTargetTest : MonoBehaviour
     [SerializeField, Min(0f)] private float length = 10f;
     [SerializeField] private float sensitivity = 0.01f;
 
-    // Binding: <Mouse>/delta
-    [SerializeField] private InputAction action;
-
-    private void OnEnable()
+    public void LookInput(Vector2 input)
     {
-        action?.Enable();
-    }
-
-    private void OnDisable()
-    {
-        action?.Disable();
-    }
-
-    private void Update()
-    {
-        if (target == null || action == null)
-            return;
-
-        Vector2 input = action.ReadValue<Vector2>();
+        if (target == null) return;
 
         Vector3 move = new Vector3(input.x, input.y, 0f) * sensitivity;
         Vector3 desire = transform.position + move;

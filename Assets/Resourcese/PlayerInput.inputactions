@@ -17,6 +17,16 @@
                     "priority": 0
                 },
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "49d76b2d-b7d6-484c-9503-79511c20cb08",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "14815392-c6f0-4f4a-b681-6befa18d0435",
@@ -196,6 +206,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff8dc45f-94af-4f93-a093-c92bd9085696",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
