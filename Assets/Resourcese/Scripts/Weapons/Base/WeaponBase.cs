@@ -179,6 +179,22 @@ public abstract class WeaponBase : MonoBehaviour
         _fireRate = 0f;
         Context.LastFireTime = 0f;
         // Context.FireRate = 0f;
+        switch (Context.WeaponData.FireMode)
+        {
+            case WeaponFireMode.SemiAuto:
+                Context.WeaponFlag.AttackSequenceStarted = false;
+                break;
+            case WeaponFireMode.FullAuto:
+                Context.WeaponFlag.AttackSequenceStarted = false;
+                break;
+            case WeaponFireMode.Burst:
+                if (Context.BurstRemaining <= 0)
+                {
+                    Context.WeaponFlag.AttackSequenceStarted = false;
+                }
+                break;
+        }
+
 
         Context.CurrentCapacity--;
         Context.BurstRemaining--;

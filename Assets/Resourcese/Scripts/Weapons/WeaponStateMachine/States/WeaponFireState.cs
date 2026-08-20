@@ -56,7 +56,6 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
                 if (_context.WeaponFlag.AttackSequenceStarted)
                 {
                     _context.Weapon.Fire();
-                    _context.WeaponFlag.AttackSequenceStarted = false;
                 }
                 break;
 
@@ -64,7 +63,6 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
                 if (((_context.WeaponFlag.AttackSequenceStarted || input.AttackPressed)))
                 {
                     _context.Weapon.Fire();
-                    _context.WeaponFlag.AttackSequenceStarted = false;
                 }
                 break;
 
@@ -72,10 +70,6 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
                 if (_context.BurstRemaining > 0)
                 {
                     _context.Weapon.Fire();
-                    if (_context.BurstRemaining <= 0)
-                    {
-                        _context.WeaponFlag.AttackSequenceStarted = false;
-                    }
                 }
                 break;
         }
