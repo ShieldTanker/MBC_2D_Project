@@ -1,14 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public abstract class WeaponBase : MonoBehaviour
 {
     private WeaponStateMachine _machine;
-    public LockOnController LockonController;
+    public LockOnController LockonController { get; set; }
+
+    #region Context 관련
     // Context관련
     public WeaponContext Context { get; private set; } = new WeaponContext();
     private WeaponInput _input = new WeaponInput();
     private WeaponFlag _flag = new WeaponFlag();
+    #endregion
 
     #region 모델 관련
     private Vector3 _weaponLocalOffset = new Vector3(0.6f, 0, 0);
@@ -17,11 +21,14 @@ public abstract class WeaponBase : MonoBehaviour
     #endregion
 
     #region 사격 관련
-    public Transform FirePosition { get; set; }
+    private Transform _firePosition;
     private Vector3 _baseLocalPos;
     private Quaternion _baseLocalRot;
 
     private Vector3 _recoilVelocity = Vector3.zero;
+
+    private float _maxFireRate = 0f;
+    private float _fireRate = 0f;
     #endregion
 
     #region 무기 데이터
@@ -39,6 +46,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     public WeaponData _baseData;
     #endregion
+    AudioSource _audioSource;
 
     #region Context Debug
 
@@ -80,6 +88,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _baseLocalPos = transform.localPosition;
         _baseLocalRot = transform.localRotation;
 
@@ -101,11 +110,17 @@ public abstract class WeaponBase : MonoBehaviour
         _machine.Update(Time.deltaTime);
 
         // 연사력 제한
-        if (Context.FireRate <= 1f / Context.WeaponData?.FireRatePerSecond)
+        //if (Context.FireRate <= 1f / Context.WeaponData?.FireRatePerSecond)
+        //{
+        //    Context.FireRate += Time.deltaTime;
+        //}
+
+        if(_fireRate <= _maxFireRate)
         {
-            Context.FireRate += Time.deltaTime;
+            _fireRate += Time.deltaTime;
         }
-        RecoilExample();
+
+        RecoverRecoil();
         DebugContext();
     }
 
@@ -137,25 +152,62 @@ public abstract class WeaponBase : MonoBehaviour
     #endregion
 
     #region 무기 조작
-    // 무기의 방향을 목표로 회전
-    //private void WeaponAim()
-    //{
-    //    if (_context.WeaponFlag.IsAiming)
-    //    {
-    //        Vector3 dir = AimTarget.position - WeaponAnchor.transform.position;
-
-    //        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-    //        angle = Mathf.LerpAngle(WeaponAnchor.transform.eulerAngles.z, angle, AimSpeed * Time.deltaTime);
-
-    //        WeaponAnchor.transform.rotation = Quaternion.Euler(0, 0, angle);
-    //    }
-    //}
-
-    private void RecoilExample()
+    public void Fire()
     {
-        transform.localPosition =
-            Vector3.SmoothDamp(transform.localPosition, _baseLocalPos,
-            ref _recoilVelocity, 0.2f);
+        if (_fireRate < _maxFireRate) return;
+
+        if (!_flag.CanFire || _weaponData.BulletModel == null ||  _model.FirePosition == null)
+        {
+            Debug.Log("CanFire False 혹은 BulletModel 혹은 FirePosition 이 null");
+            return;
+        }
+
+        GameObject go = GameObject.Instantiate(_weaponData.BulletModel, _model.FirePosition.position, _model.FirePosition.rotation);
+        BulletTest bullet = go.GetComponent<BulletTest>();
+        if (bullet == null) bullet = go.AddComponent<BulletTest>();
+
+        bullet.SetData(WeaponData);
+        bullet.SetTarget(LockonController?.GetTrackingTarget());
+        bullet.SetFollowTarget(LockonController?.GetCurrentTarget());
+
+        if(_audioSource != null)
+        {
+            _audioSource.clip = _weaponData?.GunFireAudioClip;
+            _audioSource.Play();
+        }
+
+        _fireRate = 0f;
+        Context.LastFireTime = 0f;
+        // Context.FireRate = 0f;
+
+        Context.CurrentCapacity--;
+        Context.BurstRemaining--;
+        _flag.CanFire = Context.CurrentCapacity > 0;
+
+        Recoil();
+    }
+
+    private void Recoil()
+    {
+        if (_weaponData.RecoilData == null)
+            return;
+
+        float kickBack = _weaponData.RecoilData.KickBack;
+        float kickUp = _weaponData.RecoilData.KickUp;
+
+        float min = Mathf.Min(kickBack, kickUp);
+        float max = Mathf.Max(kickBack, kickUp);
+
+        float recoilX = Random.Range(min, max);
+
+        Vector2 recoil = Vector2.right * recoilX;
+
+        transform.localPosition -= new Vector3(recoil.x, 0f, 0f);
+    }
+
+    private void RecoverRecoil()
+    {
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _baseLocalPos, ref _recoilVelocity, 0.2f);
     }
     #endregion
 
@@ -175,7 +227,7 @@ public abstract class WeaponBase : MonoBehaviour
             _model.transform.rotation = transform.rotation;
         }
 
-        FirePosition = _model ? _model.FirePosition : transform;
+        _firePosition = _model ? _model.FirePosition : transform;
 
         SetContext();
         InitAmmo();
@@ -183,13 +235,14 @@ public abstract class WeaponBase : MonoBehaviour
 
     private void SetContext()
     {
+        Context.Weapon = this;
         Context.WeaponPos = transform;
 
         Context.WeaponInput = _input;
         Context.WeaponFlag = _flag;
 
         Context.WeaponData = _weaponData == null ? _baseData : _weaponData;
-        Context.FirePosition = FirePosition == null ? transform : FirePosition;
+        Context.FirePosition = _firePosition == null ? transform : _firePosition;
     }
 
     private void InitAmmo()
@@ -203,7 +256,9 @@ public abstract class WeaponBase : MonoBehaviour
 
         Context.CurrentCapacity = Context.WeaponData.MaxCapacity;
         Context.AmmoRemaining = Context.WeaponData.MaxAmmo;
-        Context.FireRate = 1f / Context.WeaponData.FireRatePerSecond;
+        Context.BurstRemaining = Context.WeaponData.BurstCount;
+
+        _maxFireRate = 1f / Context.WeaponData.FireRatePerSecond;
     }
 
     #endregion
@@ -230,6 +285,6 @@ public abstract class WeaponBase : MonoBehaviour
         // 탄약
         CurrentCapacity = Context.CurrentCapacity;
         AmmoRemaining = Context.AmmoRemaining;
-        FireRate = Context.FireRate;
+        // FireRate = Context.FireRate;
     }
 }

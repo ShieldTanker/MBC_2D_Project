@@ -16,7 +16,7 @@ MonoBehaviour:
   BodyPartData: {fileID: 11400000, guid: e982fcd0512fbf24984e69a255f2e1fe, type: 2}
   LegsPartData: {fileID: 11400000, guid: 4d05e0fa02f37fe4abafd52000d4d1d8, type: 2}
   ArmsPartData: {fileID: 11400000, guid: 0235f7ddc7504444da4457d15409edec, type: 2}
-  F_HandWeaponData: {fileID: 11400000, guid: 6f75c789b0551f949a8d5bce94cf6958, type: 2}
+  F_HandWeaponData: {fileID: 11400000, guid: 9f6cccff554097f449339b5df10863c4, type: 2}
   B_HandWeaponData: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
   F_ShoudlerWeaponData: {fileID: 0}
   B_ShoulderWeaponData: {fileID: 0}

@@ -13,15 +13,16 @@ public class WeaponAimToFire : StateTransition<WeaponStateType, WeaponContext>
 
         WeaponInput input = _context.WeaponInput;
 
-        if (_context.WeaponData.FireMode == WeaponFireMode.SemiAuto)
+        switch (_context.WeaponData.FireMode)
         {
-            // 새롭게 버튼을 누른 경우에만 발사
-            return _context.WeaponFlag.AttackSequenceStarted;
-        }
+            case WeaponFireMode.SemiAuto:
+                return _context.WeaponFlag.AttackSequenceStarted;
 
-        if (_context.WeaponData.FireMode == WeaponFireMode.FullAuto)
-        {
-            return input.AttackPressed;
+            case WeaponFireMode.FullAuto:
+                return input.AttackPressed;
+
+            case WeaponFireMode.Burst:
+                return _context.WeaponFlag.AttackSequenceStarted;
         }
 
         return false;

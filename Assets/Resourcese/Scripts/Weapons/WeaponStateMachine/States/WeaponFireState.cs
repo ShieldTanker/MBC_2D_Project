@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponFireState : State<WeaponStateType, WeaponContext>
@@ -38,101 +38,46 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
     public override void StateExit()
     {
         base.StateExit();
+        _context.BurstRemaining = _context.WeaponData.BurstCount;
+        _context.WeaponFlag.AttackSequenceStarted = false;
     }
 
     private void TryFire()
     {
-        WeaponInput input = _context.WeaponInput;
+        if (!_context.WeaponFlag.CanFire) return;
 
         // 버튼도 안 누르고 있고 새로운 공격 입력도 없으면 발사X
+        WeaponInput input = _context.WeaponInput;
         if (!input.AttackPressed && !_context.WeaponFlag.AttackSequenceStarted) return;
-        if (!_context.WeaponFlag.CanFire) return;
 
-        float fireRate = GetFireRate();
-        
-        // 새로운 공격 입력
-        // 단발 / 연발 모두 첫 발은 AttackSequenceStarted를 기준으로 발사합니다.
-        if (_context.WeaponFlag.AttackSequenceStarted)
+        switch (_context.WeaponData.FireMode)
         {
-            if (_context.FireRate < fireRate) return;
+            case WeaponFireMode.SemiAuto:
+                if (_context.WeaponFlag.AttackSequenceStarted)
+                {
+                    _context.Weapon.Fire();
+                    _context.WeaponFlag.AttackSequenceStarted = false;
+                }
+                break;
 
-            _context.WeaponFlag.AttackSequenceStarted = false;
+            case WeaponFireMode.FullAuto:
+                if (((_context.WeaponFlag.AttackSequenceStarted || input.AttackPressed)))
+                {
+                    _context.Weapon.Fire();
+                    _context.WeaponFlag.AttackSequenceStarted = false;
+                }
+                break;
 
-            Fire();
-            return;
+            case WeaponFireMode.Burst:
+                if (_context.BurstRemaining > 0)
+                {
+                    _context.Weapon.Fire();
+                    if (_context.BurstRemaining <= 0)
+                    {
+                        _context.WeaponFlag.AttackSequenceStarted = false;
+                    }
+                }
+                break;
         }
-
-        // 새로운 공격 입력이 아니고 버튼을 계속 누르고 있는 경우.
-        // FullAuto만 계속 발사합니다.
-        if (!input.AttackPressed)
-            return;
-
-        if (_context.WeaponData.FireMode == WeaponFireMode.FullAuto)
-        {
-            if (_context.FireRate >= fireRate)
-            {
-                Fire();
-            }
-        }
-    }
-
-    private float GetFireRate()
-    {
-        if (_context.WeaponData == null)
-            return float.MaxValue;
-
-        if (_context.WeaponData.FireRatePerSecond <= 0f)
-            return float.MaxValue;
-
-        return 1f / _context.WeaponData.FireRatePerSecond;
-    }
-
-    private void Fire()
-    {
-        if (!_context.WeaponFlag.CanFire) return;
-        if (_context.WeaponData.BulletModel == null) return;
-        if (_context.FirePosition == null) return;
-
-        GameObject go = GameObject.Instantiate(
-            _context.WeaponData.BulletModel, _context.FirePosition.position, _context.FirePosition.rotation);
-
-        BulletTest bullet = go.GetComponent<BulletTest>();
-        if (bullet == null) bullet = go.AddComponent<BulletTest>();
-
-        bullet.SetData(_context.WeaponData);
-        if (_context.LockonController == null)
-            Debug.Log("무기의 락온컨트롤러 null");
-
-        bullet.SetTarget(_context.LockonController?.GetTrackingTarget());
-        bullet.SetFollowTarget(_context.LockonController?.GetCurrentTarget());
-
-        _context.CurrentCapacity--;
-
-        // 실제 발사했으므로 타이머 초기화
-        _context.LastFireTime = 0f;
-
-        _context.FireRate = 0f;
-
-        _context.WeaponFlag.CanFire = _context.CurrentCapacity > 0;
-
-        Recoil();
-    }
-
-    private void Recoil()
-    {
-        if (_context.WeaponData.RecoilData == null)
-            return;
-
-        float kickBack = _context.WeaponData.RecoilData.KickBack;
-        float kickUp = _context.WeaponData.RecoilData.KickUp;
-
-        float min = Mathf.Min(kickBack, kickUp);
-        float max = Mathf.Max(kickBack, kickUp);
-
-        float recoilX = Random.Range(min, max);
-
-        Vector2 recoil = Vector2.right * recoilX;
-
-        _context.WeaponPos.localPosition -= new Vector3(recoil.x, 0f, 0f);
     }
 }

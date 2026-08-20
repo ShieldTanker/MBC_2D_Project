@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: F_TestGun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Model: {fileID: 3322165605753062597, guid: f8ea4a2ce77c2f5458af0a654b8bd90c, type: 3}
+  GunFireAudioClip: {fileID: 8300000, guid: a3d682a11965c734a900a70b63db2607, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}
   WeaponType: 0
   FireMode: 1
@@ -27,4 +28,5 @@ MonoBehaviour:
   MaxRotateSpeed: 0
   MaxCapacity: 30
   MaxAmmo: 220
+  BurstCount: 0
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

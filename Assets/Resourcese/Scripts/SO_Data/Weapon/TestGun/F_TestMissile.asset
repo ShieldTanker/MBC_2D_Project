@@ -15,9 +15,9 @@ MonoBehaviour:
   Model: {fileID: 3623983036664630145, guid: 1a13cdadf2d660c4e90754dc82f39609, type: 3}
   Offset: {x: 0, y: 0, z: 0}
   WeaponType: 0
-  FireMode: 0
+  FireMode: 2
   Damage: 0
-  FireRatePerSecond: 4
+  FireRatePerSecond: 5
   Range: 30
   MaxAimTime: 1
   MaxReloadDuration: 5
@@ -25,6 +25,7 @@ MonoBehaviour:
   BulletSpeed: 1
   MaxRotateAngle: 20
   MaxRotateSpeed: 10
-  MaxCapacity: 4
+  MaxCapacity: 20
   MaxAmmo: 50
+  BurstCount: 4
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

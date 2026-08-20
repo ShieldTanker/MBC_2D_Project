@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     [Header("모델 관련")]
     public WeaponModel Model;
+    public AudioClip GunFireAudioClip;
     public Vector3 Offset;
 
     [Header("스탯 관련")]
@@ -26,6 +27,7 @@ public class WeaponData : ScriptableObject
 
     public int MaxCapacity;
     public int MaxAmmo;
+    public int BurstCount;
 
     [Header("반동 데이터")]
     public RecoilData RecoilData;
