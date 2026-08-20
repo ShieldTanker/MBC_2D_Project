@@ -45,32 +45,28 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
     private void TryFire()
     {
         if (!_context.WeaponFlag.CanFire) return;
-
         // 버튼도 안 누르고 있고 새로운 공격 입력도 없으면 발사X
         WeaponInput input = _context.WeaponInput;
-        if (!input.AttackPressed && !_context.WeaponFlag.AttackSequenceStarted) return;
+        if (!_context.WeaponFlag.AttackSequenceStarted
+            && !input.AttackPressed) return;
 
         switch (_context.WeaponData.FireMode)
         {
             case WeaponFireMode.SemiAuto:
                 if (_context.WeaponFlag.AttackSequenceStarted)
-                {
                     _context.Weapon.Fire();
-                }
                 break;
 
             case WeaponFireMode.FullAuto:
-                if (((_context.WeaponFlag.AttackSequenceStarted || input.AttackPressed)))
-                {
+
+                if (_context.WeaponFlag.AttackSequenceStarted || input.AttackPressed)
                     _context.Weapon.Fire();
-                }
                 break;
 
             case WeaponFireMode.Burst:
                 if (_context.BurstRemaining > 0)
-                {
                     _context.Weapon.Fire();
-                }
+                
                 break;
         }
     }

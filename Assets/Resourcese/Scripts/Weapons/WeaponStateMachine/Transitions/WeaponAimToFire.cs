@@ -19,7 +19,7 @@ public class WeaponAimToFire : StateTransition<WeaponStateType, WeaponContext>
                 return _context.WeaponFlag.AttackSequenceStarted;
 
             case WeaponFireMode.FullAuto:
-                return input.AttackPressed;
+                return _context.WeaponFlag.AttackSequenceStarted || input.AttackPressed;
 
             case WeaponFireMode.Burst:
                 return _context.WeaponFlag.AttackSequenceStarted;
