@@ -21,24 +21,26 @@ public class AgentStat : MonoBehaviour
     [Header("전투 관련 스탯")]
     [Tooltip("락온 가능 사거리 - 머리(센서) 파츠 등에서 주로 기여")]
     public float LockOnRange = 15f;
+
     [Tooltip("실제 추적 위치가 예측 위치를 따라가는 속도")]
     public float LockOnSpeed = 8f;
+
     [Tooltip("Manual 모드에서 예측 위치가 입력을 따라 이동하는 속도")]
     public float ManualAimSpeed = 10f;
 
     [Header("파츠 미장착 시 기본값 (기체 프레임 자체 성능)")]
     public PartStatBlock BaseStat = new PartStatBlock
     {
-        MoveSpeed = 20f,
-        BoostSpeed = 60f,
-        Acceleration = 5f,
-        Deceleration = 10f,
-        JumpForce = 40f,
-        JumpDuration = 0.8f,
-        JumpDelay = 0.2f,
-        LockOnRange = 15f,
-        LockOnSpeed = 8f,
-        ManualAimSpeed = 10f,
+        MoveSpeed = 0f,
+        BoostSpeed = 0f,
+        Acceleration = 0f,
+        Deceleration = 0f,
+        JumpForce = 0f,
+        JumpDuration = 0f,
+        JumpDelay = 0f,
+        LockOnRange = 0f,
+        LockOnSpeed = 0f,
+        ManualAimSpeed = 0f,
     };
 
     /// <summary>

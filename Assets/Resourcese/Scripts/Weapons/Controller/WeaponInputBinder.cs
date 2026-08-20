@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class WeaponInputBinder : MonoBehaviour
 {
     private IWeaponInput _input;

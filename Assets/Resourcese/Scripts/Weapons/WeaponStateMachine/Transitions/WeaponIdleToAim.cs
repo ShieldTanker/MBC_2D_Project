@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// 아이들(Idle) → 조준(Aim)
 /// </summary>
 public class WeaponIdleToAim : StateTransition<WeaponStateType, WeaponContext>
@@ -11,7 +11,7 @@ public class WeaponIdleToAim : StateTransition<WeaponStateType, WeaponContext>
         if (_context.IsInterrupted)
             return false;
 
-        switch (_context.WeaponData.FireMode)
+        switch (_context.WeaponData?.FireMode)
         {
             case WeaponFireMode.SemiAuto:
                 return _context.WeaponFlag.AttackSequenceStarted;

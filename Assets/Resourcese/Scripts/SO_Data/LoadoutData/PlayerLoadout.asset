@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77fe16a4f1874a14299d753c28458525, type: 3}
+  m_Name: PlayerLoadout
+  m_EditorClassIdentifier: Assembly-CSharp::LoadoutData
+  HeadPartData: {fileID: 11400000, guid: 524343dfc85d980448a61c04c218af39, type: 2}
+  BodyPartData: {fileID: 11400000, guid: e982fcd0512fbf24984e69a255f2e1fe, type: 2}
+  LegsPartData: {fileID: 11400000, guid: 4d05e0fa02f37fe4abafd52000d4d1d8, type: 2}
+  ArmsPartData: {fileID: 11400000, guid: 0235f7ddc7504444da4457d15409edec, type: 2}
+  F_HandWeaponData: {fileID: 11400000, guid: 6f75c789b0551f949a8d5bce94cf6958, type: 2}
+  B_HandWeaponData: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
+  F_ShoudlerWeaponData: {fileID: 0}
+  B_ShoulderWeaponData: {fileID: 0}

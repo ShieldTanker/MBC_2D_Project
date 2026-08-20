@@ -38,7 +38,6 @@ public class AgentStateToMove : StateTransition<AgentStateType, AgentContext>
 
 public class AgentStateToJump : StateTransition<AgentStateType, AgentContext>
 {
-    float time = 0f;
     public AgentStateToJump(AgentContext context, AgentStateType stateType)
         : base(context, stateType) { }
 

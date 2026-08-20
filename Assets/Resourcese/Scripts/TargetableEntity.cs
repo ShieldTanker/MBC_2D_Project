@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 적/파괴 가능 오브젝트 등에 붙여서 락온 대상으로 만드는 컴포넌트.
@@ -9,11 +9,12 @@ public class TargetableEntity : MonoBehaviour, ITargetable
     [SerializeField] bool isLockable = true;
 
     [Tooltip("소속 진영. 같은 진영끼리는 서로 락온되지 않는다")]
-    [SerializeField] Faction faction = Faction.Neutral;
+    [SerializeField] Faction faction = Faction.None;
 
     Rigidbody2D _rb;
 
     public Transform TargetTransform => transform;
+
     public Vector3 Position => transform.position;
     public Vector3 Velocity => _rb != null ? (Vector3)_rb.linearVelocity : Vector3.zero;
     public bool IsLockable => isLockable && gameObject.activeInHierarchy;

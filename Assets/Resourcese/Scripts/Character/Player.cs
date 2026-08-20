@@ -1,22 +1,31 @@
 ﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Player : MonoBehaviour
 {
-    // 상태 및 수치 관련
+    #region 로드아웃
+    public LoadoutData LoadoutData;
+    private BodyLoadout _bodyLoadout;
+    private WeaponLoadout _weaponLoadout;
+    #endregion
+
+    #region 상태머신 및 수치 관련
     private AgentStateMachine _agent;
     private AgentContext _context;
     private AgentStat _stat;
     private AgentFlag _flag = new AgentFlag();
+    #endregion
 
-    // 움직임 관련
+    #region 움직임 관련
     private Movement2D _move;
     private InputController _input;
     private AnimController _animCon;
-
-    private WeaponAimController _weaponAimCon;
     private ModelController _model;
+    #endregion
 
-    private LoadOut _loadOut;
+    #region 무기관련
+    private WeaponAimController _weaponAimCon;
+    #endregion
 
     public AgentStateType CurrentState { get; private set; }
 
@@ -31,6 +40,10 @@ public class Player : MonoBehaviour
         // TODO : _context 초기화할것
         _agent = new AgentStateMachine(_context);
         _agent.ChangeState(AgentStateType.Idle);
+
+        // 장비 설정
+        _bodyLoadout.SetLoadoutData(LoadoutData);
+        _weaponLoadout.SetLoadoutData(LoadoutData);
     }
 
     void Update()
@@ -46,6 +59,10 @@ public class Player : MonoBehaviour
         _input = GetComponent<InputController>();
         _move = GetComponent<Movement2D>();
         _animCon = GetComponent<AnimController>();
+
+        _bodyLoadout = GetComponent<BodyLoadout>();
+        _weaponLoadout = GetComponent<WeaponLoadout>();
+
         // _model = GetComponentInChildren<ModelController>();
         // _weaponAimCon = GetComponentInChildren<WeaponAimController>();
     }

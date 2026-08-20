@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponFireState : State<WeaponStateType, WeaponContext>
@@ -81,10 +81,10 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
         if (_context.WeaponData == null)
             return float.MaxValue;
 
-        if (_context.WeaponData.FireRateSecond <= 0f)
+        if (_context.WeaponData.FireRatePerSecond <= 0f)
             return float.MaxValue;
 
-        return 1f / _context.WeaponData.FireRateSecond;
+        return 1f / _context.WeaponData.FireRatePerSecond;
     }
 
     private void Fire()
@@ -96,7 +96,15 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
         GameObject go = GameObject.Instantiate(
             _context.WeaponData.BulletModel, _context.FirePosition.position, _context.FirePosition.rotation);
 
-        go.GetComponent<BulletTest>().SetTarget(_context.AimTarget);
+        BulletTest bullet = go.GetComponent<BulletTest>();
+        if (bullet == null) bullet = go.AddComponent<BulletTest>();
+
+        bullet.SetData(_context.WeaponData);
+        if (_context.LockonController == null)
+            Debug.Log("무기의 락온컨트롤러 null");
+
+        bullet.SetTarget(_context.LockonController?.GetTrackingTarget());
+        bullet.SetFollowTarget(_context.LockonController?.GetCurrentTarget());
 
         _context.CurrentCapacity--;
 
@@ -107,10 +115,10 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
 
         _context.WeaponFlag.CanFire = _context.CurrentCapacity > 0;
 
-        FireRecoilTest();
+        Recoil();
     }
 
-    private void FireRecoilTest()
+    private void Recoil()
     {
         if (_context.WeaponData.RecoilData == null)
             return;
