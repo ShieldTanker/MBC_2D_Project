@@ -6,7 +6,8 @@ using UnityEngine;
 /// 락온의 핵심 컨트롤러.
 ///
 /// - Auto 상태: 범위 내 대상이 있으면 예측 위치 = 대상 위치(또는 리드 예측 위치).
-///              대상이 없으면 예측 위치는 마지막 값에서 고정(freeze)된다.
+///              대상이 없으면 Manual처럼 조준 입력으로 예측 위치를 자유롭게 움직일 수 있고,
+///              그 상태에서 범위 내에 후보가 다시 나타나면 가장 가까운 대상으로 자동 락온한다.
 /// - Manual 상태: ApplyManualAimDelta로 예측 위치를 직접 이동. 대상이 있어도 무시한다.
 /// - 공통: 실제 추적 위치는 상태와 무관하게 매 프레임 예측 위치를
 ///        AgentStat.LockOnSpeed 만큼 프레임 독립적으로 따라간다.
@@ -132,10 +133,15 @@ public class LockOnController : MonoBehaviour
     /// </summary>
     public void OnAimInput(Vector2 value)
     {
-        if (_mode == Mode.Manual)
+        // Manual 모드이거나, Auto 모드인데 현재 락온된 대상이 없으면(=고정할 위치가 없으면)
+        // 수동 조준과 동일하게 예측 위치를 직접 이동시킨다.
+        // 대상이 있는 동안은 TickAuto가 매 프레임 _predictedPosition을 대상 위치로 덮어쓰므로
+        // 여기서 이동시켜도 다음 프레임에 무시된다.
+        if (_mode == Mode.Manual || (_mode == Mode.Auto && _currentTarget == null))
         {
             Vector3 move = new Vector3(value.x, value.y, 0f) * agentStat.ManualAimSpeed * Time.deltaTime;
             _predictedPosition += move;
+            ClampPredictedPositionToRange();
             return;
         }
 
@@ -188,7 +194,19 @@ public class LockOnController : MonoBehaviour
                 ? _currentTarget.Position + _currentTarget.Velocity * tuning.leadTime
                 : _currentTarget.Position;
         }
-        // 대상이 없으면 _predictedPosition은 마지막 값에서 그대로 고정된다.
+        else
+        {
+            // 대상이 없으면 OnAimInput에서 예측 위치를 수동처럼 직접 이동시키고,
+            // 매 프레임 여기서 감지범위 밖으로 못 나가게 클램프한다.
+            // (마지막으로 타겟을 쫓던 방향은 유지한 채 최대 감지거리 안으로 당겨온다)
+            ClampPredictedPositionToRange();
+        }
+    }
+
+    void ClampPredictedPositionToRange()
+    {
+        Vector3 offset = _predictedPosition - transform.position;
+        _predictedPosition = transform.position + Vector3.ClampMagnitude(offset, agentStat.LockOnRange);
     }
 
     void SetTarget(ITargetable target)
