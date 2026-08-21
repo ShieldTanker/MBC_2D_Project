@@ -16,17 +16,17 @@ MonoBehaviour:
   GunFireAudioClip: {fileID: 8300000, guid: a3d682a11965c734a900a70b63db2607, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}
   WeaponType: 0
-  FireMode: 0
+  FireMode: 1
   Damage: 10
-  FireRatePerSecond: 1.5
+  FireRatePerSecond: 10
   Range: 150
   MaxAimTime: 1
-  MaxReloadDuration: 3
+  MaxReloadDuration: 1
   BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
-  BulletSpeed: 1
+  BulletSpeed: 30
   MaxRotateAngle: 0
   MaxRotateSpeed: 0
-  MaxCapacity: 12
+  MaxCapacity: 10
   MaxAmmo: 220
   BurstCount: 0
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

@@ -15,6 +15,7 @@ MonoBehaviour:
   PartName: 
   ModelPrefab: {fileID: 0}
   Stats:
+    MaxHp: 100
     MoveSpeed: 0
     BoostSpeed: 0
     Acceleration: 0

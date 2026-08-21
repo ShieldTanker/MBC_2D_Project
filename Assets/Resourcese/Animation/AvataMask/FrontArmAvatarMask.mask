@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FrontArmAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Geomatry
+    m_Weight: 0
+  - m_Path: Geomatry/FrontHand
+    m_Weight: 0
+  - m_Path: Geomatry/FrontArm
+    m_Weight: 0
+  - m_Path: Geomatry/FrontUpperArm
+    m_Weight: 0
+  - m_Path: Geomatry/FrontToe
+    m_Weight: 0
+  - m_Path: Geomatry/FrontFoot
+    m_Weight: 0
+  - m_Path: Geomatry/FrontLeg
+    m_Weight: 0
+  - m_Path: Geomatry/FrontUpperLeg
+    m_Weight: 0
+  - m_Path: Geomatry/Head
+    m_Weight: 0
+  - m_Path: Geomatry/Body
+    m_Weight: 0
+  - m_Path: Geomatry/RearToe
+    m_Weight: 0
+  - m_Path: Geomatry/RearFoot
+    m_Weight: 0
+  - m_Path: Geomatry/RearLeg
+    m_Weight: 0
+  - m_Path: Geomatry/RearUpperLeg
+    m_Weight: 0
+  - m_Path: Geomatry/RearHand
+    m_Weight: 0
+  - m_Path: Geomatry/RearArm
+    m_Weight: 0
+  - m_Path: Geomatry/RearUpperArm
+    m_Weight: 0
+  - m_Path: Hip
+    m_Weight: 0
+  - m_Path: Hip/Spine
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/Neck
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/Neck/bone_21
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/F_UpperArm
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/F_UpperArm/F_Arm
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/F_UpperArm/F_Arm/F_Hand
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/B_UpperArm
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/B_UpperArm/B_Arm
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/B_UpperArm/B_Arm/B_Hand
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/BackWeaponHandle
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/BackWeaponHandle/B_ShoulderAimAnchor
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/BackWeaponHandle/B_ShoulderAimAnchor/B_ShoulderWeapon
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/BackWeaponHandle/F_ShoulderAimAnchor
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/BackWeaponHandle/F_ShoulderAimAnchor/F_ShoulderWeapon
+    m_Weight: 0
+  - m_Path: 'Hip/Spine/Chest/UpperChest/B_HandAnchor '
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/B_HandAnchor /B_HandWeapon
+    m_Weight: 0
+  - m_Path: Hip/Spine/Chest/UpperChest/F_HandAnchor
+    m_Weight: 1
+  - m_Path: Hip/Spine/Chest/UpperChest/F_HandAnchor/F_HandWeapon
+    m_Weight: 1
+  - m_Path: Hip/F_UpperLeg
+    m_Weight: 0
+  - m_Path: Hip/F_UpperLeg/F_Leg
+    m_Weight: 0
+  - m_Path: Hip/F_UpperLeg/F_Leg/F_Foot
+    m_Weight: 0
+  - m_Path: Hip/F_UpperLeg/F_Leg/F_Foot/F_Toe
+    m_Weight: 0
+  - m_Path: Hip/B_UpperLeg
+    m_Weight: 0
+  - m_Path: Hip/B_UpperLeg/B_Leg
+    m_Weight: 0
+  - m_Path: Hip/B_UpperLeg/B_Leg/B_Foot
+    m_Weight: 0
+  - m_Path: Hip/B_UpperLeg/B_Leg/B_Foot/B_Toe
+    m_Weight: 0
+  - m_Path: IK_LimSolver
+    m_Weight: 0
+  - m_Path: IK_LimSolver/F_Hand_LimbSlover
+    m_Weight: 1
+  - m_Path: IK_LimSolver/F_Hand_LimbSlover/F_Hand_LimbSlover_Target
+    m_Weight: 1
+  - m_Path: IK_LimSolver/B_Hand_LimbSlover
+    m_Weight: 0
+  - m_Path: IK_LimSolver/B_Hand_LimbSlover/B_Hand_LimbSlover_Target
+    m_Weight: 0
+  - m_Path: IK_LimSolver/F_Leg_LimbSlover
+    m_Weight: 0
+  - m_Path: IK_LimSolver/F_Leg_LimbSlover/F_Leg_LimbSlover_Target
+    m_Weight: 0
+  - m_Path: IK_LimSolver/B_Leg_LimbSlover
+    m_Weight: 0
+  - m_Path: IK_LimSolver/B_Leg_LimbSlover/B_Leg_LimbSlover_Target
+    m_Weight: 0

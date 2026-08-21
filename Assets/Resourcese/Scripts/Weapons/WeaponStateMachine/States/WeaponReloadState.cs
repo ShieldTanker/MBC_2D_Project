@@ -31,6 +31,8 @@ public class WeaponReloadState : State<WeaponStateType, WeaponContext>
 
         _context.WeaponFlag.IsReloadComplete = false;
         _currentReloadTime = 0f;
+
+        _context.Weapon.OnReloadStart?.Invoke();
     }
 
     public override void StateUpdate(float deltaTime)
@@ -65,5 +67,6 @@ public class WeaponReloadState : State<WeaponStateType, WeaponContext>
         base.StateExit();
         _machine.Context.WeaponFlag.IsReloadComplete = false;
         _currentReloadTime = 0f;
+        _context.Weapon.OnReloadExit?.Invoke();
     }
 }

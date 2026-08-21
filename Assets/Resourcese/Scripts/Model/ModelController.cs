@@ -4,10 +4,6 @@ public class ModelController : MonoBehaviour
 {
     public Animator Anim;
 
-    [Header("손무장 위치")]
-    public Transform F_WeaponHandle;
-    public Transform B_WeaponHandle;
-
     [Header("손 IK 위치")]
     public Transform F_HandIKTarget;
     public Transform B_HandIKTarget;

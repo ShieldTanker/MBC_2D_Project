@@ -87,6 +87,7 @@ public class AgentJumpState : State<AgentStateType, AgentContext>
         base.StateEnter();
         _machine.Context.AgentFlag.IsJumping = true;
         _jumped = false;
+        _machine.Context.AnimCon.model.Anim.Play("Jump", 0);
     }
 
     public override void StateUpdate(float deltaTime)

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: F_TestMissile
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Model: {fileID: 3623983036664630145, guid: 1a13cdadf2d660c4e90754dc82f39609, type: 3}
+  GunFireAudioClip: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
   WeaponType: 0
   FireMode: 2
@@ -20,12 +21,12 @@ MonoBehaviour:
   FireRatePerSecond: 5
   Range: 30
   MaxAimTime: 1
-  MaxReloadDuration: 5
+  MaxReloadDuration: 3.5
   BulletModel: {fileID: 5518940975853819943, guid: 30542a6947d0a8344aeaf3f00b663699, type: 3}
   BulletSpeed: 1
   MaxRotateAngle: 20
   MaxRotateSpeed: 10
-  MaxCapacity: 20
+  MaxCapacity: 4
   MaxAmmo: 50
   BurstCount: 4
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public abstract class WeaponBase : MonoBehaviour
     private Vector3 _weaponLocalOffset = new Vector3(0.6f, 0, 0);
 
     private WeaponModel _model;
+    public bool UseRecoil;
     #endregion
 
     #region 사격 관련
@@ -46,6 +48,23 @@ public abstract class WeaponBase : MonoBehaviour
 
     public WeaponData _baseData;
     #endregion
+
+    #region 이벤트
+    public Action OnWeaponChanged;
+
+    public Action OnIdleStart;
+    public Action OnIdleExit;
+
+    public Action OnAimEnter;
+    public Action OnAimExit;
+
+    public Action OnFireStart;
+    public Action OnFireExit;
+
+    public Action OnReloadStart;
+    public Action OnReloadExit;
+    #endregion
+
     AudioSource _audioSource;
 
     #region Context Debug
@@ -109,12 +128,6 @@ public abstract class WeaponBase : MonoBehaviour
     {
         _machine.Update(Time.deltaTime);
 
-        // 연사력 제한
-        //if (Context.FireRate <= 1f / Context.WeaponData?.FireRatePerSecond)
-        //{
-        //    Context.FireRate += Time.deltaTime;
-        //}
-
         if(_fireRate <= _maxFireRate)
         {
             _fireRate += Time.deltaTime;
@@ -169,7 +182,7 @@ public abstract class WeaponBase : MonoBehaviour
         bullet.SetData(WeaponData);
         bullet.SetTarget(LockonController?.GetTrackingTarget());
         bullet.SetFollowTarget(LockonController?.GetCurrentTarget());
-
+        OnFireStart?.Invoke();
         if(_audioSource != null)
         {
             _audioSource.clip = _weaponData?.GunFireAudioClip;
@@ -214,7 +227,7 @@ public abstract class WeaponBase : MonoBehaviour
         float min = Mathf.Min(kickBack, kickUp);
         float max = Mathf.Max(kickBack, kickUp);
 
-        float recoilX = Random.Range(min, max);
+        float recoilX = UnityEngine.Random.Range(min, max);
 
         Vector2 recoil = Vector2.right * recoilX;
 
@@ -223,6 +236,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     private void RecoverRecoil()
     {
+        if (!UseRecoil) return;
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _baseLocalPos, ref _recoilVelocity, 0.2f);
     }
     #endregion
@@ -247,6 +261,7 @@ public abstract class WeaponBase : MonoBehaviour
 
         SetContext();
         InitAmmo();
+        OnWeaponChanged?.Invoke();
     }
 
     private void SetContext()

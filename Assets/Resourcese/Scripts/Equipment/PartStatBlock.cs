@@ -10,7 +10,7 @@ using UnityEngine;
 [Serializable]
 public struct PartStatBlock
 {
-    [Header("이동")]
+    [Header("체력")]
     public int MaxHp;
 
     [Header("이동")]

@@ -2,7 +2,7 @@
 
 public class AgentStat : MonoBehaviour
 {
-    // 이동관련 스탯 (파츠 장착 시 LoadOut.RecalculateStats()가 계산해서 덮어씀)
+    [Header("이동 관련 스탯")] // 이동관련 스탯 (파츠 장착 시 LoadOut.RecalculateStats()가 계산해서 덮어씀)
     public float MoveSpeed = 20f;       // 일반 속도
     public float BoostSpeed = 60f;      // 부스트 속도
     public float Acceleration = 5f;     // 가속도
@@ -13,12 +13,15 @@ public class AgentStat : MonoBehaviour
     public float JumpForce = 10f;       // 점프 힘
     public float JumpDuration = 0.8f;   // 점프상태 유지 시간
     public float JumpDelay = 0.2f;      // 점프할때까지의 딜레이
-    public float JumpDuraition = 0.5f;  // 점프 유지 시간
-    // public bool IsJumping = false;      // 현재 점프중인지 확인
+
     public CharDirection CurrentDirection = CharDirection.Right;
 
     // 전투 관련 스탯 (파츠 합산 결과)
     [Header("전투 관련 스탯")]
+    [Tooltip("최대 체력")]
+    public int MaxHp = 100;
+
+
     [Tooltip("락온 가능 사거리 - 머리(센서) 파츠 등에서 주로 기여")]
     public float LockOnRange = 15f;
 
@@ -31,13 +34,16 @@ public class AgentStat : MonoBehaviour
     [Header("파츠 미장착 시 기본값 (기체 프레임 자체 성능)")]
     public PartStatBlock BaseStat = new PartStatBlock
     {
+        MaxHp = 0,
         MoveSpeed = 0f,
         BoostSpeed = 0f,
         Acceleration = 0f,
         Deceleration = 0f,
+
         JumpForce = 0f,
         JumpDuration = 0f,
         JumpDelay = 0f,
+
         LockOnRange = 0f,
         LockOnSpeed = 0f,
         ManualAimSpeed = 0f,
@@ -49,6 +55,7 @@ public class AgentStat : MonoBehaviour
     /// </summary>
     public void ApplyStatBlock(PartStatBlock total)
     {
+        MaxHp = total.MaxHp;
         MoveSpeed = total.MoveSpeed;
         BoostSpeed = total.BoostSpeed;
         Acceleration = total.Acceleration;
