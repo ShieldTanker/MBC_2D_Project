@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private AnimController _animCon;
     private ModelController _model;
     #endregion
+
+    private Health _health;
 
     #region 무기관련
     private WeaponController _weaponCon;
@@ -145,7 +147,7 @@ public class Player : MonoBehaviour
 
         _bodyLoadout = GetComponent<BodyLoadout>();
         _weaponLoadout = GetComponent<WeaponLoadout>();
-
+        _health = GetComponent<Health>();
         _weaponCon = GetComponent<WeaponController>();
         _model = GetComponentInChildren<ModelController>();
     }
