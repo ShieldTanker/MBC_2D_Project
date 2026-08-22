@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AgentStat : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class AgentStat : MonoBehaviour
 
 
     [Tooltip("락온 가능 사거리 - 머리(센서) 파츠 등에서 주로 기여")]
-    public float LockOnRange = 15f;
+    public float LockonRange = 15f;
 
     [Tooltip("실제 추적 위치가 예측 위치를 따라가는 속도")]
     public float LockOnSpeed = 8f;
@@ -65,7 +65,7 @@ public class AgentStat : MonoBehaviour
         JumpDuration = total.JumpDuration;
         JumpDelay = total.JumpDelay;
 
-        LockOnRange = total.LockOnRange;
+        LockonRange = total.LockOnRange;
         LockOnSpeed = total.LockOnSpeed;
         ManualAimSpeed = total.ManualAimSpeed;
     }

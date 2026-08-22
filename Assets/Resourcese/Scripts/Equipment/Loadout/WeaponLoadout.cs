@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WeaponLoadout : Loadout
 {
-    public WeaponBase _f_hand;
-    public WeaponBase _b_hand;
-    public WeaponBase _f_Shoulder;
-    public WeaponBase _b_Shoulder;
+    public WeaponBase F_hand {  get; private set; }
+    public WeaponBase B_hand {  get; private set; }
+    public WeaponBase F_Shoulder {  get; private set; }
+    public WeaponBase B_Shoulder { get; private set; }
 
     WeaponData _f_HandData;
     WeaponData _b_HandData;
@@ -15,11 +15,11 @@ public class WeaponLoadout : Loadout
 
     private void Awake()
     {
-        _f_hand = GetComponentInChildren<FHandWeapon>();
-        _b_hand = GetComponentInChildren<BHandWeapon>();
+        F_hand = GetComponentInChildren<FHandWeapon>();
+        B_hand = GetComponentInChildren<BHandWeapon>();
 
-        _f_Shoulder = GetComponentInChildren<FShoulderWeapon>();
-        _b_Shoulder = GetComponentInChildren<BShoulderWeapon>();
+        F_Shoulder = GetComponentInChildren<FShoulderWeapon>();
+        B_Shoulder = GetComponentInChildren<BShoulderWeapon>();
     }
 
     public override void SetLoadoutData(LoadoutData loadoutData)
@@ -31,13 +31,9 @@ public class WeaponLoadout : Loadout
         _f_ShoulderData = loadoutData.F_ShoudlerWeaponData;
         _b_ShoulderData = loadoutData.B_ShoulderWeaponData;
 
-        if(_f_HandData != null)
-            _f_hand.WeaponData = _f_HandData;
-        if(_b_HandData != null)
-            _b_hand.WeaponData = _b_HandData;
-        if(_f_ShoulderData != null)
-            _f_Shoulder.WeaponData = _f_ShoulderData;
-        if(_b_ShoulderData == null)
-            _b_Shoulder.WeaponData = _b_ShoulderData;
+        if(_f_HandData != null) F_hand.WeaponData = _f_HandData;
+        if(_b_HandData != null) B_hand.WeaponData = _b_HandData;
+        if(_f_ShoulderData != null) F_Shoulder.WeaponData = _f_ShoulderData;
+        if(_b_ShoulderData == null) B_Shoulder.WeaponData = _b_ShoulderData;
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentIdleState : State<AgentStateType, AgentContext>
@@ -16,8 +16,8 @@ public class AgentIdleState : State<AgentStateType, AgentContext>
         _machine.Context.AgentStat.IsBoost = false;
         _machine.Context.Move.MoveInput(Vector2.zero);
         // 애니메이션 처리
-        _machine.Context.AnimCon.SetFlaot("MoveX", 0f);
-        _machine.Context.AnimCon.SetBool("IsBoost", false);
+        _machine.Context.AnimCon.model.Anim.SetFloat("MoveX", 0f);
+        _machine.Context.AnimCon.model.Anim.SetBool("IsBoost", false);
     }
 
     public override void StateUpdate(float deltaTime)
@@ -57,7 +57,7 @@ public class AgentMoveState : State<AgentStateType, AgentContext>
         Vector2 input = _context.MoveInput.MoveInput;
 
         _context.Move.MoveInput(input);
-        _context.AnimCon.SetFlaot("MoveX", input.x);
+        _context.AnimCon.model.Anim.SetFloat("MoveX", input.x);
 
     }
 
