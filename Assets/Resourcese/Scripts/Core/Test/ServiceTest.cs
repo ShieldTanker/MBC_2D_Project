@@ -11,10 +11,10 @@ public class ServiceTest : MonoBehaviour
     private void Awake()
     {
         serviceLocator = ServiceLocator.For(this);
-        foreach (var service in services)
-        {
-            serviceLocator.Register(service.GetType(), service);
-        }
+        // foreach (var service in services)
+        //serviceLocator.Register(service.GetType(), service);
+
+        serviceLocator.Get<Transform>(out transform);
         transform = serviceLocator.Get<Transform>();
     }
 }

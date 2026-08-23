@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityServiceLocator;
 
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     private Health _health;
 
     private LockonController _lockonCon;
+    public LockonController LockonCon {  get { return _lockonCon; } }
 
     #region 무기관련
     private WeaponController _weaponCon;
@@ -115,6 +117,9 @@ public class Player : MonoBehaviour
         _bodyLoadout = GetComponent<BodyLoadout>();
         _weaponLoadout = GetComponent<WeaponLoadout>();
         _weaponCon = GetComponent<WeaponController>();
+
+        ServiceLocator sl = ServiceLocator.ForSceneOfLocal(this);
+        sl.Register<Player>(this);
     }
 
     void SetContext()

@@ -9,7 +9,7 @@ namespace UnityServiceLocator
 
         protected override void Bootstrap()
         {
-            Container.ConfigureAsGlobal(dontDestroyOnLoad);
+            Locator.ConfigureAsGlobal(dontDestroyOnLoad);
         }
     }
 }

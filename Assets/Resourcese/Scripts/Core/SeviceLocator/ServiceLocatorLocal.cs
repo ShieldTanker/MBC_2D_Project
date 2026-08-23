@@ -7,7 +7,7 @@ namespace UnityServiceLocator
     {
         protected override void Bootstrap()
         {
-            Container.ConfigureForLocal();
+            Locator.ConfigureForLocal();
         }
     }
 }

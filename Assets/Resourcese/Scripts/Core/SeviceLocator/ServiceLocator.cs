@@ -53,7 +53,7 @@ namespace UnityServiceLocator
             sceneLocalContainers.Add(scene, this);
         }
 
-        /// <summary> 서비스 로케이터 객체를 반환, 없으면 새로 생성해서 반환 </summary>        
+        /// <summary> 글로벌 서비스 로케이터 객체를 반환, 없으면 새로 생성해서 반환 </summary>        
         public static ServiceLocator Global
         {
             get
@@ -97,10 +97,10 @@ namespace UnityServiceLocator
             foreach (GameObject go in tmpSceneGameObjectList.Where(go => go.GetComponent<ServiceLocatorLocal>() != null))
             {
                 // 로컬 로케이터 컴포넌트를 가져올 수 있고 해당 로컬 로케이터의 로케이터가 요청한 모노비헤이비어가 아니면 부트스트랩 실행
-                if (go.TryGetComponent(out ServiceLocatorLocal bootstrapper) && bootstrapper.Container != monoBehaviour)
+                if (go.TryGetComponent(out ServiceLocatorLocal bootstrapper) && bootstrapper.Locator != monoBehaviour)
                 {
                     bootstrapper.BootstrapOnDemand();
-                    return bootstrapper.Container;
+                    return bootstrapper.Locator;
                 }
             }
 
@@ -157,7 +157,7 @@ namespace UnityServiceLocator
                 return this;
             }
 
-            throw new ArgumentException($"ServiceLocator.Get: Service of type {typeof(T).FullName} not registered");
+            throw new ArgumentException($"ServiceLocator.Get: 서비스 타입 {typeof(T).FullName} 이 등록되어있지 않습니다");
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace UnityServiceLocator
             if (TryGetNextInHierarchy(out ServiceLocator container))
                 return container.Get<T>();
 
-            throw new ArgumentException($"Could not resolve type '{typeof(T).FullName}'.");
+            throw new ArgumentException($"해결할 수 없는 유형 '{typeof(T).FullName}'.");
         }
 
         /// <summary>
@@ -225,6 +225,7 @@ namespace UnityServiceLocator
             }
             else if (sceneLocalContainers.ContainsValue(this))
             {
+                // 딕셔너리에 자기에 해당하는 값이 있으면 그 해당 키값 제거
                 sceneLocalContainers.Remove(gameObject.scene);
             }
         }

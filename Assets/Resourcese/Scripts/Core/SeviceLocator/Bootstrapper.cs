@@ -6,8 +6,8 @@ namespace UnityServiceLocator
     [RequireComponent(typeof(ServiceLocator))]
     public abstract class Bootstrapper : MonoBehaviour
     {
-        ServiceLocator container;
-        internal ServiceLocator Container => container.OrNull() ?? (container = GetComponent<ServiceLocator>());
+        ServiceLocator _locator;
+        internal ServiceLocator Locator => _locator.OrNull() ?? (_locator = GetComponent<ServiceLocator>());
 
         bool hasBeenBootstrapped;
 

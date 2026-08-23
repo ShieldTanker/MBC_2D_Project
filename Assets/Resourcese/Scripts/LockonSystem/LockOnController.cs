@@ -44,6 +44,12 @@ public class LockonController : MonoBehaviour
     Vector3 _predictedPosition;
     /// <summary> 추적하는 트랜스폼의 포지션 </summary>
     Vector3 _trackingPosition;
+    /// <summary>
+    /// 자기 위치(transform.position) 기준 예측 위치의 상대 오프셋.
+    /// 절대 좌표가 아니라 이 오프셋을 기준으로 매 프레임 _predictedPosition을 다시 계산하기 때문에,
+    /// 마우스 입력이 없어도 플레이어가 이동하면 바라보는 방향(오프셋)은 유지된 채 위치만 따라온다.
+    /// </summary>
+    Vector3 _aimOffset;
 
     [Header("예측 관련")]
     [Tooltip("예측 사용 유무")]
@@ -85,6 +91,8 @@ public class LockonController : MonoBehaviour
 
         if (_lockonMode == LockonMode.Auto)
             TickAuto();
+        else if (_lockonMode == LockonMode.Manual)
+            UpdatePredictedPositionFromOffset();
 
         SetPosition();
     }
@@ -94,6 +102,7 @@ public class LockonController : MonoBehaviour
         CreatePosition();
         _predictedPosition = transform.position;
         _trackingPosition = transform.position;
+        _aimOffset = Vector3.zero;
 
         _selector = selector;
         _agentStat = stat;
@@ -153,10 +162,13 @@ public class LockonController : MonoBehaviour
         if (_currentTarget != null)
         {
             _predictedPosition = UsePredicted ? CalculatePredictedPosition(PredictedLeadTime) : _currentTarget.Position;
+            // 타겟을 추적하는 동안 오프셋을 계속 동기화해 둬야, 타겟을 놓치거나 Manual로 전환해도
+            // 방금까지 바라보던 방향에서 이어서 시작한다 (끊기거나 튀지 않음).
+            _aimOffset = _predictedPosition - transform.position;
         }
         else
         {
-            ClampPredictedPositionToRange();
+            UpdatePredictedPositionFromOffset();
         }
     }
 
@@ -166,16 +178,18 @@ public class LockonController : MonoBehaviour
     /// <param name="leadTime">예상 시간</param>
     /// <returns></returns>
     Vector3 CalculatePredictedPosition(float leadTime) => _currentTarget.Position + _currentTarget.Velocity * leadTime;
-    
+
     /// <summary>
-    /// 대상이 없으면 OnAimInput에서 예측 위치를 수동처럼 직접 이동시키고, 
-    /// <br>매 프레임 여기서 감지범위 밖으로 못 나가게 클램프한다.</br>
-    /// <br>(마지막으로 타겟을 쫓던 방향은 유지한 채 최대 감지거리 안으로 당겨온다)</br>
+    /// _aimOffset(자기 위치 기준 상대 오프셋)을 감지범위 안으로 클램프하고,
+    /// 그 오프셋을 현재 transform.position에 더해 _predictedPosition을 갱신한다.
+    /// 오프셋 자체는 입력이 없는 한 바뀌지 않으므로, 마우스 입력 없이 캐릭터가 움직여도
+    /// 바라보던 방향은 유지된 채 예측 위치가 캐릭터를 따라간다.
+    /// (Auto 모드에서 타겟이 없을 때, Manual 모드일 때 매 프레임 호출된다)
     /// </summary>
-    void ClampPredictedPositionToRange()
+    void UpdatePredictedPositionFromOffset()
     {
-        Vector3 offset = _predictedPosition - transform.position;
-        _predictedPosition = transform.position + Vector3.ClampMagnitude(offset, _agentStat.LockonRange);
+        _aimOffset = Vector3.ClampMagnitude(_aimOffset, _agentStat.LockonRange);
+        _predictedPosition = transform.position + _aimOffset;
     }
 
     void SetCurrentTarget(ITargetable target)
@@ -217,15 +231,17 @@ public class LockonController : MonoBehaviour
     /// </summary>
     public void OnAimInput(Vector2 value)
     {
-        if(_agentStat == null)
+        if (_agentStat == null)
             return;
         // Manual 모드 or 현재 락온된 대상이 없으면 수동 조준과 동일하게 예측 위치를 직접 이동시킨다.
         // 대상이 있는 동안은 TickAuto가 매 프레임 _predictedPosition을 대상 위치로 덮어쓰므로 여기서 이동시켜도 다음 프레임에 무시된다.
         if (_lockonMode == LockonMode.Manual || (_lockonMode == LockonMode.Auto && _currentTarget == null))
         {
-            Vector3 move = new Vector3(value.x, value.y, 0f) * _agentStat.ManualAimSpeed * Time.deltaTime;
-            _predictedPosition += move;
-            ClampPredictedPositionToRange();
+            Vector2 dir = value.normalized;
+            Vector3 move = new Vector3(dir.x, dir.y, 0f) * _agentStat.ManualAimSpeed *Time.deltaTime;
+
+            _aimOffset += move;
+            UpdatePredictedPositionFromOffset();
             return;
         }
     }
