@@ -180,8 +180,10 @@ public abstract class WeaponBase : MonoBehaviour
         if (bullet == null) bullet = go.AddComponent<BulletTest>();
 
         bullet.SetData(WeaponData);
+
         bullet.SetTarget(LockonController?.TrackingTargetTransform);
         bullet.SetFollowTarget(LockonController?.CurrentTargetTransform);
+
         bullet.SetFireTrasnform(_model.FireTransform);
 
         OnFireStart?.Invoke();

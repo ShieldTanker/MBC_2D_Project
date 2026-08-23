@@ -20,9 +20,11 @@ MonoBehaviour:
     BoostSpeed: 0
     Acceleration: 0
     Deceleration: 0
-    JumpForce: 0
+    BoostAcceleration: 0
+    BoostDeceleration: 0
+    JumpHeight: 0
     JumpDuration: 0
     JumpDelay: 0
     LockOnRange: 65
-    LockOnSpeed: 10
-    ManualAimSpeed: 10
+    LockOnSpeed: 100
+    ManualAimSpeed: 100

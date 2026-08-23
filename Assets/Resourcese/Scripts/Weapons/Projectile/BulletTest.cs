@@ -47,10 +47,15 @@ public class BulletTest : MonoBehaviour
     public void SetFireTrasnform(Transform fireTransform)
     {
         _firePosition = fireTransform.position;
-        _fireAngle = fireTransform.rotation.eulerAngles.z;
+
+        // fireTransform.rotation은 부모(캐릭터)의 음수 스케일(좌우 반전)을 반영하지 못해
+        // 반전 시 실제 화면상 방향과 어긋난다. TransformPoint는 스케일까지 포함한
+        // 전체 행렬을 사용하므로 미러링된 실제 방향을 구할 수 있다.
+        Vector3 worldRight = fireTransform.TransformPoint(Vector3.right) - fireTransform.position;
+        _fireAngle = Mathf.Atan2(worldRight.y, worldRight.x) * Mathf.Rad2Deg;
 
         transform.position = fireTransform.position;
-        transform.rotation = fireTransform.rotation;
+        transform.rotation = Quaternion.Euler(0, 0, _fireAngle);
 
         _currentAngle = _fireAngle;
 

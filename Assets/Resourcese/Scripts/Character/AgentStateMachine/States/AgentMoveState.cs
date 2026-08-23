@@ -4,7 +4,7 @@ using UnityEngine;
 public class AgentMoveState : State<AgentStateType, AgentContext>
 {
     AgentContext _context;
-
+    AgentFlag _flag;
     public AgentMoveState(StateMachine<AgentStateType, AgentContext> machine,
         List<StateTransition<AgentStateType, AgentContext>> transitions)
     {
@@ -12,6 +12,7 @@ public class AgentMoveState : State<AgentStateType, AgentContext>
         _transitions = transitions;
 
         _context = _machine.Context;
+        _flag = _machine.Context.AgentFlag;
     }
 
     public override void StateEnter()
@@ -32,7 +33,7 @@ public class AgentMoveState : State<AgentStateType, AgentContext>
 
         _context.Move.MoveInput(input);
         _context.Move.IsBoosting = _context.AgentStat.IsBoost;
-        _context.ModelCon.Anim.SetFloat("MoveX", input.x);
+        _context.ModelCon.Anim.SetFloat("MoveX", input.x * (int)_flag.CharDirection);
 
         base.StateUpdate(deltaTime);
     }

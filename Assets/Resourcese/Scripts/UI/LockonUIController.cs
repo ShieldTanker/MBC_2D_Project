@@ -10,7 +10,7 @@ public class LockonUIController : MonoBehaviour
     public Image PredictedAim;
     public Image TrackingAim;
 
-    private void Start()
+    private void OnEnable()
     {
         Cursor.visible = false;
 

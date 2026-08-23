@@ -16,14 +16,14 @@ MonoBehaviour:
   ModelPrefab: {fileID: 0}
   Stats:
     MaxHp: 300
-    MoveSpeed: 116
-    BoostSpeed: 376
+    MoveSpeed: 20
+    BoostSpeed: 60
     Acceleration: 5
     Deceleration: 10
     BoostAcceleration: 2
     BoostDeceleration: 9.5
-    JumpHeight: 83
-    JumpDuration: 1.27
+    JumpHeight: 30
+    JumpDuration: 0
     JumpDelay: 0.2
     LockOnRange: 0
     LockOnSpeed: 0

@@ -98,6 +98,9 @@ public class Player : MonoBehaviour
         _agent?.Update(Time.deltaTime);
         UpdateFlag();
         CurrentState = _agent.CurrentStateType;
+
+        _rotation.dir = _lockonCon.PredictedPosition.x > transform.position.x ? CharDirection.Right : CharDirection.Left;
+        _flag.CharDirection = _rotation.dir;
     }
 
     void Init()

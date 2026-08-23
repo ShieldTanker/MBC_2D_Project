@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public enum CharDirection
 {
-    Right,
-    Left,
+    Right = 1,
+    Left = -1,
 }
 
 public class Rotation2D : MonoBehaviour

@@ -20,4 +20,6 @@ public class AgentFlag
 
     // 상태에서 처리
     public bool IsJumping { get; set; }
+
+    public CharDirection CharDirection { get; set; } = CharDirection.Right;
 }

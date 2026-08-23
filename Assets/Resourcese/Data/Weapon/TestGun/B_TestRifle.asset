@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
-  m_Name: B_TestGun
+  m_Name: B_TestRifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Model: {fileID: 3710105912973781297, guid: 7f25eb4c8f4457e4a9771180ede82624, type: 3}
-  GunFireAudioClip: {fileID: 8300000, guid: a3d682a11965c734a900a70b63db2607, type: 3}
+  GunFireAudioClip: {fileID: 8300000, guid: ea93ff6dfc08c6042bfb538606b620af, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}
-  WeaponType: 0
-  FireMode: 1
+  WeaponType: 1
+  FireMode: 0
   Damage: 10
-  FireRatePerSecond: 10
+  FireRatePerSecond: 2
   Range: 150
   MaxAimTime: 1
   MaxReloadDuration: 1
   BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
   BulletSpeed: 30
-  MaxRotateAngle: 0
-  MaxRotateSpeed: 0
+  MaxRotateAngle: 30
+  MaxRotateSpeed: 10
   MaxCapacity: 10
   MaxAmmo: 220
   BurstCount: 0
