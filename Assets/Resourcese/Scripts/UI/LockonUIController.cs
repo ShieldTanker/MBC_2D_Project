@@ -10,10 +10,8 @@ public class LockonUIController : MonoBehaviour
     public Image PredictedAim;
     public Image TrackingAim;
 
-    private void OnEnable()
+    private void Start()
     {
-        Cursor.visible = false;
-
         ServiceLocator sl = ServiceLocator.ForSceneOfLocal(this);
         _player = sl.Get<Player>();
         lockonCon = _player.LockonCon;

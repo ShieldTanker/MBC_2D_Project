@@ -83,6 +83,11 @@ public class BodyLoadout : Loadout
         _arms = loadoutData?.ArmsPartData;
         _legs = loadoutData?.LegsPartData;
 
+        Debug.Log(_head.Stats.MaxHp);
+        Debug.Log(_body.Stats.MaxHp);
+        Debug.Log(_arms.Stats.MaxHp);
+        Debug.Log(_legs.Stats.MaxHp);
+
         SwapModel(ref _headModel, _head, _headAnchor);
         SwapModel(ref _bodyModel, _body, _bodyAnchor);
         SwapModel(ref _armsModel, _arms, _armsAnchor);

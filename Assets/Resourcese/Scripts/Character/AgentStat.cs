@@ -25,6 +25,7 @@ public class AgentStat : MonoBehaviour
     [Header("전투 관련 스탯")]
     [Tooltip("최대 체력")]
     public int MaxHp = 100;
+    public int CurrentHp = 100;
 
     [Tooltip("락온 가능 사거리 - 머리(센서) 파츠 등에서 주로 기여")]
     public float LockonRange = 15f;
@@ -62,6 +63,8 @@ public class AgentStat : MonoBehaviour
     public void ApplyStatBlock(PartStatBlock total)
     {
         MaxHp = total.MaxHp;
+        CurrentHp = MaxHp;
+
         MoveSpeed = total.MoveSpeed;
         BoostSpeed = total.BoostSpeed;
         Acceleration = total.Acceleration;

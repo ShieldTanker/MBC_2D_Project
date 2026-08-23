@@ -36,8 +36,11 @@ public struct PartStatBlock
     {
         return new PartStatBlock
         {
+            MaxHp = a.MaxHp + b.MaxHp,
+
             MoveSpeed = a.MoveSpeed + b.MoveSpeed,
             BoostSpeed = a.BoostSpeed + b.BoostSpeed,
+
             Acceleration = a.Acceleration + b.Acceleration,
             Deceleration = a.Deceleration + b.Deceleration,
             BoostAcceleration = a.BoostAcceleration + b.BoostAcceleration,

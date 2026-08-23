@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
 
     #region 무기관련
     private WeaponController _weaponCon;
+    public WeaponController WeaponController {  get { return _weaponCon; } }
     #endregion
 
     public AgentStateType CurrentState { get; private set; }
@@ -53,6 +54,8 @@ public class Player : MonoBehaviour
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart += BShoulderOnReloadStart;
         _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit += FShoulderOnReloadExit;
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit += BShoulderOnReloadExit;
+
+        _health.OnDamageAction += OnDamage;
     }
 
     private void OnDisable()
@@ -66,6 +69,12 @@ public class Player : MonoBehaviour
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart -= BShoulderOnReloadStart;
         _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit -= FShoulderOnReloadExit;
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit -= BShoulderOnReloadExit;
+        _health.OnDamageAction -= OnDamage;
+    }
+
+    private void OnDamage(DamageInfo _)
+    {
+        _stat.CurrentHp = _health.CurrentHealth;
     }
 
     void Start()
@@ -77,8 +86,10 @@ public class Player : MonoBehaviour
         // 장비 설정
         _bodyLoadout.Stat = _stat;
         _bodyLoadout.SetLoadoutData(LoadoutData);
-
         _weaponLoadout.SetLoadoutData(LoadoutData);
+
+        _health.MaxHealth = _stat.MaxHp;
+        _health.Init();
 
         // 애니메이션 설정
         _model.Anim.SetLayerWeight(1, 1);

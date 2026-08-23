@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfbe87d1109a27459a6bbb7ee6c0984, type: 3}
   m_Name: TestArmsPartData
   m_EditorClassIdentifier: Assembly-CSharp::ArmsPartData
-  PartName: 
+  PartName: "\uD14C\uC2A4\uD2B8 \uC554"
   ModelPrefab: {fileID: 0}
   Stats:
     MaxHp: 100
@@ -20,7 +20,9 @@ MonoBehaviour:
     BoostSpeed: 0
     Acceleration: 0
     Deceleration: 0
-    JumpForce: 0
+    BoostAcceleration: 0
+    BoostDeceleration: 0
+    JumpHeight: 0
     JumpDuration: 0
     JumpDelay: 0
     LockOnRange: 0

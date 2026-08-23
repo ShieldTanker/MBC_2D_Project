@@ -89,8 +89,8 @@ public abstract class WeaponBase : MonoBehaviour
 
     [Space]
     [Tooltip("탄약")]
-    public int CurrentCapacity;
-    public int AmmoRemaining;
+    public int CurrentCapacity = 0;
+    public int AmmoRemaining = 0;
     public float FireRate = 0f;
 
     [Space]

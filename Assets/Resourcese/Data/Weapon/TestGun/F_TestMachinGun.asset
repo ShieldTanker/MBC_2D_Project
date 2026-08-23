@@ -26,7 +26,7 @@ MonoBehaviour:
   BulletSpeed: 30
   MaxRotateAngle: 30
   MaxRotateSpeed: 10
-  MaxCapacity: 10
+  MaxCapacity: 30
   MaxAmmo: 220
   BurstCount: 0
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}
