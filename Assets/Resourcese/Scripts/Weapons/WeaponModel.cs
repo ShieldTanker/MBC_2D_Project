@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class WeaponModel : MonoBehaviour
 {
-    public Transform FirePosition;
+    public Transform FireTransform;
 
 }

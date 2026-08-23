@@ -76,7 +76,7 @@ public abstract class WeaponBase : MonoBehaviour
     public bool AttackHeld;
     public bool AttackReleased;
     public bool InteractionPressed;
-    
+
     [Space]
     [Tooltip("플래그")]
     public bool CanFire = true;
@@ -86,7 +86,7 @@ public abstract class WeaponBase : MonoBehaviour
     public bool IsFireComplete;
     public bool IsRecoilComplete;
     public bool IsReloadComplete;
-    
+
     [Space]
     [Tooltip("탄약")]
     public int CurrentCapacity;
@@ -128,7 +128,7 @@ public abstract class WeaponBase : MonoBehaviour
     {
         _machine.Update(Time.deltaTime);
 
-        if(_fireRate <= _maxFireRate)
+        if (_fireRate <= _maxFireRate)
         {
             _fireRate += Time.deltaTime;
         }
@@ -169,22 +169,23 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if (_fireRate < _maxFireRate) return;
 
-        if (!_flag.CanFire || _weaponData.BulletModel == null ||  _model.FirePosition == null)
+        if (!_flag.CanFire || _weaponData.BulletModel == null || _model.FireTransform == null)
         {
             Debug.Log("CanFire False 혹은 BulletModel 혹은 FirePosition 이 null");
             return;
         }
 
-        GameObject go = GameObject.Instantiate(_weaponData.BulletModel, _model.FirePosition.position, _model.FirePosition.rotation);
+        GameObject go = GameObject.Instantiate(_weaponData.BulletModel, _model.FireTransform.position, _model.FireTransform.rotation);
         BulletTest bullet = go.GetComponent<BulletTest>();
         if (bullet == null) bullet = go.AddComponent<BulletTest>();
 
         bullet.SetData(WeaponData);
         bullet.SetTarget(LockonController?.TrackingTargetTransform);
         bullet.SetFollowTarget(LockonController?.CurrentTargetTransform);
+        bullet.SetFireTrasnform(_model.FireTransform);
 
         OnFireStart?.Invoke();
-        if(_audioSource != null)
+        if (_audioSource != null)
         {
             _audioSource.clip = _weaponData?.GunFireAudioClip;
             _audioSource.Play();
@@ -258,7 +259,7 @@ public abstract class WeaponBase : MonoBehaviour
             _model.transform.rotation = transform.rotation;
         }
 
-        _firePosition = _model ? _model.FirePosition : transform;
+        _firePosition = _model ? _model.FireTransform : transform;
 
         SetContext();
         InitAmmo();

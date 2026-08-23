@@ -262,4 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05015eb26631e84da68b23c4d233344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponModel
-  FirePosition: {fileID: 427057063841139809}
+  FireTransform: {fileID: 427057063841139809}
