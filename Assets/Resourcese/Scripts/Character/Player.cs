@@ -12,19 +12,21 @@ public class Player : MonoBehaviour
     #region 상태머신 및 수치 관련
     private AgentStateMachine _agent;
     private AgentContext _context;
-    private AgentStat _stat;
+    public AgentStat _stat;
     private AgentFlag _flag = new AgentFlag();
     #endregion
 
     #region 움직임 관련
     private Movement2D _move;
     private Rotation2D _rotation;
+
     private InputController _input;
-    private AnimController _animCon;
     private ModelController _model;
     #endregion
 
     private Health _health;
+
+    private LockonController _lockonCon;
 
     #region 무기관련
     private WeaponController _weaponCon;
@@ -62,6 +64,76 @@ public class Player : MonoBehaviour
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart -= BShoulderOnReloadStart;
         _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit -= FShoulderOnReloadExit;
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit -= BShoulderOnReloadExit;
+    }
+
+    void Start()
+    {
+        // TODO : _context 초기화할것
+        _agent = new AgentStateMachine(_context);
+        _agent.ChangeState(AgentStateType.Idle);
+
+        // 장비 설정
+        _bodyLoadout.Stat = _stat;
+        _bodyLoadout.SetLoadoutData(LoadoutData);
+
+        _weaponLoadout.SetLoadoutData(LoadoutData);
+
+        // 애니메이션 설정
+        _model.Anim.SetLayerWeight(1, 1);
+        _model.Anim.Play("None", 1);
+        _model.Anim.SetLayerWeight(2, 1);
+        _model.Anim.Play("None", 2);
+
+        // 락온 설정
+        _lockonCon.Init(_stat, new DistanceTargetSelector());
+
+        // 무기 설정
+        _weaponCon.SetLockonController(_lockonCon);
+    }
+
+    void Update()
+    {
+        _agent?.Update(Time.deltaTime);
+        UpdateFlag();
+        CurrentState = _agent.CurrentStateType;
+    }
+
+    void Init()
+    {
+        // 캐릭터 관련
+        _stat = GetComponent<AgentStat>();
+        _input = GetComponent<InputController>();
+        _move = GetComponent<Movement2D>();
+        _rotation = GetComponent<Rotation2D>();
+        _health = GetComponent<Health>();
+        _model = GetComponentInChildren<ModelController>();
+
+        // 락온
+        _lockonCon = GetComponentInChildren<LockonController>();
+
+        // 장비 관련
+        _bodyLoadout = GetComponent<BodyLoadout>();
+        _weaponLoadout = GetComponent<WeaponLoadout>();
+        _weaponCon = GetComponent<WeaponController>();
+    }
+
+    void SetContext()
+    {
+        _context = new AgentContext();
+        _context.AgentFlag = _flag;
+
+        _context.AgentStat = _stat;
+        _context.InputCon = _input;
+        _context.Move = _move;
+        _context.MoveInput = _input;
+        _context.JumpInput = _input;
+        _context.ModelCon = _model;
+    }
+
+    void UpdateFlag()
+    {
+        _flag.OnGround = _move.IsGround;
+        _model.Anim.SetBool("OnGround", _flag.OnGround);
     }
 
     #region OnReloadStart
@@ -112,62 +184,4 @@ public class Player : MonoBehaviour
         _model.Anim.SetLayerWeight(4, 0);
     }
     #endregion
-
-    void Start()
-    {
-        // TODO : _context 초기화할것
-        _agent = new AgentStateMachine(_context);
-        _agent.ChangeState(AgentStateType.Idle);
-
-        // 장비 설정
-        _bodyLoadout.SetLoadoutData(LoadoutData);
-        _weaponLoadout.SetLoadoutData(LoadoutData);
-
-        _model.Anim.SetLayerWeight(1, 1);
-        _model.Anim.Play("None", 1);
-
-        _model.Anim.SetLayerWeight(2, 1);
-        _model.Anim.Play("None", 2);
-    }
-
-    void Update()
-    {
-        _agent?.Update(Time.deltaTime);
-        UpdateFlag();
-        CurrentState = _agent.CurrentStateType;
-    }
-
-    void Init()
-    {
-        _stat = GetComponent<AgentStat>();
-        _input = GetComponent<InputController>();
-        _move = GetComponent<Movement2D>();
-        _rotation = GetComponent<Rotation2D>();
-        _animCon = GetComponent<AnimController>();
-
-        _bodyLoadout = GetComponent<BodyLoadout>();
-        _weaponLoadout = GetComponent<WeaponLoadout>();
-        _health = GetComponent<Health>();
-        _weaponCon = GetComponent<WeaponController>();
-        _model = GetComponentInChildren<ModelController>();
-    }
-
-    void SetContext()
-    {
-        _context = new AgentContext();
-        _context.AgentFlag = _flag;
-
-        _context.AgentStat = _stat;
-        _context.InputCon = _input;
-        _context.Move = _move;
-        _context.MoveInput = _input;
-        _context.JumpInput = _input;
-        _context.AnimCon = _animCon;
-    }
-
-    void UpdateFlag()
-    {
-        _flag.OnGround = _move.IsGround;
-        _animCon.model.Anim.SetBool("OnGround", _flag.OnGround);
-    }
 }

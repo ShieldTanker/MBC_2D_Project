@@ -5,7 +5,7 @@ public class WeaponContext : StateContext
     public WeaponBase Weapon { get; set; }
     public WeaponData WeaponData;
 
-    public LockOnController LockonController { get; set; }
+    public LockonController LockonController { get; set; }
 
     public Transform FirePosition { get; set; }
     public Transform WeaponPos { get; set; }

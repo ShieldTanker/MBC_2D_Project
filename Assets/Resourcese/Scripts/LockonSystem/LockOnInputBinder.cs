@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// WeaponInputBinder / LookInputBinder와 동일한 패턴.
@@ -6,44 +6,44 @@
 /// (필요할 때만) 직접 호출하면 된다. 아무것도 호출하지 않아도 Auto 락온은 그대로 동작한다.
 /// </summary>
 [DisallowMultipleComponent]
-public class LockOnInputBinder : MonoBehaviour
+public class LockonInputBinder : MonoBehaviour
 {
-    private ILockOnInput _lockOnInput;
+    private ILockOnInput _lockonInput;
     private ILookInput _lookInput;
-    private LockOnController _lockOn;
+    private LockonController _lockon;
 
     private void Awake()
     {
-        _lockOnInput = GetComponent<ILockOnInput>();
-        _lookInput = GetComponent<ILookInput>();
-        _lockOn = GetComponent<LockOnController>();
+        _lockonInput = GetComponentInChildren<ILockOnInput>();
+        _lookInput = GetComponentInChildren<ILookInput>();
+        _lockon = GetComponentInChildren<LockonController>();
     }
 
     private void OnEnable()
     {
-        if (_lockOnInput == null || _lookInput == null || _lockOn == null)
+        if (_lockonInput == null || _lookInput == null || _lockon == null)
         {
             Debug.Log($"ILockOnInput, ILookInput 혹은 LockOnController가 비어있습니다");
             return;
         }
 
-        _lockOnInput.LockOnManualToggleAction += _lockOn.ToggleManualMode;
-        _lockOnInput.LockOnNextTargetAction += _lockOn.SelectNextTarget;
-        _lockOnInput.LockOnPrevTargetAction += _lockOn.SelectPrevTarget;
+        _lockonInput.LockOnManualToggleAction += _lockon.ToggleManualMode;
+        _lockonInput.LockOnNextTargetAction += _lockon.SelectNextTarget;
+        _lockonInput.LockOnPrevTargetAction += _lockon.SelectPrevTarget;
 
         // Look 입력(마우스 델타/스틱 값)을 Manual 조준 이동 + Auto 방향 타겟 전환 양쪽에 사용
-        _lookInput.LookAction += _lockOn.OnAimInput;
+        _lookInput.LookAction += _lockon.OnAimInput;
     }
 
     private void OnDisable()
     {
-        if (_lockOnInput == null || _lookInput == null || _lockOn == null)
+        if (_lockonInput == null || _lookInput == null || _lockon == null)
             return;
 
-        _lockOnInput.LockOnManualToggleAction -= _lockOn.ToggleManualMode;
-        _lockOnInput.LockOnNextTargetAction -= _lockOn.SelectNextTarget;
-        _lockOnInput.LockOnPrevTargetAction -= _lockOn.SelectPrevTarget;
+        _lockonInput.LockOnManualToggleAction -= _lockon.ToggleManualMode;
+        _lockonInput.LockOnNextTargetAction -= _lockon.SelectNextTarget;
+        _lockonInput.LockOnPrevTargetAction -= _lockon.SelectPrevTarget;
 
-        _lookInput.LookAction -= _lockOn.OnAimInput;
+        _lookInput.LookAction -= _lockon.OnAimInput;
     }
 }

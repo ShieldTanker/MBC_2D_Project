@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class WeaponBase : MonoBehaviour
 {
     private WeaponStateMachine _machine;
-    public LockOnController LockonController { get; set; }
+    public LockonController LockonController { get; set; }
 
     #region Context 관련
     // Context관련
@@ -180,8 +180,9 @@ public abstract class WeaponBase : MonoBehaviour
         if (bullet == null) bullet = go.AddComponent<BulletTest>();
 
         bullet.SetData(WeaponData);
-        bullet.SetTarget(LockonController?.GetTrackingTarget());
-        bullet.SetFollowTarget(LockonController?.GetCurrentTarget());
+        bullet.SetTarget(LockonController?.TrackingTargetTransform);
+        bullet.SetFollowTarget(LockonController?.CurrentTargetTransform);
+
         OnFireStart?.Invoke();
         if(_audioSource != null)
         {

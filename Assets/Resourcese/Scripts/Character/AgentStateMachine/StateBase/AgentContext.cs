@@ -1,10 +1,10 @@
-﻿public class AgentContext : StateContext
+public class AgentContext : StateContext
 {
     // TODO : Agent에 필요한 요소들을 넣을것
     public AgentStat AgentStat { get; set; }
     public Movement2D Move { get; set; }
     public Rotation2D Rotation { get; set; }
-    public AnimController AnimCon { get; set; }
+    public ModelController ModelCon { get; set; }
 
     public InputController InputCon { get; set; }
     public IJumpInput JumpInput { get; set; }

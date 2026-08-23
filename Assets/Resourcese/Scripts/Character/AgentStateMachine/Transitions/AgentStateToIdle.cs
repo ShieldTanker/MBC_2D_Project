@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AgentStateToIdle : StateTransition<AgentStateType, AgentContext>
 {
@@ -18,24 +18,6 @@ public class AgentStateToIdle : StateTransition<AgentStateType, AgentContext>
     public override void Clear() { }
 }
 
-public class AgentStateToMove : StateTransition<AgentStateType, AgentContext>
-{
-    public AgentStateToMove(AgentContext context, AgentStateType stateType)
-        : base(context, stateType) { }
-
-    public override bool CheckStateTransit(float deltaTime)
-    {
-        if (_context.InputCon.MoveInput.sqrMagnitude > 0
-            && _context.Move.IsGround
-            && !_context.AgentFlag.IsJumping)
-            return true;
-
-        return false;
-    }
-
-    public override void Clear() { }
-}
-
 public class AgentStateToJump : StateTransition<AgentStateType, AgentContext>
 {
     public AgentStateToJump(AgentContext context, AgentStateType stateType)
@@ -44,24 +26,6 @@ public class AgentStateToJump : StateTransition<AgentStateType, AgentContext>
     public override bool CheckStateTransit(float deltaTime)
     {
         return _context.Move.IsGround && _context.JumpInput.JumpInput;
-    }
-
-    public override void Clear() { }
-}
-
-public class AgentStateToOnAir : StateTransition<AgentStateType, AgentContext>
-{
-    public AgentStateToOnAir(AgentContext context, AgentStateType stateType)
-        : base(context, stateType) { }
-
-    public override bool CheckStateTransit(float deltaTime)
-    {
-        if (!_context.AgentFlag.IsJumping && !_context.Move.IsGround)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     public override void Clear() { }

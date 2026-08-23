@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -13,5 +13,5 @@ using UnityEngine;
 /// </summary>
 public interface ITargetSelector
 {
-    List<ITargetable> GetCandidates(Transform origin, float range, LockOnTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget);
+    List<ITargetable> GetTargets(Transform origin, float range, LockOnTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget);
 }

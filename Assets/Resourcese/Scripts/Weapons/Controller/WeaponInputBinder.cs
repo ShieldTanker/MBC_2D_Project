@@ -1,22 +1,22 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WeaponInputBinder : MonoBehaviour
 {
     private IWeaponInput _input;
-    private WeaponInputController _weapons;
+    private WeaponController _weapons;
 
     private void Awake()
     {
         _input = GetComponent<IWeaponInput>();
-        _weapons = GetComponent<WeaponInputController>();
+        _weapons = GetComponent<WeaponController>();
     }
 
     private void OnEnable()
     {
         if ( _weapons == null)
         {
-            Debug.Log($"WeaponInputController가 비어있습니다");
+            Debug.Log($"WeaponController가 비어있습니다");
             return;
         }
         if (_input == null)

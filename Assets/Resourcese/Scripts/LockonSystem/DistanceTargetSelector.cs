@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +12,7 @@ public class DistanceTargetSelector : ITargetSelector
     readonly List<Collider2D> _hitBuffer = new List<Collider2D>(32);
     readonly List<ITargetable> _results = new List<ITargetable>();
 
-    public List<ITargetable> GetCandidates(Transform origin, float range, LockOnTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget)
+    public List<ITargetable> GetTargets(Transform origin, float range, LockOnTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget)
     {
         _results.Clear();
 
@@ -25,6 +25,7 @@ public class DistanceTargetSelector : ITargetSelector
         // 현재 타겟을 바라보는 기준 방향 - 루프 밖에서 한 번만 계산 (대상이 없거나 자기 위치와 겹치면 필터 미적용)
         bool useCurrentTargetAngleFilter = false;
         Vector2 currentTargetDir = Vector2.zero;
+
         if (tuning.limitAngleFromCurrentTarget && currentTarget != null)
         {
             Vector2 toCurrent = (Vector2)currentTarget.Position - (Vector2)origin.position;
@@ -48,15 +49,13 @@ public class DistanceTargetSelector : ITargetSelector
             if (targetable == null || !targetable.IsLockable) continue;
 
             // 같은 진영은 후보에서 제외 (아군 오인사격 방지). Neutral끼리는 예외로 제외하지 않는다.
-            if (tuning.excludeSameTeam && selfFaction != Faction.None && targetable.Faction == selfFaction)
-                continue;
+            if (tuning.excludeSameTeam && selfFaction != Faction.None && targetable.Faction == selfFaction) continue;
 
-            if (tuning.requireLineOfSight && !HasLineOfSight(origin.position, targetable.Position, tuning.obstacleMask))
-                continue;
+            // 장애물 가려짐 사용 및 가려져 있으면 락온 대상 해제
+            if (tuning.requireLineOfSight && !HasLineOfSight(origin.position, targetable.Position, tuning.obstacleMask)) continue;
 
-            if (tuning.requireOnScreen && viewCamera != null &&
-                !IsOnScreen(viewCamera, targetable.Position, tuning.screenEdgeMargin))
-                continue;
+            // 화면 제한설정 사용 및 카메라 안에 없으면 락온 대상 해제
+            if (tuning.requireOnScreen && viewCamera != null && !IsOnScreen(viewCamera, targetable.Position, tuning.screenEdgeMargin)) continue;
 
             // 현재 타겟을 바라보는 방향에서 일정 각도 밖의 후보는 제외 (자기 자신과 같은 위치라 각도가 없으면 통과시킴)
             if (useCurrentTargetAngleFilter && targetable != currentTarget)
@@ -65,8 +64,7 @@ public class DistanceTargetSelector : ITargetSelector
                 if (toCandidate.sqrMagnitude > 0.0001f)
                 {
                     float angleFromCurrent = Vector2.Angle(currentTargetDir, toCandidate.normalized);
-                    if (angleFromCurrent > tuning.maxAngleFromCurrentTarget)
-                        continue;
+                    if (angleFromCurrent > tuning.maxAngleFromCurrentTarget) continue;
                 }
             }
 
@@ -98,8 +96,9 @@ public class DistanceTargetSelector : ITargetSelector
 
     static bool IsOnScreen(Camera cam, Vector3 worldPos, float margin)
     {
-        Vector3 vp = cam.WorldToViewportPoint(worldPos);
-        if (vp.z < 0f) return false;
-        return vp.x > margin && vp.x < 1f - margin && vp.y > margin && vp.y < 1f - margin;
+        Vector3 viewPoint = cam.WorldToViewportPoint(worldPos);
+        if (viewPoint.z < 0f) return false;
+        return viewPoint.x > margin && viewPoint.x < 1f - margin    // x축 검사 
+            && viewPoint.y > margin && viewPoint.y < 1f - margin;   // y축 검사
     }
 }

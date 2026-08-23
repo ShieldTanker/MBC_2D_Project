@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -18,9 +18,11 @@ public struct PartStatBlock
     public float BoostSpeed;
     public float Acceleration;
     public float Deceleration;
+    public float BoostAcceleration;
+    public float BoostDeceleration;
 
     [Header("점프")]
-    public float JumpForce;
+    public float JumpHeight;
     public float JumpDuration;
     public float JumpDelay;
 
@@ -38,8 +40,10 @@ public struct PartStatBlock
             BoostSpeed = a.BoostSpeed + b.BoostSpeed,
             Acceleration = a.Acceleration + b.Acceleration,
             Deceleration = a.Deceleration + b.Deceleration,
+            BoostAcceleration = a.BoostAcceleration + b.BoostAcceleration,
+            BoostDeceleration = a.BoostDeceleration + b.BoostDeceleration,
 
-            JumpForce = a.JumpForce + b.JumpForce,
+            JumpHeight = a.JumpHeight + b.JumpHeight,
             JumpDuration = a.JumpDuration + b.JumpDuration,
             JumpDelay = a.JumpDelay + b.JumpDelay,
 
