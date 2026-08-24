@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -79,6 +79,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     [Space]
     [Tooltip("플래그")]
+    public bool IsAlive = true;
     public bool CanFire = true;
     public bool CanReload;
     public bool IsAimComplete;
@@ -126,6 +127,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     private void Update()
     {
+        if (!Context.WeaponFlag.IsAlive)
+            return;
+
         _machine.Update(Time.deltaTime);
 
         if (_fireRate <= _maxFireRate)
@@ -167,11 +171,11 @@ public abstract class WeaponBase : MonoBehaviour
     #region 무기 조작
     public void Fire()
     {
-        if (_fireRate < _maxFireRate) return;
+        if (!_flag.CanFire || _fireRate < _maxFireRate) return;
 
-        if (!_flag.CanFire || _weaponData.BulletModel == null || _model.FireTransform == null)
+        if (Context.CurrentCapacity < 0 || _weaponData.BulletModel == null || _model.FireTransform == null)
         {
-            Debug.Log("CanFire False 혹은 BulletModel 혹은 FirePosition 이 null");
+            Debug.Log("총알 부족 혹은 BulletModel 혹은 FirePosition 이 null");
             return;
         }
 
@@ -195,7 +199,7 @@ public abstract class WeaponBase : MonoBehaviour
 
         _fireRate = 0f;
         Context.LastFireTime = 0f;
-        // Context.FireRate = 0f;
+
         switch (Context.WeaponData.FireMode)
         {
             case WeaponFireMode.SemiAuto:
@@ -215,7 +219,6 @@ public abstract class WeaponBase : MonoBehaviour
 
         Context.CurrentCapacity--;
         Context.BurstRemaining--;
-        _flag.CanFire = Context.CurrentCapacity > 0;
 
         Recoil();
     }
@@ -242,6 +245,21 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if (!UseRecoil) return;
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _baseLocalPos, ref _recoilVelocity, 0.2f);
+    }
+
+    public void ReloadAmmo()
+    {
+        // 필요 탄약량
+        int requiredAmmo = Context.WeaponData.MaxCapacity - Context.CurrentCapacity;
+        // 필요탄약량 혹은 현재 탄약량중 더 적은것을 반환
+        int reloadAmount = Mathf.Min(requiredAmmo, Context.AmmoRemaining);
+
+        Context.CurrentCapacity += reloadAmount;
+        Context.AmmoRemaining -= reloadAmount;
+
+        bool dataNotNull = Context.WeaponData != null && Context.WeaponData.BulletModel != null;
+        Context.WeaponFlag.CanFire = dataNotNull && Context.CurrentCapacity > 0; // 현재 탄약이 0 이상, 
+        Context.WeaponFlag.IsReloadComplete = true;
     }
     #endregion
 
@@ -307,9 +325,10 @@ public abstract class WeaponBase : MonoBehaviour
         InteractionPressed = Context.WeaponInput.InteractionPressed;
 
         // 플래그
-        AttackSequenceStarted = Context.WeaponFlag.AttackSequenceStarted;
+        IsAlive = Context.Weapon.IsAlive;
         CanFire = Context.WeaponFlag.CanFire;
         CanReload = Context.WeaponFlag.CanReload;
+        AttackSequenceStarted = Context.WeaponFlag.AttackSequenceStarted;
 
         IsInterrupted = Context.IsInterrupted;
         IsAiming = Context.WeaponFlag.IsAiming;
@@ -320,6 +339,5 @@ public abstract class WeaponBase : MonoBehaviour
         // 탄약
         CurrentCapacity = Context.CurrentCapacity;
         AmmoRemaining = Context.AmmoRemaining;
-        // FireRate = Context.FireRate;
     }
 }

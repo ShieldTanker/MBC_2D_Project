@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +12,7 @@ public class DistanceTargetSelector : ITargetSelector
     readonly List<Collider2D> _hitBuffer = new List<Collider2D>(32);
     readonly List<ITargetable> _results = new List<ITargetable>();
 
-    public List<ITargetable> GetTargets(Transform origin, float range, LockOnTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget)
+    public List<ITargetable> GetTargets(Transform origin, float range, LockonTuning tuning, Camera viewCamera, Faction selfFaction, ITargetable currentTarget)
     {
         _results.Clear();
 

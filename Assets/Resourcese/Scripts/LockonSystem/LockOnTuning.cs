@@ -6,7 +6,7 @@ using UnityEngine;
 /// 무관한 시스템 설정만 담는다.
 /// </summary>
 [CreateAssetMenu(menuName = "LockOn/Lock On Tuning", fileName = "NewLockOnTuning")]
-public class LockOnTuning : ScriptableObject
+public class LockonTuning : ScriptableObject
 {
     [Header("탐지")]
     public LayerMask targetMask;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class LockonController : MonoBehaviour
     [SerializeField] Camera _viewCamera;
 
     [Header("기술 튜닝 (마스크, LOS, 화면범위 등 - 파츠와 무관)")]
-    [SerializeField] LockOnTuning _tuning;
+    [SerializeField] LockonTuning _tuning;
 
     [Header("무기에 전달할 위치")]
     [Tooltip("실제 추적 위치")]

@@ -17,8 +17,8 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
     {
         base.StateEnter();
 
-        _context.WeaponFlag.CanFire = _context.WeaponData.BulletModel != null
-            && _context.CurrentCapacity > 0;
+        //_context.WeaponFlag.CanFire = _context.WeaponData.BulletModel != null
+        //    && _context.CurrentCapacity > 0;
     }
 
     public override void StateUpdate(float deltaTime)
@@ -44,11 +44,13 @@ public class WeaponFireState : State<WeaponStateType, WeaponContext>
 
     private void TryFire()
     {
-        if (!_context.WeaponFlag.CanFire) return;
+        if (!_context.WeaponFlag.CanFire)
+            return;
+        
         // 버튼도 안 누르고 있고 새로운 공격 입력도 없으면 발사X
         WeaponInput input = _context.WeaponInput;
-        if (!_context.WeaponFlag.AttackSequenceStarted
-            && !input.AttackPressed) return;
+        if (!_context.WeaponFlag.AttackSequenceStarted && !input.AttackPressed)
+            return;
 
         switch (_context.WeaponData.FireMode)
         {

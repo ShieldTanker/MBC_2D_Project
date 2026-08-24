@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AgentStat : MonoBehaviour
 {
@@ -24,6 +24,7 @@ public class AgentStat : MonoBehaviour
     // 전투 관련 스탯 (파츠 합산 결과)
     [Header("전투 관련 스탯")]
     [Tooltip("최대 체력")]
+    public bool IsAlive = true;
     public int MaxHp = 100;
     public int CurrentHp = 100;
 

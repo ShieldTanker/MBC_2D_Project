@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WeaponLoadout : Loadout
@@ -34,6 +34,6 @@ public class WeaponLoadout : Loadout
         if(_f_HandData != null) F_hand.WeaponData = _f_HandData;
         if(_b_HandData != null) B_hand.WeaponData = _b_HandData;
         if(_f_ShoulderData != null) F_Shoulder.WeaponData = _f_ShoulderData;
-        if(_b_ShoulderData == null) B_Shoulder.WeaponData = _b_ShoulderData;
+        if(_b_ShoulderData != null) B_Shoulder.WeaponData = _b_ShoulderData;
     }
 }

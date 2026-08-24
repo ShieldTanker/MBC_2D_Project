@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityServiceLocator;
 
 [DisallowMultipleComponent]
@@ -25,10 +25,12 @@ public class Player : MonoBehaviour
     private ModelController _model;
     #endregion
 
+    #region 전투 관련
     private Health _health;
 
     private LockonController _lockonCon;
     public LockonController LockonCon {  get { return _lockonCon; } }
+    #endregion
 
     #region 무기관련
     private WeaponController _weaponCon;
@@ -45,6 +47,11 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        _weaponCon.F_HandAnchor.Weapon.OnFireStart += SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnFireStart += SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
+
         _weaponCon.F_HandAnchor.Weapon.OnReloadStart += FHandOnReloadStart;
         _weaponCon.B_HandAnchor.Weapon.OnReloadStart += BHandOnReloadStart;
         _weaponCon.F_HandAnchor.Weapon.OnReloadExit += FHandOnReloadExit;
@@ -55,11 +62,17 @@ public class Player : MonoBehaviour
         _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit += FShoulderOnReloadExit;
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit += BShoulderOnReloadExit;
 
-        _health.OnDamageAction += OnDamage;
+        _health.OnDamageAction += SetHp;
+        _input.BoostActionPerformed += OnBoostInput;
     }
 
     private void OnDisable()
     {
+        _weaponCon.F_HandAnchor.Weapon.OnFireStart -= SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnFireStart -= SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
+
         _weaponCon.F_HandAnchor.Weapon.OnReloadStart -= FHandOnReloadExit;
         _weaponCon.B_HandAnchor.Weapon.OnReloadStart -= BHandOnReloadExit;
         _weaponCon.F_HandAnchor.Weapon.OnReloadExit -= FHandOnReloadExit;
@@ -69,12 +82,26 @@ public class Player : MonoBehaviour
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart -= BShoulderOnReloadStart;
         _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit -= FShoulderOnReloadExit;
         _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit -= BShoulderOnReloadExit;
-        _health.OnDamageAction -= OnDamage;
+
+        _health.OnDamageAction -= SetHp;
+        _input.BoostActionPerformed -= OnBoostInput;
     }
 
-    private void OnDamage(DamageInfo _)
+    void OnBoostInput()
+    {
+        _stat.IsBoost = true;
+    }
+
+    void SetAmmo()
+    {
+        BattleUIEventBus.Publish(BattleUIEventType.PlayerAmmoSet, this);
+    }
+
+    private void SetHp(DamageInfo _)
     {
         _stat.CurrentHp = _health.CurrentHealth;
+        BattleUIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        Debug.Log("OnDamaged");
     }
 
     void Start()
@@ -92,9 +119,9 @@ public class Player : MonoBehaviour
         _health.Init();
 
         // 애니메이션 설정
-        _model.Anim.SetLayerWeight(1, 1);
+        _model.Anim.SetLayerWeight(1, 0);
         _model.Anim.Play("None", 1);
-        _model.Anim.SetLayerWeight(2, 1);
+        _model.Anim.SetLayerWeight(2, 0);
         _model.Anim.Play("None", 2);
 
         // 락온 설정
@@ -102,6 +129,9 @@ public class Player : MonoBehaviour
 
         // 무기 설정
         _weaponCon.SetLockonController(_lockonCon);
+
+        BattleUIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        SetAmmo();
     }
 
     void Update()
@@ -111,7 +141,7 @@ public class Player : MonoBehaviour
         CurrentState = _agent.CurrentStateType;
 
         _rotation.dir = _lockonCon.PredictedPosition.x > transform.position.x ? CharDirection.Right : CharDirection.Left;
-        _flag.CharDirection = _rotation.dir;
+        _stat.CurrentDirection = _rotation.dir;
     }
 
     void Init()
@@ -139,6 +169,7 @@ public class Player : MonoBehaviour
     void SetContext()
     {
         _context = new AgentContext();
+        _context.Player = this;
         _context.AgentFlag = _flag;
 
         _context.AgentStat = _stat;
@@ -147,6 +178,7 @@ public class Player : MonoBehaviour
         _context.MoveInput = _input;
         _context.JumpInput = _input;
         _context.ModelCon = _model;
+        _context.WeaponController = _weaponCon;
     }
 
     void UpdateFlag()

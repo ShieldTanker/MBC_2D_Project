@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class Movement2D : MonoBehaviour
 {
     private Rigidbody2D _rb;

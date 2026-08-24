@@ -446,7 +446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30.700012, y: 35}
+  m_AnchoredPosition: {x: 30.699951, y: 35}
   m_SizeDelta: {x: 396.5, y: 110}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &176578389
@@ -1495,6 +1495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpUIController
   HpBar: {fileID: 1671884793}
   HpText: {fileID: 1054969608}
+  CurrentHp: 0
+  MaxHp: 0
 --- !u!114 &942500029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,7 +2206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -1227564231286400416, guid: f069e8552a87043459536d31994e37aa, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3037,8 +3039,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1227564231286400416, guid: f069e8552a87043459536d31994e37aa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3385,148 +3387,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3310978789653553052, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: _maxHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3457345113764375537, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.766627
-      objectReference: {fileID: 0}
-    - target: {fileID: 3457345113764375537, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.6420927
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395263113911575444, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999488
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395263113911575444, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0101194
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022126604015142340, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7959149
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022126604015142340, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.60540843
-      objectReference: {fileID: 0}
-    - target: {fileID: 5334548317580667875, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7614997
-      objectReference: {fileID: 0}
-    - target: {fileID: 5334548317580667875, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.64816535
-      objectReference: {fileID: 0}
-    - target: {fileID: 5772290796873666170, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.08760231
-      objectReference: {fileID: 0}
-    - target: {fileID: 5772290796873666170, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.99615556
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: MaxHp
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: IsBoost
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: LockOnSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: LockonRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: Acceleration
-      value: 13.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: Deceleration
-      value: 54
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.MaxHp
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: ManualAimSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.JumpDelay
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.MoveSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.BoostSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.JumpHeight
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.LockOnRange
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.LockOnSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.Acceleration
-      value: 13.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.Deceleration
-      value: 54
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.JumpDuration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.ManualAimSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.BoostAcceleration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7093179302881721078, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: BaseStat.BoostDeceleration
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8163416028625807617, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9982477
-      objectReference: {fileID: 0}
-    - target: {fileID: 8163416028625807617, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.059173808
-      objectReference: {fileID: 0}
-    - target: {fileID: 9124779738466192839, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9983507
-      objectReference: {fileID: 0}
-    - target: {fileID: 9124779738466192839, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.05741074
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2462684895508732111, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

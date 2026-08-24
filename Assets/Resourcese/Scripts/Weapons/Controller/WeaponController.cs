@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WeaponController : MonoBehaviour
@@ -58,6 +58,19 @@ public class WeaponController : MonoBehaviour
         F_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
         B_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
 
+    }
+
+    public void SetAlive(bool isAlive)
+    {
+        F_HandAnchor.CanRotate = isAlive;
+        B_HandAnchor.CanRotate = isAlive;
+        F_ShoulderAnchor.CanRotate = isAlive;
+        B_ShoulderAnchor.CanRotate = isAlive;
+
+        F_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        B_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        F_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        B_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
     }
 
     #region 입력 관련 함수

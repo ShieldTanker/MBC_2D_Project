@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletTest : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class BulletTest : MonoBehaviour
 
     protected Vector3 _dir = Vector3.right;
 
-    protected Vector3 _firePosition;
+    protected Transform _fireTransform;
     protected float _fireAngle;
     protected float _currentAngle;
 
@@ -35,6 +35,7 @@ public class BulletTest : MonoBehaviour
 
     public void SetData(WeaponData data)
     {
+        _damage = data.Damage;
         _bulletSpeed = data.BulletSpeed;
         _maxRotateAngle = data.MaxRotateAngle;
         _rotateSpeed = data.MaxRotateSpeed;
@@ -46,7 +47,7 @@ public class BulletTest : MonoBehaviour
     /// </summary>
     public void SetFireTrasnform(Transform fireTransform)
     {
-        _firePosition = fireTransform.position;
+        _fireTransform = fireTransform;
 
         // fireTransform.rotation은 부모(캐릭터)의 음수 스케일(좌우 반전)을 반영하지 못해
         // 반전 시 실제 화면상 방향과 어긋난다. TransformPoint는 스케일까지 포함한
@@ -90,10 +91,13 @@ public class BulletTest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if (collision.transform.root == _fireTransform.root) return;
+
         if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
             if (damageable != null)
             {
+                Debug.Log("asdasdasdasdad");
                 DamageInfo info = new DamageInfo { AttackPosition = transform.position, Damage = _damage };
                 damageable.TakeDamage(info);
             }

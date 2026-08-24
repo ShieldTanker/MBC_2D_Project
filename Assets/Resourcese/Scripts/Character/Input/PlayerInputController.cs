@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputController : InputController
@@ -18,6 +18,8 @@ public class PlayerInputController : InputController
         _pInput.actions["Jump"].canceled += OnJumpInputCanceled;
 
         _pInput.actions["Look"].performed += OnLookInputPerformed;
+        _pInput.actions["Boost"].performed += OnBoostInputPerformed;
+        _pInput.actions["Boost"].canceled += OnBoostInputCanceled;
 
         _pInput.actions["Fire1"].performed += OnBHandPerformedFire;
         _pInput.actions["Fire2"].performed += OnFHandPerformedFire;
@@ -29,7 +31,6 @@ public class PlayerInputController : InputController
         _pInput.actions["Fire3"].canceled += OnBShoulderCanceledFire;
         _pInput.actions["Fire4"].canceled += OnFShoulderCanceledFire;
 
-        // 락온 입력 - Input Actions 에셋에 "LockOnToggle" / "LockOnNext" / "LockOnPrev" 액션을 추가해야 함
         _pInput.actions["LockOnToggle"].performed += OnLockOnManualTogglePerformed;
         _pInput.actions["LockOnNext"].performed += OnLockOnNextTargetPerformed;
         _pInput.actions["LockOnPrev"].performed += OnLockOnPrevTargetPerformed;
@@ -39,8 +40,12 @@ public class PlayerInputController : InputController
     {
         _pInput.actions["Move"].performed -= OnMoveInputPerformed;
         _pInput.actions["Move"].canceled -= OnMoveInputPerformed;
+
         _pInput.actions["Jump"].performed -= OnJumpInputPerformed;
         _pInput.actions["Jump"].canceled -= OnJumpInputCanceled;
+
+        _pInput.actions["Boost"].performed -= OnBoostInputPerformed;
+        _pInput.actions["Boost"].canceled -= OnBoostInputCanceled;
 
         _pInput.actions["Fire1"].performed -= OnBHandPerformedFire;
         _pInput.actions["Fire2"].performed -= OnFHandPerformedFire;
@@ -73,6 +78,18 @@ public class PlayerInputController : InputController
     void OnJumpInputCanceled(InputAction.CallbackContext context)
     {
         JumpInput = context.ReadValueAsButton();
+    }
+
+    void OnBoostInputPerformed(InputAction.CallbackContext context)
+    {
+        BoostInput = context.ReadValueAsButton();
+        BoostActionPerformed?.Invoke();
+        BoostPressed = true;
+    }
+
+    void OnBoostInputCanceled(InputAction.CallbackContext context)
+    {
+        BoostInput = context.ReadValueAsButton();
     }
 
     // 시점 입력

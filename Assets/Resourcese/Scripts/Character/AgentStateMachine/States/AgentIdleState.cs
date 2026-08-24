@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentIdleState : State<AgentStateType, AgentContext>
@@ -19,14 +19,32 @@ public class AgentIdleState : State<AgentStateType, AgentContext>
         _machine.Context.ModelCon.Anim.SetFloat("MoveX", 0f);
         _machine.Context.ModelCon.Anim.SetBool("IsBoost", false);
     }
+}
 
-    public override void StateUpdate(float deltaTime)
+public class AgentDieState : State<AgentStateType, AgentContext>
+{
+    AgentStat _stat;
+    ModelController _model;
+    WeaponController _weaponCon;
+    public AgentDieState(StateMachine<AgentStateType, AgentContext> machine,
+        List<StateTransition<AgentStateType, AgentContext>> transitions)
     {
-        base.StateUpdate(deltaTime);
+        _machine = machine;
+        _transitions = transitions;
+
+        _stat = _machine.Context.AgentStat;
+        _model = _machine.Context.ModelCon;
+        _weaponCon = _machine.Context.WeaponController;
     }
 
-    public override void StateExit()
+    public override void StateEnter()
     {
-        base.StateExit();
+        base.StateEnter();
+        _stat.IsAlive = false;
+        _stat.CurrentHp = 0;
+        _model.Anim.SetTrigger("Die");
+        _weaponCon.SetAlive(false);
+
+        BattleUIEventBus.Publish(BattleUIEventType.PlayerDie, _machine.Context.Player);
     }
 }

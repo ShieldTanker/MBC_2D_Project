@@ -1,10 +1,13 @@
-public class AgentContext : StateContext
+﻿public class AgentContext : StateContext
 {
     // TODO : Agent에 필요한 요소들을 넣을것
+    public Player Player { get; set; }
+
     public AgentStat AgentStat { get; set; }
     public Movement2D Move { get; set; }
     public Rotation2D Rotation { get; set; }
     public ModelController ModelCon { get; set; }
+    public WeaponController WeaponController { get; set; }
 
     public InputController InputCon { get; set; }
     public IJumpInput JumpInput { get; set; }
@@ -20,6 +23,4 @@ public class AgentFlag
 
     // 상태에서 처리
     public bool IsJumping { get; set; }
-
-    public CharDirection CharDirection { get; set; } = CharDirection.Right;
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// WeaponInputBinder / LookInputBinder와 동일한 패턴.
@@ -8,13 +8,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class LockonInputBinder : MonoBehaviour
 {
-    private ILockOnInput _lockonInput;
+    private ILockonInput _lockonInput;
     private ILookInput _lookInput;
     private LockonController _lockon;
 
     private void Awake()
     {
-        _lockonInput = GetComponentInChildren<ILockOnInput>();
+        _lockonInput = GetComponentInChildren<ILockonInput>();
         _lookInput = GetComponentInChildren<ILookInput>();
         _lockon = GetComponentInChildren<LockonController>();
     }

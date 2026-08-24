@@ -1,45 +1,51 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentMoveState : State<AgentStateType, AgentContext>
 {
-    AgentContext _context;
+    Movement2D _move;
+    IMoveInput2D _input;
+    ModelController _model;
+    AgentStat _stat;
     AgentFlag _flag;
+
     public AgentMoveState(StateMachine<AgentStateType, AgentContext> machine,
         List<StateTransition<AgentStateType, AgentContext>> transitions)
     {
         _machine = machine;
         _transitions = transitions;
 
-        _context = _machine.Context;
+        _move = _machine.Context.Move;
+        _input = _machine.Context.MoveInput;
+        _stat = _machine.Context.AgentStat;
         _flag = _machine.Context.AgentFlag;
+        _model = _machine.Context.ModelCon;
     }
 
     public override void StateEnter()
     {
         base.StateEnter();
-        _context.Move.MoveSpeed = _context.AgentStat.IsBoost ?
-            _context.AgentStat.BoostSpeed : _context.AgentStat.MoveSpeed;
-        _context.Move.Acceleration = _context.AgentStat.IsBoost ?
-            _context.AgentStat.BoostAcceleration : _context.AgentStat.Acceleration;
-        _context.Move.Deceleration = _context.AgentStat.IsBoost ?
-            _context.AgentStat.BoostDeceleration : _context.AgentStat.Deceleration;
-        _context.Move.IsBoosting = _context.AgentStat.IsBoost;
+        BoostSet();
     }
 
     public override void StateUpdate(float deltaTime)
     {
-        Vector2 input = _context.MoveInput.MoveInput;
+        BoostSet();
 
-        _context.Move.MoveInput(input);
-        _context.Move.IsBoosting = _context.AgentStat.IsBoost;
-        _context.ModelCon.Anim.SetFloat("MoveX", input.x * (int)_flag.CharDirection);
+        _move.MoveInput(_input.MoveInput);
+        _model.Anim.SetBool("IsBoost", _stat.IsBoost);
+        _model.Anim.SetFloat("MoveX", _input.MoveInput.x * (int)_stat.CurrentDirection);
 
         base.StateUpdate(deltaTime);
     }
 
-    public override void StateExit()
+    void BoostSet()
     {
-        base.StateExit();
+        _move.IsBoosting = _stat.IsBoost;
+
+        _move.MoveSpeed = _stat.IsBoost ? _stat.BoostSpeed : _stat.MoveSpeed;
+        _move.Acceleration = _stat.IsBoost ? _stat.BoostAcceleration : _stat.Acceleration;
+        _move.Deceleration = _stat.IsBoost ? _stat.BoostDeceleration : _stat.Deceleration;
+
     }
 }

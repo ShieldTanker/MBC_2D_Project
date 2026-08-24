@@ -23,7 +23,7 @@ MonoBehaviour:
   MaxAimTime: 1
   MaxReloadDuration: 1
   BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
-  BulletSpeed: 30
+  BulletSpeed: 120
   MaxRotateAngle: 30
   MaxRotateSpeed: 10
   MaxCapacity: 10

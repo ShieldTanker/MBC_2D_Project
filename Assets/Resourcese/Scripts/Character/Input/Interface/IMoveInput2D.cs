@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public interface IMoveInput2D
@@ -35,4 +35,6 @@ public interface ILookInput
 public interface IBoostInput
 {
     public bool BoostInput { get; }
+    public bool BoostPressed { get;}
+    public Action BoostActionPerformed { get;}
 }

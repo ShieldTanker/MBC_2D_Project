@@ -1,5 +1,6 @@
-public class WeaponFlag
+﻿public class WeaponFlag
 {
+    public bool IsAlive { get; set; } = true;
     public bool CanFire { get; set; } = true;
     public bool CanReload { get; set; }
     public bool IsAiming { get; set; }
