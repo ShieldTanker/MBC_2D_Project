@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     [Header("모델 관련")]
+    public string WeaponName;
     public WeaponModel Model;
     public AudioClip GunFireAudioClip;
     public Vector3 Offset;

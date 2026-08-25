@@ -52,16 +52,6 @@ public class Player : MonoBehaviour
         _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
         _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
 
-        _weaponCon.F_HandAnchor.Weapon.OnReloadStart += FHandOnReloadStart;
-        _weaponCon.B_HandAnchor.Weapon.OnReloadStart += BHandOnReloadStart;
-        _weaponCon.F_HandAnchor.Weapon.OnReloadExit += FHandOnReloadExit;
-        _weaponCon.B_HandAnchor.Weapon.OnReloadExit += BHandOnReloadExit;
-        
-        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadStart += FShoulderOnReloadStart;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart += BShoulderOnReloadStart;
-        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit += FShoulderOnReloadExit;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit += BShoulderOnReloadExit;
-
         _health.OnDamageAction += SetHp;
         _input.BoostActionPerformed += OnBoostInput;
     }
@@ -72,16 +62,6 @@ public class Player : MonoBehaviour
         _weaponCon.B_HandAnchor.Weapon.OnFireStart -= SetAmmo;
         _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
         _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
-
-        _weaponCon.F_HandAnchor.Weapon.OnReloadStart -= FHandOnReloadExit;
-        _weaponCon.B_HandAnchor.Weapon.OnReloadStart -= BHandOnReloadExit;
-        _weaponCon.F_HandAnchor.Weapon.OnReloadExit -= FHandOnReloadExit;
-        _weaponCon.B_HandAnchor.Weapon.OnReloadExit -= BHandOnReloadExit;
-
-        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadStart -= FShoulderOnReloadStart;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadStart -= BShoulderOnReloadStart;
-        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit -= FShoulderOnReloadExit;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit -= BShoulderOnReloadExit;
 
         _health.OnDamageAction -= SetHp;
         _input.BoostActionPerformed -= OnBoostInput;
@@ -117,12 +97,6 @@ public class Player : MonoBehaviour
 
         _health.MaxHealth = _stat.MaxHp;
         _health.Init();
-
-        // 애니메이션 설정
-        _model.Anim.SetLayerWeight(1, 0);
-        _model.Anim.Play("None", 1);
-        _model.Anim.SetLayerWeight(2, 0);
-        _model.Anim.Play("None", 2);
 
         // 락온 설정
         _lockonCon.Init(_stat, new DistanceTargetSelector());
@@ -186,53 +160,4 @@ public class Player : MonoBehaviour
         _flag.OnGround = _move.IsGround;
         _model.Anim.SetBool("OnGround", _flag.OnGround);
     }
-
-    #region OnReloadStart
-    void BHandOnReloadStart()
-    {
-        _model.Anim.SetLayerWeight(1, 1);
-        _model.Anim.Play("Reload", 1);
-    }
-
-    void FHandOnReloadStart()
-    {
-        _model.Anim.SetLayerWeight(2, 1);
-        _model.Anim.Play("Reload", 2);
-    }
-
-    void BShoulderOnReloadStart()
-    {
-        _model.Anim.SetLayerWeight(3, 1);
-        _model.Anim.Play("Reload", 4);
-    }
-
-    void FShoulderOnReloadStart()
-    {
-        _model.Anim.SetLayerWeight(4, 1);
-        _model.Anim.Play("Reload", 3);
-    }
-
-    #endregion
-
-    #region OnReloadExit
-    void BHandOnReloadExit()
-    {
-        _model.Anim.SetLayerWeight(1, 0);
-    }
-
-    void FHandOnReloadExit()
-    {
-        _model.Anim.SetLayerWeight(2, 0);
-    }
-
-    void BShoulderOnReloadExit()
-    {
-        _model.Anim.SetLayerWeight(3, 0);
-    }
-
-    void FShoulderOnReloadExit()
-    {
-        _model.Anim.SetLayerWeight(4, 0);
-    }
-    #endregion
 }

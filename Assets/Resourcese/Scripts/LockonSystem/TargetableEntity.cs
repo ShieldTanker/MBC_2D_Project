@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 적/파괴 가능 오브젝트 등에 붙여서 락온 대상으로 만드는 컴포넌트.
@@ -11,7 +11,7 @@ public class TargetableEntity : MonoBehaviour, ITargetable
     [Tooltip("소속 진영. 같은 진영끼리는 서로 락온되지 않는다")]
     [SerializeField] Faction faction = Faction.None;
 
-    Rigidbody2D _rigidbody;
+    public Rigidbody2D _rigidbody;
 
     #region 외부 공개용 속성
     public Transform TargetTransform => transform;
@@ -24,7 +24,11 @@ public class TargetableEntity : MonoBehaviour, ITargetable
     public Faction Faction => faction;
     #endregion
 
-    void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
+    void Awake()
+    {
+        if(_rigidbody == null)
+            _rigidbody = GetComponent<Rigidbody2D>();
+    } 
 
     /// <summary>사망/부활, 은신 진입/해제 등에서 호출해 락온 가능 여부를 갱신.</summary>
     public void SetLockable(bool value) => isLockable = value;

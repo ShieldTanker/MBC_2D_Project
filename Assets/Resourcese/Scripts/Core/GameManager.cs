@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
     GameStateMachine gameStateMachine;
     GameContext _context = new GameContext();
-    public GameContext Context {  get { return _context; } }
+    public GameContext Context { get { return _context; } }
 
     protected override void OnAwake()
     {
@@ -12,5 +12,12 @@ public class GameManager : Singleton<GameManager>
         gameStateMachine = new GameStateMachine(_context);
     }
 
-    public void ExitGame() { Debug.Log("게임 종료"); }
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
+    }
 }

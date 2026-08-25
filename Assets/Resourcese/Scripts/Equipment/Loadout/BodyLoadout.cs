@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 머리/몸통/팔/다리 파츠 장착을 관리.
@@ -50,28 +50,28 @@ public class BodyLoadout : Loadout
     {
         _head = data;
         SwapModel(ref _headModel, data, _headAnchor);
-        RecalculateStats();
+        RecalculateStats(Stat);
     }
 
     public void SetBody(BodyPartData data)
     {
         _body = data;
         SwapModel(ref _bodyModel, data, _bodyAnchor);
-        RecalculateStats();
+        RecalculateStats(Stat);
     }
 
     public void SetArms(ArmsPartData data)
     {
         _arms = data;
         SwapModel(ref _armsModel, data, _armsAnchor);
-        RecalculateStats();
+        RecalculateStats(Stat);
     }
 
     public void SetLegs(LegsPartData data)
     {
         _legs = data;
         SwapModel(ref _legsModel, data, _legsAnchor);
-        RecalculateStats();
+        RecalculateStats(Stat);
     }
 
     #endregion
@@ -83,17 +83,12 @@ public class BodyLoadout : Loadout
         _arms = loadoutData?.ArmsPartData;
         _legs = loadoutData?.LegsPartData;
 
-        Debug.Log(_head.Stats.MaxHp);
-        Debug.Log(_body.Stats.MaxHp);
-        Debug.Log(_arms.Stats.MaxHp);
-        Debug.Log(_legs.Stats.MaxHp);
-
         SwapModel(ref _headModel, _head, _headAnchor);
         SwapModel(ref _bodyModel, _body, _bodyAnchor);
         SwapModel(ref _armsModel, _arms, _armsAnchor);
         SwapModel(ref _legsModel, _legs, _legsAnchor);
 
-        RecalculateStats();
+        RecalculateStats(Stat);
     }
 
     private void SwapModel(ref GameObject current, PartDataBase data, Transform anchor)
@@ -112,9 +107,9 @@ public class BodyLoadout : Loadout
     }
 
     /// <summary>기본값 + 4개 파츠 스탯을 합산해 AgentStat에 반영.</summary>
-    public void RecalculateStats()
+    public void RecalculateStats(AgentStat stat)
     {
-        if (Stat == null) return;
+        if (stat == null) return;
 
         PartStatBlock total = new PartStatBlock();
 
@@ -124,6 +119,6 @@ public class BodyLoadout : Loadout
         if (_arms != null) total += _arms.Stats;
         if (_legs != null) total += _legs.Stats;
 
-        Stat.ApplyStatBlock(total);
+        stat.ApplyStatBlock(total);
     }
 }

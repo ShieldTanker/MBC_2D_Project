@@ -29,8 +29,11 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
-        F_HandAnchor.IKTarget = IKController.F_HandIK;
-        B_HandAnchor.IKTarget = IKController.B_HandIK;
+        if (IKController != null)
+        {
+            F_HandAnchor.IKTarget = IKController.F_HandIK;
+            B_HandAnchor.IKTarget = IKController.B_HandIK;
+        }
     }
 
     public void SetLockonController(LockonController lockOnController)
@@ -38,39 +41,63 @@ public class WeaponController : MonoBehaviour
         LockOnController = lockOnController;
 
         // FrontHand
-        F_HandAnchor.Weapon.Context.LockonController = LockOnController;
-        F_HandAnchor.Weapon.LockonController = LockOnController;
+        if (F_HandAnchor != null)
+        {
+            F_HandAnchor.Weapon.Context.LockonController = LockOnController;
+            F_HandAnchor.Weapon.LockonController = LockOnController;
+            F_HandAnchor.AimTarget = LockOnController.TrackingTargetTransform;
+        }
 
         // BackHand
-        B_HandAnchor.Weapon.Context.LockonController = LockOnController;
-        B_HandAnchor.Weapon.LockonController = LockOnController;
+        if (B_HandAnchor != null)
+        {
+            B_HandAnchor.Weapon.Context.LockonController = LockOnController;
+            B_HandAnchor.Weapon.LockonController = LockOnController;
+            B_HandAnchor.AimTarget = LockOnController.TrackingTargetTransform;
+        }
 
         // FrontShoulder
-        F_ShoulderAnchor.Weapon.Context.LockonController = LockOnController;
-        F_ShoulderAnchor.Weapon.LockonController = LockOnController;
-
+        if (F_ShoulderAnchor != null)
+        {
+            F_ShoulderAnchor.Weapon.Context.LockonController = LockOnController;
+            F_ShoulderAnchor.Weapon.LockonController = LockOnController;
+            F_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
+        }
+            
         // BackShoulder
-        B_ShoulderAnchor.Weapon.Context.LockonController = LockOnController;
-        B_ShoulderAnchor.Weapon.LockonController = LockOnController;
-
-        F_HandAnchor.AimTarget = LockOnController.TrackingTargetTransform;
-        B_HandAnchor.AimTarget = LockOnController.TrackingTargetTransform;
-        F_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
-        B_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
-
+        if (B_ShoulderAnchor != null)
+        {
+            B_ShoulderAnchor.Weapon.Context.LockonController = LockOnController;
+            B_ShoulderAnchor.Weapon.LockonController = LockOnController;
+            B_ShoulderAnchor.AimTarget = LockOnController.TrackingTargetTransform;
+        }
     }
 
     public void SetAlive(bool isAlive)
     {
-        F_HandAnchor.CanRotate = isAlive;
-        B_HandAnchor.CanRotate = isAlive;
-        F_ShoulderAnchor.CanRotate = isAlive;
-        B_ShoulderAnchor.CanRotate = isAlive;
+        if (F_HandAnchor != null)
+        {
+            F_HandAnchor.CanRotate = isAlive;
+            F_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        }
 
-        F_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
-        B_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
-        F_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
-        B_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        if (B_HandAnchor != null)
+        {
+            B_HandAnchor.CanRotate = isAlive;
+            B_HandAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        }
+
+        if (F_ShoulderAnchor != null)
+        {
+            F_ShoulderAnchor.CanRotate = isAlive;
+            F_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+        }
+
+        if (B_ShoulderAnchor != null)
+        {
+            B_ShoulderAnchor.Weapon.Context.WeaponFlag.IsAlive = isAlive;
+            B_ShoulderAnchor.CanRotate = isAlive;
+        }
     }
 
     #region 입력 관련 함수

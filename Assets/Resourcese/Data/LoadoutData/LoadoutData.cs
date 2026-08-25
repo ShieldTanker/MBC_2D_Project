@@ -12,7 +12,7 @@ public class LoadoutData : ScriptableObject
     [Header("무장 정보")]
     public WeaponData F_HandWeaponData;
     public WeaponData B_HandWeaponData;
-    public WeaponData F_ShoudlerWeaponData;
+    public WeaponData F_ShoulderWeaponData;
     public WeaponData B_ShoulderWeaponData;
 
 }

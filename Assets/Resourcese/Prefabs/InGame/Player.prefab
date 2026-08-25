@@ -400,6 +400,7 @@ MonoBehaviour:
   JumpDuration: 0
   JumpDelay: 0
   CurrentDirection: 1
+  IsAlive: 1
   MaxHp: 0
   CurrentHp: 100
   LockonRange: 0
@@ -1577,6 +1578,7 @@ MonoBehaviour:
   AttackHeld: 0
   AttackReleased: 0
   InteractionPressed: 0
+  IsAlive: 1
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0
@@ -3427,6 +3429,7 @@ MonoBehaviour:
   AttackHeld: 0
   AttackReleased: 0
   InteractionPressed: 0
+  IsAlive: 1
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0
@@ -4057,6 +4060,7 @@ MonoBehaviour:
   AttackHeld: 0
   AttackReleased: 0
   InteractionPressed: 0
+  IsAlive: 1
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0
@@ -4121,8 +4125,8 @@ MonoBehaviour:
   _trackingTargetTransform: {fileID: 0}
   _predictedTargetTransform: {fileID: 0}
   selfFaction: 0
-  UsePredicted: 0
-  PredictedLeadTime: 0
+  UsePredicted: 1
+  PredictedLeadTime: 1
   _trackingTargetRadius: 0
   _predictedTargetRadius: 0
 --- !u!114 &2976169498524851988
@@ -4319,6 +4323,7 @@ MonoBehaviour:
   AttackHeld: 0
   AttackReleased: 0
   InteractionPressed: 0
+  IsAlive: 1
   CanFire: 1
   CanReload: 0
   IsAimComplete: 0

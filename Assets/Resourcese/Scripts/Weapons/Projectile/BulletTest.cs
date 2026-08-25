@@ -91,7 +91,7 @@ public class BulletTest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if (collision.transform.root == _fireTransform.root) return;
+        if (collision.transform.root == _fireTransform.root) return;
 
         if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
         {

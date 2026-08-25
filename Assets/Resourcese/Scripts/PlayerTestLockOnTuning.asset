@@ -17,17 +17,11 @@ MonoBehaviour:
     m_Bits: 64
   maxCandidates: 16
   excludeSameTeam: 1
-  useLeadPrediction: 1
-  leadTime: 0.2
   requireLineOfSight: 1
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
-  requireOnScreen: 1
+  requireOnScreen: 0
   screenEdgeMargin: 0.05
-  targetSwitchInputThreshold: 3
-  aimAccumDecayPerSecond: 8
-  targetSwitchCooldown: 0.15
-  targetSwitchMaxAngle: 70
   limitAngleFromCurrentTarget: 0
   maxAngleFromCurrentTarget: 90

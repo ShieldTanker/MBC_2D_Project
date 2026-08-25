@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
   m_Name: B_TestRifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  WeaponName: Test Rifle
   Model: {fileID: 3710105912973781297, guid: 7f25eb4c8f4457e4a9771180ede82624, type: 3}
   GunFireAudioClip: {fileID: 8300000, guid: ea93ff6dfc08c6042bfb538606b620af, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}

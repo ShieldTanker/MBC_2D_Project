@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UIElements;
 
 public abstract class WeaponAimAnchor : MonoBehaviour
@@ -34,9 +34,6 @@ public abstract class WeaponAimAnchor : MonoBehaviour
         Weapon.OnReloadExit += OnReloadExit;
         BaseOnEnable();
     }
-
-    protected virtual void BaseOnEnable() { }
-    protected virtual void BaseOnDisable() { }
 
     private void OnDisable()
     {
@@ -85,7 +82,7 @@ public abstract class WeaponAimAnchor : MonoBehaviour
 
     private void WeaponAim(Vector3 dir)
     {
-        AimDirection = dir.normalized; // 실제 타겟 방향 — 총알/레이캐스트는 이걸 사용
+        AimDirection = dir.normalized; // 실제 타겟 방향
 
         // 부모(UpperBody, Spine, Hip, Model, 캐릭터 반전까지 전부) 기준 로컬 방향으로 변환
         Vector3 localDir = transform.parent.InverseTransformDirection(dir);
@@ -106,4 +103,7 @@ public abstract class WeaponAimAnchor : MonoBehaviour
         if(AimTarget != null && useGizmo)
         Gizmos.DrawLine(transform.position, AimTarget.position);
     }
+
+    protected virtual void BaseOnEnable() { }
+    protected virtual void BaseOnDisable() { }
 }
