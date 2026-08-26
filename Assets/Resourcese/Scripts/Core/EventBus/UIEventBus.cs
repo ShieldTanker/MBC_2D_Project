@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,11 +10,11 @@ public enum BattleUIEventType
     PlayerAmmoSet,
 }
 
-public class BattleUIEventBus
+public class UIEventBus
 {
-    static Dictionary<BattleUIEventType, UnityEvent<Player>> events = new Dictionary<BattleUIEventType, UnityEvent<Player>>();
+    static Dictionary<Enum, UnityEvent<Player>> events = new Dictionary<Enum, UnityEvent<Player>>();
 
-    public static void Subscribe(BattleUIEventType type, UnityAction<Player> listener)
+    public static void Subscribe<T>(T type, UnityAction<Player> listener) where T : Enum
     {
         if(events.TryGetValue(type, out UnityEvent<Player> thisEvent))
         {
@@ -28,7 +28,7 @@ public class BattleUIEventBus
         }
     }
 
-    public static void Unsubscribe(BattleUIEventType type, UnityAction<Player> listener)
+    public static void Unsubscribe<T>(T type, UnityAction<Player> listener) where T : Enum
     {
         if(events.TryGetValue(type, out UnityEvent<Player> thisEvent))
         {
@@ -36,7 +36,7 @@ public class BattleUIEventBus
         }
     }
 
-    public static void Publish(BattleUIEventType type, Player player)
+    public static void Publish<T>(T type, Player player) where T : Enum
     {
         if(events.TryGetValue(type, out UnityEvent<Player> thisEvent))
         {

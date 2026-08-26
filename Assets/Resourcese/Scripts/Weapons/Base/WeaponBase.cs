@@ -53,13 +53,10 @@ public abstract class WeaponBase : MonoBehaviour
     public Action OnWeaponChanged;
 
     public Action OnIdleStart;
-    public Action OnIdleExit;
-
     public Action OnAimEnter;
     public Action OnAimExit;
 
-    public Action OnFireStart;
-    public Action OnFireExit;
+    public Action OnFire;
 
     public Action OnReloadStart;
     public Action OnReloadExit;
@@ -142,9 +139,7 @@ public abstract class WeaponBase : MonoBehaviour
     }
 
     #region 무기 입력
-    /// <summary>
-    /// 공격 버튼을 눌렀을 때 호출
-    /// </summary>
+    /// <summary> 공격 버튼을 눌렀을 때 호출 </summary>
     public void PerformedFire()
     {
         if (_weaponData == null)
@@ -155,9 +150,7 @@ public abstract class WeaponBase : MonoBehaviour
         _flag.AttackSequenceStarted = true;
     }
 
-    /// <summary>
-    /// 공격 버튼을 뗐을 때 호출
-    /// </summary>
+    /// <summary> 공격 버튼을 뗐을 때 호출 </summary>
     public void CanceledFire()
     {
         if (_weaponData == null)
@@ -190,7 +183,11 @@ public abstract class WeaponBase : MonoBehaviour
 
         bullet.SetFireTrasnform(_model.FireTransform);
 
-        OnFireStart?.Invoke();
+
+        Context.CurrentCapacity--;
+        Context.BurstRemaining--;
+        OnFire?.Invoke();
+
         if (_audioSource != null)
         {
             _audioSource.clip = _weaponData?.GunFireAudioClip;
@@ -215,10 +212,6 @@ public abstract class WeaponBase : MonoBehaviour
                 }
                 break;
         }
-
-
-        Context.CurrentCapacity--;
-        Context.BurstRemaining--;
 
         Recoil();
     }

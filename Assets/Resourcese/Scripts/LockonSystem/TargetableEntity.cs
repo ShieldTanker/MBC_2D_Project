@@ -35,4 +35,9 @@ public class TargetableEntity : MonoBehaviour, ITargetable
 
     /// <summary>진영 변경(예: 포획/전향 이벤트)이 필요할 때 호출.</summary>
     public void SetFaction(Faction value) => faction = value;
+
+    private void OnDestroy()
+    {
+        isLockable = false;
+    }
 }

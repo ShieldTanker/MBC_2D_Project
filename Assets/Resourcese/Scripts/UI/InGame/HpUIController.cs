@@ -13,11 +13,11 @@ public class HpUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        BattleUIEventBus.Subscribe(BattleUIEventType.PlayerHpSet, SetUI);
+        UIEventBus.Subscribe(BattleUIEventType.PlayerHpSet, SetUI);
     }
     private void OnDisable()
     {
-        BattleUIEventBus.Unsubscribe(BattleUIEventType.PlayerHpSet, SetUI);
+        UIEventBus.Unsubscribe(BattleUIEventType.PlayerHpSet, SetUI);
     }
 
     private void Start()

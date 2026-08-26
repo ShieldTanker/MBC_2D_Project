@@ -47,10 +47,10 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _weaponCon.F_HandAnchor.Weapon.OnFireStart += SetAmmo;
-        _weaponCon.B_HandAnchor.Weapon.OnFireStart += SetAmmo;
-        _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart += SetAmmo;
+        _weaponCon.F_HandAnchor.Weapon.OnFire += SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnFire += SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnFire += SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnFire += SetAmmo;
 
         _health.OnDamageAction += SetHp;
         _input.BoostActionPerformed += OnBoostInput;
@@ -58,10 +58,10 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        _weaponCon.F_HandAnchor.Weapon.OnFireStart -= SetAmmo;
-        _weaponCon.B_HandAnchor.Weapon.OnFireStart -= SetAmmo;
-        _weaponCon.F_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
-        _weaponCon.B_ShoulderAnchor.Weapon.OnFireStart -= SetAmmo;
+        _weaponCon.F_HandAnchor.Weapon.OnFire -= SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnFire -= SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnFire -= SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnFire -= SetAmmo;
 
         _health.OnDamageAction -= SetHp;
         _input.BoostActionPerformed -= OnBoostInput;
@@ -74,13 +74,13 @@ public class Player : MonoBehaviour
 
     void SetAmmo()
     {
-        BattleUIEventBus.Publish(BattleUIEventType.PlayerAmmoSet, this);
+        UIEventBus.Publish(BattleUIEventType.PlayerAmmoSet, this);
     }
 
     private void SetHp(DamageInfo _)
     {
         _stat.CurrentHp = _health.CurrentHealth;
-        BattleUIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        UIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
         Debug.Log("OnDamaged");
     }
 
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         // 무기 설정
         _weaponCon.SetLockonController(_lockonCon);
 
-        BattleUIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        UIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
         SetAmmo();
     }
 

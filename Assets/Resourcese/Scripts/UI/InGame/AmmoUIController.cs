@@ -12,12 +12,12 @@ public class AmmoUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        BattleUIEventBus.Subscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
+        UIEventBus.Subscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
     }
 
     private void OnDisable()
     {
-        BattleUIEventBus.Unsubscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
+        UIEventBus.Unsubscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
     }
     
     void SetAmmoRemaining(Player player)
@@ -27,9 +27,9 @@ public class AmmoUIController : MonoBehaviour
         WeaponBase fShoulder = player.WeaponController.F_ShoulderAnchor.Weapon;
         WeaponBase bShoulder = player.WeaponController.B_ShoulderAnchor.Weapon;
 
-        _bHandAmmo.text = $"B Hand \n{bHand.CurrentCapacity} / {bHand.AmmoRemaining}";
-        _fHandAmmo.text = $"F Hand \n{fHand.CurrentCapacity} / {fHand.AmmoRemaining}";
-        _bShoulderAmmo.text = $"B Shoulder \n{bShoulder.CurrentCapacity} / {bShoulder.AmmoRemaining}";
-        _fShoulderAmmo.text = $"F Shoulder \n{fShoulder.CurrentCapacity} / {fShoulder.AmmoRemaining}";
+        _bHandAmmo.text = $"B Hand \n{bHand.Context.CurrentCapacity} / {bHand.Context.AmmoRemaining}";
+        _fHandAmmo.text = $"F Hand \n{fHand.Context.CurrentCapacity} / {fHand.Context.AmmoRemaining}";
+        _bShoulderAmmo.text = $"B Shoulder \n{bShoulder.Context.CurrentCapacity} / {bShoulder.Context.AmmoRemaining}";
+        _fShoulderAmmo.text = $"F Shoulder \n{fShoulder.Context.CurrentCapacity} / {fShoulder.Context.AmmoRemaining}";
     }
 }
