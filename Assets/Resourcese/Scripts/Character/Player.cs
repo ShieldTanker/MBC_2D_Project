@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     public WeaponController WeaponController {  get { return _weaponCon; } }
     #endregion
 
+    public Transform currentTarget;
+
     public AgentStateType CurrentState { get; private set; }
 
     private void Awake()
@@ -74,13 +76,13 @@ public class Player : MonoBehaviour
 
     void SetAmmo()
     {
-        UIEventBus.Publish(BattleUIEventType.PlayerAmmoSet, this);
+        PlayerUIEventBus.Publish(PlayerBattleUIEventType.PlayerAmmoSet, this);
     }
 
     private void SetHp(DamageInfo _)
     {
         _stat.CurrentHp = _health.CurrentHealth;
-        UIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        PlayerUIEventBus.Publish(PlayerBattleUIEventType.PlayerHpSet, this);
         Debug.Log("OnDamaged");
     }
 
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour
         // 무기 설정
         _weaponCon.SetLockonController(_lockonCon);
 
-        UIEventBus.Publish(BattleUIEventType.PlayerHpSet, this);
+        PlayerUIEventBus.Publish(PlayerBattleUIEventType.PlayerHpSet, this);
         SetAmmo();
     }
 
@@ -113,6 +115,7 @@ public class Player : MonoBehaviour
         _agent?.Update(Time.deltaTime);
         UpdateFlag();
         CurrentState = _agent.CurrentStateType;
+        currentTarget = _lockonCon.CurrentTargetTransform;
 
         _rotation.dir = _lockonCon.PredictedPosition.x > transform.position.x ? CharDirection.Right : CharDirection.Left;
         _stat.CurrentDirection = _rotation.dir;

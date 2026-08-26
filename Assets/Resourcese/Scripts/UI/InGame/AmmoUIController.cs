@@ -12,12 +12,12 @@ public class AmmoUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        UIEventBus.Subscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
+        PlayerUIEventBus.Subscribe(PlayerBattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
     }
 
     private void OnDisable()
     {
-        UIEventBus.Unsubscribe(BattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
+        PlayerUIEventBus.Unsubscribe(PlayerBattleUIEventType.PlayerAmmoSet, SetAmmoRemaining);
     }
     
     void SetAmmoRemaining(Player player)

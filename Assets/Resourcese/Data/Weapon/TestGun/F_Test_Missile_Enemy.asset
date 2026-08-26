@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
-  m_Name: F_TestMissile
+  m_Name: F_Test_Missile_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   WeaponName: TestMissile
   Model: {fileID: 3623983036664630145, guid: 1a13cdadf2d660c4e90754dc82f39609, type: 3}
@@ -18,16 +18,16 @@ MonoBehaviour:
   Offset: {x: 0, y: 0, z: 0}
   WeaponType: 5
   FireMode: 2
-  Damage: 30
+  Damage: 5
   FireRatePerSecond: 5
   Range: 30
   MaxAimTime: 1
   MaxReloadDuration: 3.5
   BulletModel: {fileID: 5518940975853819943, guid: 30542a6947d0a8344aeaf3f00b663699, type: 3}
-  BulletSpeed: 60
+  BulletSpeed: 45
   MaxRotateAngle: 600
   MaxRotateSpeed: 100
-  MaxCapacity: 4
-  MaxAmmo: 50
-  BurstCount: 4
+  MaxCapacity: 8
+  MaxAmmo: 999999
+  BurstCount: 8
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

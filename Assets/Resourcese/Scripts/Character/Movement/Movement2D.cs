@@ -51,8 +51,8 @@ public class Movement2D : MonoBehaviour
 
         bool boostFlying = IsBoosting && _moveInput.sqrMagnitude >= 0.01f;
 
-        if (wasGrounded && !_isGrounded && boostFlying && IsSlope(prevGrdNomal))
-            LaunchFromRamp();
+        //if (wasGrounded && !_isGrounded && boostFlying && IsSlope(prevGrdNomal))
+        //    LaunchFromRamp();
 
         ApplyGravity(boostFlying);
         Move();

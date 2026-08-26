@@ -19,8 +19,11 @@ public class TargetableEntity : MonoBehaviour, ITargetable
     public Vector3 Position => transform.position;
     public Vector3 Velocity => _rigidbody != null ? (Vector3)_rigidbody.linearVelocity : Vector3.zero;
 
-    public bool IsLockable => isLockable && gameObject.activeInHierarchy;
-
+    public bool IsLockable
+    {
+        get { return isLockable && gameObject.activeInHierarchy; }
+        set { isLockable = value; }
+    }
     public Faction Faction => faction;
     #endregion
 

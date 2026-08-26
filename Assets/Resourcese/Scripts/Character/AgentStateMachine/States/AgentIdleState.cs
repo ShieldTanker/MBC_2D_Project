@@ -45,6 +45,6 @@ public class AgentDieState : State<AgentStateType, AgentContext>
         _model.Anim.SetTrigger("Die");
         _weaponCon.SetAlive(false);
 
-        UIEventBus.Publish(BattleUIEventType.PlayerDie, _machine.Context.Player);
+        PlayerUIEventBus.Publish(PlayerBattleUIEventType.PlayerDie, _machine.Context.Player);
     }
 }

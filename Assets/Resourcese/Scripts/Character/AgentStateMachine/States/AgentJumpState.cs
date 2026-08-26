@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,7 +12,6 @@ public class AgentJumpState : State<AgentStateType, AgentContext>
 
     float time = 0f;
     bool _jumped = false;
-    float _jumpDirX = 0f;
     float _jumpDuration = 0f;
 
     public AgentJumpState(StateMachine<AgentStateType, AgentContext> stateMachine,

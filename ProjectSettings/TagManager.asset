@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MiddleEnvironment
+    uniqueID: 586045633
+    locked: 0
+  - name: FrontEnvironment
+    uniqueID: 3290372169
+    locked: 0
   - name: Model
     uniqueID: 3811295103
     locked: 0

@@ -11,19 +11,19 @@ public class HpUIController : MonoBehaviour
     public float MaxHp;
     Player _player;
 
+    public GameObject BossUI;
+    public Image BossHpBar;
+
     private void OnEnable()
     {
-        UIEventBus.Subscribe(BattleUIEventType.PlayerHpSet, SetUI);
-    }
-    private void OnDisable()
-    {
-        UIEventBus.Unsubscribe(BattleUIEventType.PlayerHpSet, SetUI);
+        PlayerUIEventBus.Subscribe(PlayerBattleUIEventType.PlayerHpSet, SetUI);
+        BossUIEventBus.Subscribe(BossBattleUIEventType.BossHpSet, SetBossUI);
     }
 
-    private void Start()
+    private void OnDisable()
     {
-        //ServiceLocator sl = ServiceLocator.ForSceneOfLocal(this);
-        //_player = sl.Get<Player>();
+        PlayerUIEventBus.Unsubscribe(PlayerBattleUIEventType.PlayerHpSet, SetUI);
+        BossUIEventBus.Unsubscribe(BossBattleUIEventType.BossHpSet, SetBossUI);
     }
 
     private void Update()
@@ -42,5 +42,16 @@ public class HpUIController : MonoBehaviour
 
         HpBar.fillAmount = (float)player._stat.CurrentHp / player._stat.MaxHp;
         HpText.text = $"{player._stat.CurrentHp} / {player._stat.MaxHp}";
+    }
+
+    public void SetBossUI(Health health)
+    {
+        if (BossUI == null || BossHpBar == null)
+            return;
+
+        if (!BossUI.activeInHierarchy)
+            BossUI.SetActive(true);
+
+        BossHpBar.fillAmount = (float)health.CurrentHealth / health.MaxHealth;
     }
 }

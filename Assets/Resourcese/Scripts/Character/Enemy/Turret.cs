@@ -10,12 +10,13 @@ public class Turret : MonoBehaviour
     WeaponController _weaponCon;
     Health _health;
     AgentStat _stat;
-    
+    TargetableEntity _targetEntity;
 
     private void Awake()
     {
         _stat = GetComponent<AgentStat>();
         _lockon = GetComponentInChildren<LockonController>();
+        _targetEntity = GetComponentInChildren<TargetableEntity>();
         _weaponCon = GetComponent<WeaponController>();
         _health = GetComponent<Health>();
     }
@@ -24,6 +25,8 @@ public class Turret : MonoBehaviour
     {
         _lockon.Init(_stat, new DistanceTargetSelector());
         _weaponCon.SetLockonController(_lockon);
+        _health.MaxHealth = 300;
+        _health.Init();
         _health.OnDieAction += OnDie;
     }
 
@@ -31,8 +34,15 @@ public class Turret : MonoBehaviour
     {
         if (!_stat.IsAlive)
             return;
-        if(_lockon.CurrentTarget != null)
+
+        if(_lockon.CurrentTargetTransform != null)
+        {
             _weaponCon.F_HandAnchor.Weapon.PerformedFire();
+        }
+        else
+        {
+            _weaponCon.F_HandAnchor.Weapon.CanceledFire();
+        }
     }
 
     void OnDie(DamageInfo _)
@@ -40,8 +50,9 @@ public class Turret : MonoBehaviour
         // 중복 호출 및 로직 실행 방지
         if (!_stat.IsAlive)
             return;
-
         _stat.IsAlive = false;
+        _targetEntity.IsLockable = false;
+
         Destroy(gameObject, 1f);
     }
 }

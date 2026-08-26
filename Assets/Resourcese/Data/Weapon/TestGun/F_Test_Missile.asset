@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
+  m_Name: F_Test_Missile
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  WeaponName: TestMissile
+  Model: {fileID: 3623983036664630145, guid: 1a13cdadf2d660c4e90754dc82f39609, type: 3}
+  GunFireAudioClip: {fileID: 8300000, guid: f832666dbd5002945a36b9b4021b99db, type: 3}
+  Offset: {x: 0, y: 0, z: 0}
+  WeaponType: 5
+  FireMode: 2
+  Damage: 15
+  FireRatePerSecond: 5
+  Range: 30
+  MaxAimTime: 1
+  MaxReloadDuration: 3.5
+  BulletModel: {fileID: 5518940975853819943, guid: 30542a6947d0a8344aeaf3f00b663699, type: 3}
+  BulletSpeed: 60
+  MaxRotateAngle: 600
+  MaxRotateSpeed: 100
+  MaxCapacity: 4
+  MaxAmmo: 50
+  BurstCount: 4
+  RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

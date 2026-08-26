@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98fdc79be6d8424d8cbaa4e845b3f81, type: 3}
-  m_Name: F_TestMachineGun
+  m_Name: F_Test_MachineGun_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   WeaponName: Test MachineGun
-  Model: {fileID: 3322165605753062597, guid: f8ea4a2ce77c2f5458af0a654b8bd90c, type: 3}
+  Model: {fileID: 3322165605753062597, guid: 90b52a5525272d54fb2deb87aa8021cf, type: 3}
   GunFireAudioClip: {fileID: 8300000, guid: 33c06f10eaf8ce4469f6628f08e81db7, type: 3}
   Offset: {x: 3, y: -0.3, z: 0}
   WeaponType: 0
   FireMode: 1
-  Damage: 10
+  Damage: 3
   FireRatePerSecond: 10
   Range: 150
   MaxAimTime: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   BulletSpeed: 100
   MaxRotateAngle: 30
   MaxRotateSpeed: 10
-  MaxCapacity: 30
-  MaxAmmo: 220
+  MaxCapacity: 20
+  MaxAmmo: 999999
   BurstCount: 0
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}
