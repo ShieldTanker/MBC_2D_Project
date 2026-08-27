@@ -112,13 +112,20 @@ public class WeaponController : MonoBehaviour
     #endregion
 
     #region Canceled
-    // 손무장 공격 입력 해제
+    // 손무장
     public void FHandCanceledFire() => F_HandAnchor?.Weapon?.CanceledFire();
     public void BHandCanceledFire() => B_HandAnchor?.Weapon?.CanceledFire();
 
-    // 어깨무장 공격 입력 해제
+    // 어깨무장
     public void FShoulderCanceledFire() => F_ShoulderAnchor?.Weapon?.CanceledFire();
     public void BShoulderCanceledFire() => B_ShoulderAnchor?.Weapon?.CanceledFire();
     #endregion
+
+    // 상호작용
+    public void FHandInteraction(bool value) => F_HandAnchor?.Weapon?.InteractionInput(value);
+    public void BHandInteraction(bool value) => B_HandAnchor?.Weapon?.InteractionInput(value);
+
+    public void FShoulderInteraction(bool value) => F_ShoulderAnchor?.Weapon?.InteractionInput(value);
+    public void BShoulderInteraction(bool value) => B_ShoulderAnchor?.Weapon?.InteractionInput(value);
     #endregion
 }

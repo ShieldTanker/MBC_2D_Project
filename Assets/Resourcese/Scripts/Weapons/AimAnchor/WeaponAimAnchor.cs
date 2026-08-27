@@ -13,6 +13,8 @@ public abstract class WeaponAimAnchor : MonoBehaviour
     public bool useGizmo;
 
     public Vector3 IdleRotate = new Vector3(0, 0, 300);
+    public Vector3 ReloadRotate = new Vector3(0, 0, 0);
+
     public Vector3 currRot;
     public Vector3 AimDirection { get; private set; }
 
@@ -28,19 +30,11 @@ public abstract class WeaponAimAnchor : MonoBehaviour
 
     private void OnEnable()
     {
-        Weapon.OnIdleStart += OnIdleStart;
-
-        Weapon.OnReloadStart += OnReloadStart;
-        Weapon.OnReloadExit += OnReloadExit;
         BaseOnEnable();
     }
 
     private void OnDisable()
     {
-        Weapon.OnIdleStart -= OnIdleStart;
-
-        Weapon.OnReloadStart -= OnReloadStart;
-        Weapon.OnReloadExit -= OnReloadExit;
         BaseOnDisable();
     }
 
@@ -50,14 +44,6 @@ public abstract class WeaponAimAnchor : MonoBehaviour
         IKAiming();
         Aiming();
     }
-
-    #region 이벤트 등록
-    void OnIdleStart() { CanRotate = true; }
-
-    void OnReloadStart() { CanRotate = false; }
-
-    void OnReloadExit() { CanRotate = true; }
-    #endregion
 
     private void IKAiming()
     {
@@ -72,12 +58,19 @@ public abstract class WeaponAimAnchor : MonoBehaviour
     {
         if (!CanRotate)
             return;
+
         if (WeaponContext.WeaponFlag.IsAiming)
         {
             Vector3 dir = AimTarget.position - transform.position;
             WeaponAim(dir);
         }
-        else { IdleAim(); }
+        else if (WeaponContext.WeaponFlag.IsReloading)
+        {
+            angle = Mathf.LerpAngle(transform.localEulerAngles.z, ReloadRotate.z, AimSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.Euler(0, 0, angle);
+        }
+        else
+        { IdleAim(); }
     }
 
     private void WeaponAim(Vector3 dir)

@@ -25,6 +25,9 @@ public abstract class WeaponBase : MonoBehaviour
     #region 사격 관련
     private Transform _firePosition;
     private Vector3 _baseLocalPos;
+    private Vector3 _recoverPos;
+    private Vector3 _reloadPos;
+
     private Quaternion _baseLocalRot;
 
     private Vector3 _recoilVelocity = Vector3.zero;
@@ -66,7 +69,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     #region Context Debug
 
-    [Header("Context Debug")]
+    [Header("==== Context Debug ====")]
 
     [Tooltip("입력")]
     public bool AttackPressed;
@@ -109,15 +112,29 @@ public abstract class WeaponBase : MonoBehaviour
         _baseLocalPos = transform.localPosition;
         _baseLocalRot = transform.localRotation;
 
+        _recoverPos = _baseLocalPos;
+
         SetContext();
 
         _machine = new WeaponStateMachine(Context);
     }
 
+    private void OnEnable()
+    {
+        OnReloadStart += ReloadEnter;
+        OnReloadExit += ReloadExit;
+    }
+    private void OnDisable()
+    {
+        OnReloadStart -= ReloadEnter;
+        OnReloadExit -= ReloadExit;
+    }
     private void Start()
     {
         SetWeapon();
         InitAmmo();
+
+        OnReloadStart += () => _recoverPos = new Vector3(_baseLocalPos.x - WeaponData.ReloadBack, _baseLocalPos.y, _baseLocalPos.z);
 
         _machine.ChangeState(WeaponStateType.Idle);
     }
@@ -134,7 +151,7 @@ public abstract class WeaponBase : MonoBehaviour
             _fireRate += Time.deltaTime;
         }
 
-        RecoverRecoil();
+        RecoverPosition();
         DebugContext();
     }
 
@@ -158,6 +175,11 @@ public abstract class WeaponBase : MonoBehaviour
 
         _input.AttackPressed = false;
         _input.AttackHold = false;
+    }
+
+    public void InteractionInput(bool value)
+    {
+        _input.InteractionPressed = value;
     }
     #endregion
 
@@ -234,11 +256,12 @@ public abstract class WeaponBase : MonoBehaviour
         transform.localPosition -= new Vector3(recoil.x, 0f, 0f);
     }
 
-    private void RecoverRecoil()
+    private void RecoverPosition()
     {
         if (!UseRecoil) return;
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _baseLocalPos, ref _recoilVelocity, 0.2f);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _recoverPos, ref _recoilVelocity, 0.2f);
     }
+
 
     public void ReloadAmmo()
     {
@@ -253,8 +276,21 @@ public abstract class WeaponBase : MonoBehaviour
         bool dataNotNull = Context.WeaponData != null && Context.WeaponData.BulletModel != null;
         Context.WeaponFlag.CanFire = dataNotNull && Context.CurrentCapacity > 0; // 현재 탄약이 0 이상, 
         Context.WeaponFlag.IsReloadComplete = true;
+        Context.WeaponFlag.IsReloading = false;
     }
     #endregion
+    void ReloadEnter()
+    {
+        _reloadPos.x = _baseLocalPos.x - WeaponData.ReloadBack;
+        _reloadPos.y = _baseLocalPos.y;
+        _reloadPos.z = _baseLocalPos.z;
+        _recoverPos = _reloadPos;
+    }
+
+    void ReloadExit()
+    {
+        _recoverPos = _baseLocalPos;
+    }
 
     #region 초기화
     private void SetWeapon()

@@ -15,6 +15,7 @@
     public bool AttackSequenceStarted { get; set; }
     public bool IsRecoilComplete { get; set; }
     public bool IsReloadComplete { get; set; }
+    public bool IsReloading { get; set; }
 
     public void ClearAll()
     {

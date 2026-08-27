@@ -8,8 +8,7 @@ public class WeaponReloadState : State<WeaponStateType, WeaponContext>
     private WeaponContext _context;
     WeaponFlag _flag;
 
-    public WeaponReloadState(WeaponStateMachine machine,
-        List<StateTransition<WeaponStateType, WeaponContext>> transitions)
+    public WeaponReloadState(WeaponStateMachine machine, List<StateTransition<WeaponStateType, WeaponContext>> transitions)
     {
         _machine = machine;
         _transitions = transitions;
@@ -30,7 +29,10 @@ public class WeaponReloadState : State<WeaponStateType, WeaponContext>
         _flag.IsAimCanceled = true;
 
         _flag.IsReloadComplete = false;
+        _flag.IsReloading = true;
         _currentReloadTime = 0f;
+
+
 
         _context.Weapon.OnReloadStart?.Invoke();
     }

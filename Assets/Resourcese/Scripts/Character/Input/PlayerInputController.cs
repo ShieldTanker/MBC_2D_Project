@@ -31,6 +31,9 @@ public class PlayerInputController : InputController
         _pInput.actions["Fire3"].canceled += OnBShoulderCanceledFire;
         _pInput.actions["Fire4"].canceled += OnFShoulderCanceledFire;
 
+        _pInput.actions["Interaction"].performed += OnInteractionInput;
+        _pInput.actions["Interaction"].canceled += OnInteractionInput;
+
         _pInput.actions["LockOnToggle"].performed += OnLockOnManualTogglePerformed;
         _pInput.actions["LockOnNext"].performed += OnLockOnNextTargetPerformed;
         _pInput.actions["LockOnPrev"].performed += OnLockOnPrevTargetPerformed;
@@ -56,6 +59,9 @@ public class PlayerInputController : InputController
         _pInput.actions["Fire2"].canceled -= OnFHandCanceledFire;
         _pInput.actions["Fire3"].canceled -= OnBShoulderCanceledFire;
         _pInput.actions["Fire4"].canceled -= OnFShoulderCanceledFire;
+
+        _pInput.actions["Interaction"].performed -= OnInteractionInput;
+        _pInput.actions["Interaction"].canceled -= OnInteractionInput;
 
         _pInput.actions["LockOnToggle"].performed -= OnLockOnManualTogglePerformed;
         _pInput.actions["LockOnNext"].performed -= OnLockOnNextTargetPerformed;
@@ -99,7 +105,7 @@ public class PlayerInputController : InputController
         LookAction?.Invoke(LookInput);
     }
 
-    // 무기 사격 입력
+    #region 무기 사격 입력
     void OnFHandPerformedFire(InputAction.CallbackContext context) => F_HandPerformedFire?.Invoke();
 
     void OnBHandPerformedFire(InputAction.CallbackContext context) => B_HandPerformedFire?.Invoke();
@@ -107,9 +113,9 @@ public class PlayerInputController : InputController
     void OnFShoulderPerformedFire(InputAction.CallbackContext context) => F_ShoulderPerformedFire?.Invoke();
 
     void OnBShoulderPerformedFire(InputAction.CallbackContext context) => B_ShoulderPerformedFire?.Invoke();
-    
+    #endregion
 
-    // 무기 사격 입력 해제
+    #region 무기 사격 입력 해제
     void OnFHandCanceledFire(InputAction.CallbackContext context) => F_HandCanceledFire?.Invoke();
 
     void OnBHandCanceledFire(InputAction.CallbackContext context) => B_HandCanceledFire?.Invoke();
@@ -117,6 +123,13 @@ public class PlayerInputController : InputController
     void OnFShoulderCanceledFire(InputAction.CallbackContext context) => F_ShoulderCanceledFire?.Invoke();
 
     void OnBShoulderCanceledFire(InputAction.CallbackContext context) => B_ShoulderCanceledFire?.Invoke();
+    #endregion
+
+    void OnInteractionInput(InputAction.CallbackContext context)
+    {
+        bool value = context.ReadValueAsButton();
+        InteractionAction?.Invoke(value);
+    }
 
     // 락온 입력
     void OnLockOnManualTogglePerformed(InputAction.CallbackContext context) => LockOnManualToggleAction?.Invoke();

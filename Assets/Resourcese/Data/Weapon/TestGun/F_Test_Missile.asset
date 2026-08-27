@@ -30,4 +30,5 @@ MonoBehaviour:
   MaxCapacity: 4
   MaxAmmo: 50
   BurstCount: 4
+  ReloadBack: 0.6
   RecoilData: {fileID: 11400000, guid: 6358802060309ba429a49c843d2bde48, type: 2}

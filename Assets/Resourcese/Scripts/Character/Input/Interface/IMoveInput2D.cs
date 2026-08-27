@@ -24,6 +24,8 @@ public interface IWeaponInput
     public Action F_HandCanceledFire { get; set; }
     public Action B_ShoulderCanceledFire { get; set; }
     public Action F_ShoulderCanceledFire { get; set; }
+
+    public Action<bool> InteractionAction { get; set; }
 }
 
 public interface ILookInput

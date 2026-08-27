@@ -54,6 +54,12 @@ public class Player : MonoBehaviour
         _weaponCon.F_ShoulderAnchor.Weapon.OnFire += SetAmmo;
         _weaponCon.B_ShoulderAnchor.Weapon.OnFire += SetAmmo;
 
+        _weaponCon.F_HandAnchor.Weapon.OnReloadExit += SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnReloadExit += SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit += SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit += SetAmmo;
+
+
         _health.OnDamageAction += SetHp;
         _input.BoostActionPerformed += OnBoostInput;
     }
@@ -64,6 +70,11 @@ public class Player : MonoBehaviour
         _weaponCon.B_HandAnchor.Weapon.OnFire -= SetAmmo;
         _weaponCon.F_ShoulderAnchor.Weapon.OnFire -= SetAmmo;
         _weaponCon.B_ShoulderAnchor.Weapon.OnFire -= SetAmmo;
+
+        _weaponCon.F_HandAnchor.Weapon.OnReloadExit -= SetAmmo;
+        _weaponCon.B_HandAnchor.Weapon.OnReloadExit -= SetAmmo;
+        _weaponCon.F_ShoulderAnchor.Weapon.OnReloadExit -= SetAmmo;
+        _weaponCon.B_ShoulderAnchor.Weapon.OnReloadExit -= SetAmmo;
 
         _health.OnDamageAction -= SetHp;
         _input.BoostActionPerformed -= OnBoostInput;

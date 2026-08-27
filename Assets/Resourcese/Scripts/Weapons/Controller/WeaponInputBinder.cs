@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WeaponInputBinder : MonoBehaviour
@@ -33,6 +33,12 @@ public class WeaponInputBinder : MonoBehaviour
         _input.B_HandCanceledFire += _weapons.BHandCanceledFire;
         _input.F_ShoulderCanceledFire += _weapons.FShoulderCanceledFire;
         _input.B_ShoulderCanceledFire += _weapons.BShoulderCanceledFire;
+
+        // ----------------------------
+        _input.InteractionAction += _weapons.FHandInteraction;
+        _input.InteractionAction += _weapons.BHandInteraction;
+        _input.InteractionAction += _weapons.FShoulderInteraction;
+        _input.InteractionAction += _weapons.BShoulderInteraction;
     }
 
     private void OnDisable()
@@ -51,5 +57,11 @@ public class WeaponInputBinder : MonoBehaviour
         _input.B_HandCanceledFire -= _weapons.BHandCanceledFire;
         _input.F_ShoulderCanceledFire -= _weapons.FShoulderCanceledFire;
         _input.B_ShoulderCanceledFire -= _weapons.BShoulderCanceledFire;
+
+        // ----------------------------
+        _input.InteractionAction -= _weapons.FHandInteraction;
+        _input.InteractionAction -= _weapons.BHandInteraction;
+        _input.InteractionAction -= _weapons.FShoulderInteraction;
+        _input.InteractionAction -= _weapons.BShoulderInteraction;
     }
 }

@@ -9,7 +9,6 @@ public class WeaponEmptyToReload : StateTransition<WeaponStateType, WeaponContex
 
     public override bool CheckStateTransit(float deltaTime)
     {
-        // 강제 이동중(닷지 등) 혹은 반동이 끝났을때 true
         return _context.AmmoRemaining > 0;
     }
 

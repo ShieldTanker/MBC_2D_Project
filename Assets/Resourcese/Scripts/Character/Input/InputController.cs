@@ -28,6 +28,9 @@ public class InputController : MonoBehaviour,
     public Action B_ShoulderCanceledFire { get; set; }
     public Action F_ShoulderCanceledFire { get; set; }
 
+    // 상호작용
+    public Action<bool> InteractionAction { get; set; }
+
     // 마우스, 패드로 카메라 등 입력
     public Vector2 LookInput { get; set; }
     public Action<Vector2> LookAction { get; set; }

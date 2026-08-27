@@ -31,7 +31,6 @@ public class Boss : MonoBehaviour
     {
         if (_lockon.CurrentTarget == null)
         {
-            Debug.Log("asdasd");
             return;
         }   
         Vector2 dir = _lockon.CurrentTargetTransform.position - transform.position;

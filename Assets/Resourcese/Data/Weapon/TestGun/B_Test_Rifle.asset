@@ -18,11 +18,12 @@ MonoBehaviour:
   Offset: {x: 3, y: -0.3, z: 0}
   WeaponType: 1
   FireMode: 0
-  Damage: 30
-  FireRatePerSecond: 2
+  Damage: 50
+  FireRatePerSecond: 1.5
   Range: 150
   MaxAimTime: 1
-  MaxReloadDuration: 1
+  MaxReloadDuration: 4
+  ReloadBack: 2
   BulletModel: {fileID: 1626366951419549176, guid: 3cba074e5678b434fa4d8547424dbbe3, type: 3}
   BulletSpeed: 120
   MaxRotateAngle: 30

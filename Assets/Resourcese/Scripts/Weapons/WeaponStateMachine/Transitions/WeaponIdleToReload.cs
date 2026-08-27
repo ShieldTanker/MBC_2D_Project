@@ -1,16 +1,15 @@
-﻿/// <summary>
-/// 아이들(Idle) → 재장전(Reload)
-/// </summary>
-public class WeaponIdleToReload :
-    StateTransition<WeaponStateType, WeaponContext>
+﻿/// <summary> 아이들(Idle) → 재장전(Reload) </summary>
+public class WeaponIdleToReload : StateTransition<WeaponStateType, WeaponContext>
 {
-    public WeaponIdleToReload(WeaponContext context, WeaponStateType stateType)
-        : base(context, stateType) { }
+    WeaponInput _input;
+    public WeaponIdleToReload(WeaponContext context, WeaponStateType stateType) : base(context, stateType)
+    {
+        _input = _context.WeaponInput;
+    }
 
     public override bool CheckStateTransit(float deltaTime)
     {
-        return _context.WeaponInput.InteractionPressed &&
-               CanReload();
+        return (_input.InteractionPressed && _input.AttackPressed) && CanReload();
     }
 
     private bool CanReload()

@@ -19,6 +19,7 @@ public class WeaponData : ScriptableObject
 
     public float MaxAimTime = 1f;
     public float MaxReloadDuration;
+    public float ReloadBack;
 
     [Header("탄약 정보")]
     public GameObject BulletModel;
@@ -29,6 +30,7 @@ public class WeaponData : ScriptableObject
     public int MaxCapacity;
     public int MaxAmmo;
     public int BurstCount;
+
 
     [Header("반동 데이터")]
     public RecoilData RecoilData;
