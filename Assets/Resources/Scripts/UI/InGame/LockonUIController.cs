@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityServiceLocator;
 
@@ -18,7 +18,7 @@ public class LockonUIController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         PredictedAim.rectTransform.position = Camera.main.WorldToScreenPoint(lockonCon.PredictedPosition);
         TrackingAim.rectTransform.position = Camera.main.WorldToScreenPoint(lockonCon.TrackingPosition);

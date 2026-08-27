@@ -1,12 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlayerInputController : InputController
 {
     private PlayerInput _pInput;
-
     public Action OnEscapeAction;
+
+    float _mouseLookMultiplier = 0.002f;
+    float _gamepadLookMultiplier = 0.5f;
 
     private void Awake()
     {
@@ -107,7 +110,13 @@ public class PlayerInputController : InputController
     // 시점 입력
     void OnLookInputPerformed(InputAction.CallbackContext context)
     {
-        LookInput = context.ReadValue<Vector2>();
+        Vector2 raw = context.ReadValue<Vector2>();
+
+        if (context.control.device is Mouse)
+            LookInput = raw * _mouseLookMultiplier;
+        else if (context.control.device is Gamepad)
+            LookInput = raw * _gamepadLookMultiplier * Time.deltaTime;
+
         LookAction?.Invoke(LookInput);
     }
 

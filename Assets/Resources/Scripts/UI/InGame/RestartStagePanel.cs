@@ -1,4 +1,5 @@
-﻿using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RestartStagePanel : ResultPanelBase
@@ -8,20 +9,23 @@ public class RestartStagePanel : ResultPanelBase
 
     private void OnEnable()
     {
+        Cursor.visible = true;
+
         if(ReturnButton != null)
         {
-            ReturnButton.Select();
             ReturnButton.onClick.AddListener(ReturnGame);
         }
         if (RestartButton != null)
+        {
+            RestartButton.Select();
             RestartButton.onClick.AddListener(RestartGame);
+        }
     }
 
     private void OnDisable()
     {
         if (ReturnButton != null)
         {
-            ReturnButton.Select();
             ReturnButton.onClick.RemoveListener(ReturnGame);
         }
         if (RestartButton != null)

@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ClearStagePanel : ResultPanelBase
 {
@@ -7,6 +8,7 @@ public class ClearStagePanel : ResultPanelBase
     public int idx;
     private void OnEnable()
     {
+        Cursor.visible = true;
         AddClearStageAction();
     }
 

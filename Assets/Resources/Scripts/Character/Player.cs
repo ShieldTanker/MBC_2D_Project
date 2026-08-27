@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
 
         PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerHpSet, this);
         SetAmmo();
+        Cursor.visible = false;
     }
 
     void Update()

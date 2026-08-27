@@ -537,6 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5627b8318402b246ba24bb2835f0e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PInputController
+  _mouseLookMultiplier: 0.002
+  _gamepadLookMultiplier: 0.5
 --- !u!114 &1438451468552882184
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,11 +15,13 @@ public class GameManager : Singleton<GameManager>
     public void PauseGame()
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Cursor.visible = false;
     }
     
     public void ExitGame()

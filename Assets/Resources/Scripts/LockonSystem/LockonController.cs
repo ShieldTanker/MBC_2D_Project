@@ -237,10 +237,9 @@ public class LockonController : MonoBehaviour
         // 대상이 있는 동안은 TickAuto가 매 프레임 _predictedPosition을 대상 위치로 덮어쓰므로 여기서 이동시켜도 다음 프레임에 무시된다.
         if (_lockonMode == LockonMode.Manual || (_lockonMode == LockonMode.Auto && _currentTarget == null))
         {
-            Vector2 dir = value.normalized;
-            Vector3 move = new Vector3(dir.x, dir.y, 0f) * _agentStat.ManualAimSpeed *Time.deltaTime;
-
+            Vector3 move = new Vector3(value.x, value.y, 0f) * _agentStat.ManualAimSpeed;
             _aimOffset += move;
+
             UpdatePredictedPositionFromOffset();
             return;
         }

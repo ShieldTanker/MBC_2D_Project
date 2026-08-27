@@ -37,6 +37,5 @@ public class ResultCanvas : MonoBehaviour
     void OnGameOver(Player _)
     {
         RestartPanel.gameObject.SetActive(true);
-        GameManager.Instance.PauseGame();
     }
 }
