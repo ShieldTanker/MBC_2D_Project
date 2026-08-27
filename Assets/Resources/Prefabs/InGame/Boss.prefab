@@ -195,9 +195,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1004595127
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
@@ -326,8 +326,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -419,9 +419,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1004595127
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
@@ -511,8 +511,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -555,7 +555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4199395281178283348}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1076, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -786,8 +786,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1004595127
-  m_SortingLayer: 2
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
@@ -878,8 +878,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1004595127
-  m_SortingLayer: 2
+  m_SortingLayerID: -483672193
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
@@ -904,6 +904,14 @@ PrefabInstance:
     - target: {fileID: 3968459798665443421, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
       propertyPath: m_Name
       value: Machinegun_Turret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786076509892804599, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
+      propertyPath: isLockable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084283253796977656, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
+      propertyPath: LockonRange
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 9102897387133060676, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
       propertyPath: m_LocalPosition.x
@@ -967,6 +975,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Missile_Turret (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4786076509892804599, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
+      propertyPath: isLockable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084283253796977656, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
+      propertyPath: LockonRange
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 9102897387133060676, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.799995
@@ -1029,6 +1045,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machinegun_Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 4786076509892804599, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
+      propertyPath: isLockable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084283253796977656, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
+      propertyPath: LockonRange
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 9102897387133060676, guid: e97a74b57d9e40e488b51e1273c11856, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.714886
@@ -1090,6 +1114,14 @@ PrefabInstance:
     - target: {fileID: 3968459798665443421, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
       propertyPath: m_Name
       value: Missile_Turret (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786076509892804599, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
+      propertyPath: isLockable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084283253796977656, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
+      propertyPath: LockonRange
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 9102897387133060676, guid: 1a8542e9788dfa04f9267fc5b521ccf6, type: 3}
       propertyPath: m_LocalPosition.x
