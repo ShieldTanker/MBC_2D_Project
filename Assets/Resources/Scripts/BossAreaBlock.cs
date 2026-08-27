@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class BossAreaBlock : MonoBehaviour
 {
-    void Start()
+    void OnEnable()
     {
         BossUIEventBus.Subscribe(BossBattleUIEventType.BossDie, Open);
     }
 
-    void Open(Health _)
+    private void OnDisable()
     {
-        Destroy(gameObject);
+        BossUIEventBus.Unsubscribe(BossBattleUIEventType.BossDie, Open);
     }
+
+    void Open(Health _) => Destroy(gameObject);
 }

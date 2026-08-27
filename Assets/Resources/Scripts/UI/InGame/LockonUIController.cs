@@ -1,26 +1,32 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityServiceLocator;
 
 public class LockonUIController : MonoBehaviour
 {
-    Player _player;
     LockonController lockonCon;
 
     public Image PredictedAim;
     public Image TrackingAim;
 
-    private void Start()
+    private void OnEnable()
     {
-        ServiceLocator sl = ServiceLocator.ForSceneOfLocal(this);
-        _player = sl.Get<Player>();
-        lockonCon = _player.LockonCon;
+        PlayerBattleUIEventBus.Subscribe(PlayerBattleUIEventType.PlayerLockonSet, OnLockonSet);
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        PlayerBattleUIEventBus.Unsubscribe(PlayerBattleUIEventType.PlayerLockonSet, OnLockonSet);
+    }
+
     void FixedUpdate()
     {
+        if (lockonCon == null) return;
         PredictedAim.rectTransform.position = Camera.main.WorldToScreenPoint(lockonCon.PredictedPosition);
         TrackingAim.rectTransform.position = Camera.main.WorldToScreenPoint(lockonCon.TrackingPosition);
+    }
+
+    public void OnLockonSet(Player player)
+    {
+        lockonCon = player.LockonCon;
     }
 }

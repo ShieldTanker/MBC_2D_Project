@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,18 +6,31 @@
 public class Boss : MonoBehaviour
 {
     Health _health;
-    public LockonController _lockon;
     AgentStat _stat;
+    Rigidbody2D _rb2D;
+
+    public LockonController _lockon;
     public float StopDis = 20f;
-    Rigidbody2D rigidbody2D;
     public float _speed = 20f;
 
     private void Awake()
     {
         _stat = GetComponent<AgentStat>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _rb2D = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
         _lockon = GetComponentInChildren<LockonController>();
+    }
+
+    private void OnEnable()
+    {
+        _health.OnDamageAction += OnHit;
+        _health.OnDieAction += OnDie;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnDamageAction -= OnHit;
+        _health.OnDieAction -= OnDie;
     }
 
     private void Start()
@@ -39,27 +52,15 @@ public class Boss : MonoBehaviour
 
         if (dis > StopDis * StopDis && dis < chaseDis * chaseDis)
         {
-            Vector3 vel = rigidbody2D.linearVelocity;
+            Vector3 vel = _rb2D.linearVelocity;
             dir.Normalize();
             vel.x = dir.x *_speed;
-            rigidbody2D.linearVelocity = vel;
+            _rb2D.linearVelocity = vel;
         }
         else
         {
-            rigidbody2D.linearVelocity = Vector2.zero;
+            _rb2D.linearVelocity = Vector2.zero;
         }
-    }
-
-    private void OnEnable()
-    {
-        _health.OnDamageAction += OnHit;
-        _health.OnDieAction += OnDie;
-    }
-
-    private void OnDisable()
-    {
-        _health.OnDamageAction -= OnHit;
-        _health.OnDieAction -= OnDie;
     }
 
     void OnHit(DamageInfo info)

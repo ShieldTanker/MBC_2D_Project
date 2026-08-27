@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +8,7 @@ public enum PlayerBattleUIEventType
     PlayerHpSet,
     PlayerDie,
     PlayerAmmoSet,
+    PlayerLockonSet,
 }
 
 public enum BossBattleUIEventType

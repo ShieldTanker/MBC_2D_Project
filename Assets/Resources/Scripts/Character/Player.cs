@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityServiceLocator;
 
 [DisallowMultipleComponent]
@@ -36,10 +36,6 @@ public class Player : MonoBehaviour
     private WeaponController _weaponCon;
     public WeaponController WeaponController {  get { return _weaponCon; } }
     #endregion
-
-    public Transform currentTarget;
-
-    public AgentStateType CurrentState { get; private set; }
 
     private void Awake()
     {
@@ -84,33 +80,6 @@ public class Player : MonoBehaviour
         _input.OnEscapeAction -= OnEscapeInput;
     }
 
-    void OnEscapeInput()
-    {
-        PlayerUIEventBus.Publish(PlayerUIEventType.EscapeInput);
-    }
-
-    void OnBoostInput()
-    {
-        _stat.IsBoost = true;
-    }
-
-    void SetAmmo()
-    {
-        PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerAmmoSet, this);
-    }
-
-    void SetOnDie(DamageInfo _)
-    {
-        _stat.IsAlive = false;
-    }
-
-    private void SetHp(DamageInfo _)
-    {
-        _stat.CurrentHp = _health.CurrentHealth;
-        PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerHpSet, this);
-        Debug.Log("OnDamaged");
-    }
-
     void Start()
     {
         // TODO : _context 초기화할것
@@ -127,6 +96,7 @@ public class Player : MonoBehaviour
 
         // 락온 설정
         _lockonCon.Init(_stat, new DistanceTargetSelector());
+        PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerLockonSet, this);
 
         // 무기 설정
         _weaponCon.SetLockonController(_lockonCon);
@@ -140,8 +110,6 @@ public class Player : MonoBehaviour
     {
         _agent?.Update(Time.deltaTime);
         UpdateFlag();
-        CurrentState = _agent.CurrentStateType;
-        currentTarget = _lockonCon.CurrentTargetTransform;
 
         _rotation.dir = _lockonCon.PredictedPosition.x > transform.position.x ? CharDirection.Right : CharDirection.Left;
         _stat.CurrentDirection = _rotation.dir;
@@ -189,4 +157,20 @@ public class Player : MonoBehaviour
         _flag.OnGround = _move.IsGround;
         _model.Anim.SetBool("OnGround", _flag.OnGround);
     }
+
+    void OnEscapeInput() => PlayerUIEventBus.Publish(PlayerUIEventType.EscapeInput);
+
+    void OnBoostInput() => _stat.IsBoost = true;
+
+    void SetAmmo() => PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerAmmoSet, this);
+
+    void SetOnDie(DamageInfo _) => _stat.IsAlive = false;
+
+    private void SetHp(DamageInfo _)
+    {
+        _stat.CurrentHp = _health.CurrentHealth;
+        PlayerBattleUIEventBus.Publish(PlayerBattleUIEventType.PlayerHpSet, this);
+        Debug.Log("OnDamaged");
+    }
+
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable, IDieable
@@ -32,6 +32,7 @@ public class Health : MonoBehaviour, IDamageable, IDieable
     {
         _currentHealth -= damageInfo.Damage;
         OnDamageAction?.Invoke(damageInfo);
+
         if(_currentHealth <= 0)
             OnDie(damageInfo);
     }
