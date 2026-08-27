@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackEnvironment
+    uniqueID: 536592975
+    locked: 0
   - name: MiddleEnvironment
     uniqueID: 586045633
     locked: 0
@@ -49,6 +52,9 @@ TagManager:
     locked: 0
   - name: Model
     uniqueID: 3811295103
+    locked: 0
+  - name: Projectile
+    uniqueID: 2266502443
     locked: 0
   m_RenderingLayers:
   - Default

@@ -220,6 +220,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1471911493}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1344042555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -309,6 +337,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118853935}
   m_CullTransparentMesh: 1
+--- !u!114 &120674408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1264812467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &124354635
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,9 +540,9 @@ RectTransform:
   - {fileID: 1298426496}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -451.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174912415
@@ -519,10 +558,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1342496765}
+    m_SelectOnDown: {fileID: 1997581720}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -530,7 +569,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -841,6 +880,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1755453255}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 2113357571}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1174,6 +1241,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1755453255}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1492808480}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 2113357571}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1647,6 +1742,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 120674408}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1880968754}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1537056984}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1748,6 +1871,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 2031484868}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1342496765}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1763,6 +1910,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 1042814260}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &523236466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1042814260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &551129259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2395,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2391,6 +2549,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 523236466}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 913502317}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 174912415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2533,6 +2719,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 1927796508}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &723755396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1927796508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &728961689 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
@@ -2630,6 +2827,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 2028930193}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1997581720}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2816,6 +3041,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1063023167}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1382127555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3081,11 +3334,33 @@ MonoBehaviour:
   _statusUI: {fileID: 256995975}
   LoadoutData: {fileID: 11400000, guid: 1ab614173906dc441aba70870785ebd9, type: 2}
   partContent: []
+--- !u!114 &913502317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1126129285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &914988326 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 2088335053}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &914988329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 2088335053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &933111053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,18 +3507,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 1344042555}
+    m_SelectOnLeft: {fileID: 1344042555}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3472,6 +3747,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1799484820}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 174912415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3635,6 +3938,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054695446}
   m_CullTransparentMesh: 1
+--- !u!114 &1063023167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+  m_PrefabInstance: {fileID: 2067207648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1064827052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,6 +4203,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1595570837}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1840662151}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 2113357571}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3990,6 +4332,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1799484820}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1523015240}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 174912415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4000,11 +4370,33 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
   m_PrefabInstance: {fileID: 784361834}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1131726890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+  m_PrefabInstance: {fileID: 784361834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &1143170453 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 475004876}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143170456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 475004876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1192651879
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,7 +4416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1192651880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,6 +4523,7 @@ MonoBehaviour:
   - {fileID: 405852648}
   - {fileID: 933111057}
   CloseButton: {fileID: 955084068}
+  GarageStartButton: {fileID: 1265537840}
 --- !u!1 &1216200941
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,6 +4757,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1706230223}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 914988329}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1997581720}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4511,7 +4932,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4665,6 +5086,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 723755396}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1143170456}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1537056984}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4733,7 +5182,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4909,9 +5358,9 @@ RectTransform:
   - {fileID: 579516962}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -348.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1342496765
@@ -4927,10 +5376,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1396739149}
+    m_SelectOnDown: {fileID: 174912415}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -4938,7 +5387,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5121,9 +5570,9 @@ RectTransform:
   - {fileID: 124354636}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -41.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344042555
@@ -5139,10 +5588,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 955084068}
+    m_SelectOnDown: {fileID: 1382127555}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5150,7 +5599,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5312,6 +5761,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1402610426}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1396739149}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5322,6 +5799,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
   m_PrefabInstance: {fileID: 1356326713}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356326717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+  m_PrefabInstance: {fileID: 1356326713}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1382127553
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,9 +5844,9 @@ RectTransform:
   - {fileID: 611086257}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -143.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382127555
@@ -5374,10 +5862,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1344042555}
+    m_SelectOnDown: {fileID: 1396739149}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5385,7 +5873,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5489,9 +5977,9 @@ RectTransform:
   - {fileID: 1054695447}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -246.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396739149
@@ -5507,10 +5995,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1382127555}
+    m_SelectOnDown: {fileID: 1342496765}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5518,7 +6006,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5684,6 +6172,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1356326717}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1396739149}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5694,6 +6206,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
   m_PrefabInstance: {fileID: 1402610422}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402610426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+  m_PrefabInstance: {fileID: 1402610422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1410425580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5790,6 +6313,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 914988329}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1997581720}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5896,6 +6443,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1516252583}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1344042555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5906,11 +6477,33 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 1410425580}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1455801895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1410425580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &1471911490 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
   m_PrefabInstance: {fileID: 1452055773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1471911493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+  m_PrefabInstance: {fileID: 1452055773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1481347491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6007,6 +6600,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1143170456}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1537056984}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6017,6 +6634,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 1982170730}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492808480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1982170730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1515820359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+  m_PrefabInstance: {fileID: 508859520}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1516252583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+  m_PrefabInstance: {fileID: 79084347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1523015240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1952944602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1537056982
 GameObject:
   m_ObjectHideFlags: 0
@@ -6051,9 +6712,9 @@ RectTransform:
   - {fileID: 1047544009}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -758.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537056984
@@ -6069,9 +6730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 2113357571}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -6080,7 +6741,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6243,6 +6904,17 @@ MonoBehaviour:
   _statusUI: {fileID: 256995975}
   LoadoutData: {fileID: 11400000, guid: 1ab614173906dc441aba70870785ebd9, type: 2}
   partContent: []
+--- !u!114 &1595570837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 249410443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1623213848
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,11 +7152,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642652699}
   m_CullTransparentMesh: 1
+--- !u!114 &1706230223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 733909059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &1755453252 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6121138947986581196, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
   m_PrefabInstance: {fileID: 1112462313}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1755453255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1112462313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1776867809
 GameObject:
   m_ObjectHideFlags: 0
@@ -6564,6 +7258,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776867809}
   m_CullTransparentMesh: 1
+--- !u!114 &1799484820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 658352769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1838573920
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,6 +7348,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838573920}
   m_CullTransparentMesh: 1
+--- !u!114 &1840662151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 368555773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1880968754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1481347491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1883373555
 GameObject:
   m_ObjectHideFlags: 0
@@ -6905,6 +7632,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 120674408}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1537056984}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7179,6 +7934,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 913502317}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 174912415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7355,6 +8134,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 955084068}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1515820359}
+    - target: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1342496765}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7461,6 +8268,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1840662151}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 2113357571}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7500,9 +8331,9 @@ RectTransform:
   - {fileID: 1094532728}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -553.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997581720
@@ -7518,10 +8349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 174912415}
+    m_SelectOnDown: {fileID: 2113357571}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -7529,7 +8360,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7599,6 +8430,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997581718}
   m_CullTransparentMesh: 1
+--- !u!114 &2028930193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+  m_PrefabInstance: {fileID: 1218196272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &2031484868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589426154834177153, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+  m_PrefabInstance: {fileID: 1966922168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &2057141447
 GameObject:
   m_ObjectHideFlags: 0
@@ -7778,6 +8631,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1131726890}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1382127555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7879,6 +8756,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 2028930193}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1455801895}
+    - target: {fileID: 8589426154834177153, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1997581720}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7918,9 +8823,9 @@ RectTransform:
   - {fileID: 167143181}
   m_Father: {fileID: 216410809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -656.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113357571
@@ -7936,10 +8841,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1997581720}
+    m_SelectOnDown: {fileID: 1537056984}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -7947,7 +8852,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
