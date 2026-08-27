@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: _partData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3377325304694125182, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 554958848}
     - target: {fileID: 5898295847979841466, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
       propertyPath: m_Name
       value: HeadContent None
@@ -796,6 +800,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405852645}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 405852648}
     - target: {fileID: 5898295847979841466, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: m_Name
       value: WeaponContent None
@@ -1153,6 +1161,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405852645}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 405852648}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
@@ -1655,6 +1667,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 933111054}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 933111057}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: 9f6cccff554097f449339b5df10863c4, type: 2}
@@ -1787,6 +1803,10 @@ PrefabInstance:
       propertyPath: _partData
       value: 
       objectReference: {fileID: 11400000, guid: 4d05e0fa02f37fe4abafd52000d4d1d8, type: 2}
+    - target: {fileID: 3377325304694125182, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 909187775}
     - target: {fileID: 5898295847979841466, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
       propertyPath: m_Name
       value: LegsContent
@@ -2462,6 +2482,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1883373556}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1883373559}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
@@ -2743,6 +2767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1946175106}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1946175109}
     - target: {fileID: 5898295847979841466, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: m_Name
       value: WeaponContent None
@@ -2957,6 +2985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1582448038}
     m_Modifications:
+    - target: {fileID: 3377325304694125182, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1582448041}
     - target: {fileID: 5898295847979841466, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
       propertyPath: m_Name
       value: BodyContent None
@@ -3663,6 +3695,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883373556}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1883373559}
     - target: {fileID: 5898295847979841466, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: m_Name
       value: WeaponContent None
@@ -4116,6 +4152,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 405852645}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 405852648}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
@@ -4244,6 +4284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883373556}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1883373559}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
@@ -4670,6 +4714,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1946175106}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1946175109}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: cf50c44ec203aee4f8bfac4a978c9296, type: 2}
@@ -4998,6 +5046,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 933111054}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 933111057}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
@@ -5677,6 +5729,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672158313}
     m_Modifications:
+    - target: {fileID: 3377325304694125182, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 672158316}
     - target: {fileID: 5898295847979841466, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
       propertyPath: m_Name
       value: ArmsContent None
@@ -6088,6 +6144,10 @@ PrefabInstance:
       propertyPath: _partData
       value: 
       objectReference: {fileID: 11400000, guid: 0235f7ddc7504444da4457d15409edec, type: 2}
+    - target: {fileID: 3377325304694125182, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 672158316}
     - target: {fileID: 5898295847979841466, guid: 91fb44ca53128ed4bb2eea657f4e6f8b, type: 3}
       propertyPath: m_Name
       value: ArmsContent
@@ -6226,6 +6286,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1946175106}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1946175109}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: 6f75c789b0551f949a8d5bce94cf6958, type: 2}
@@ -6359,6 +6423,10 @@ PrefabInstance:
       propertyPath: _partData
       value: 
       objectReference: {fileID: 11400000, guid: 524343dfc85d980448a61c04c218af39, type: 2}
+    - target: {fileID: 3377325304694125182, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 554958848}
     - target: {fileID: 5898295847979841466, guid: 1ba4e1f1e869c1c498a63f33093547d6, type: 3}
       propertyPath: m_Name
       value: HeadContent
@@ -6512,6 +6580,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 933111054}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 933111057}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
@@ -7548,6 +7620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 933111054}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 933111057}
     - target: {fileID: 5898295847979841466, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: m_Name
       value: WeaponContent None
@@ -7847,6 +7923,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1883373556}
     m_Modifications:
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1883373559}
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
       objectReference: {fileID: 11400000, guid: 6f75c789b0551f949a8d5bce94cf6958, type: 2}
@@ -8050,6 +8130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 909187772}
     m_Modifications:
+    - target: {fileID: 3377325304694125182, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 909187775}
     - target: {fileID: 5898295847979841466, guid: 8f5f07d3b51a64646b24ee7d9c8d87c6, type: 3}
       propertyPath: m_Name
       value: LegsContent None
@@ -8180,6 +8264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405852645}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 405852648}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
@@ -8547,6 +8635,10 @@ PrefabInstance:
       propertyPath: _partData
       value: 
       objectReference: {fileID: 11400000, guid: e982fcd0512fbf24984e69a255f2e1fe, type: 2}
+    - target: {fileID: 3377325304694125182, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1582448041}
     - target: {fileID: 5898295847979841466, guid: c99f458908ae1674cbd43413eb9bd1c4, type: 3}
       propertyPath: m_Name
       value: BodyContent
@@ -8668,6 +8760,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1946175106}
     m_Modifications:
+    - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1946175109}
     - target: {fileID: 5480372794284782798, guid: 24e70a73d4321344eb1da955e7759868, type: 3}
       propertyPath: _weaponData
       value: 
