@@ -2227,10 +2227,10 @@ GameObject:
   m_Component:
   - component: {fileID: 844101107}
   - component: {fileID: 844101106}
-  - component: {fileID: 844101105}
-  - component: {fileID: 844101108}
   - component: {fileID: 844101110}
   - component: {fileID: 844101109}
+  - component: {fileID: 844101105}
+  - component: {fileID: 844101108}
   - component: {fileID: 844101111}
   m_Layer: 6
   m_Name: DamageableWall
@@ -6363,6 +6363,62 @@ PrefabInstance:
     - target: {fileID: 351477585721391775, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457345113764375537, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.766627
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457345113764375537, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6420927
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395263113911575444, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999488
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395263113911575444, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0101194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022126604015142340, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7959149
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022126604015142340, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.60540843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334548317580667875, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.76149875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334548317580667875, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6481665
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772290796873666170, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.08760231
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772290796873666170, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.99615556
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163416028625807617, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9982477
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163416028625807617, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.059173808
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124779738466192839, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9983508
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124779738466192839, guid: 8d47af391f18a944a8d4573d94f1a927, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.057409313
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
